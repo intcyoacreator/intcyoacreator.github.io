@@ -6,6 +6,7 @@ const routes = [
     path: '/',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
+      // Home is the menu that is starts with
       {
         path: '',
         name: 'Home',
