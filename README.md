@@ -34,12 +34,11 @@ A successor to MeanDelay's Interactive CYOA Creator.
     - List of formats (asks which one to choose on load and saving for the
       first time):
         - [ ] Project v1 – Backwards-compatible Interactive CYOA Creator 1
-        files. ICC2 cannot use new features with this
+          files. ICC2 cannot use new features with this
         - [ ] Project v1.1 – Backwards-compatible Interactive CYOA Creator 1
-        and 2 files. ICC2 can use new features with this.
+          and 2 files. ICC2 can use new features with this.
         - [ ] Project v2 (Recommended) – New file formats native to this
-        - Creator
-        only
+          Creator only
     - [ ] Option to upgrade versions (but never backwards, destructive action)
     - [ ] Validates which version it is using somehow, auto-detecting it
         - [ ] v1.1 and v2 can have a special "version" metadata tag

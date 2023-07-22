@@ -26,6 +26,18 @@ const routes = [
       }
     ],
   },
+  {
+    path: '/create',
+    component: () => import('@/layouts/default/Default.vue'),
+    children: [
+      // The Creator
+      {
+        path: '',
+        name: "Creator",
+        component: () => import('@/views/Creator.vue')
+      }
+    ]
+  }
 ]
 
 const router = createRouter({
