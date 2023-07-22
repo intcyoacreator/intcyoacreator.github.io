@@ -1,4 +1,4 @@
-# essentials
+# IntCyoaCreator 2
 
 ## Project setup
 
