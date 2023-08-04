@@ -20,7 +20,7 @@ Get the type of an object using `.type()`.
 ```intscript
 [ksh2].type() // returns Section
 [of82].type() // returns Choice
-[82sk].type() // returns 
+[82sk].type() // returns Point
 ```
 
 ### Get list of all members of a type
@@ -28,6 +28,49 @@ Get the type of an object using `.type()`.
 ```intscript
 rows = section::all_members() // returns array of type Section
 choices = choice::all_members() // returns array of type Choice
+```
+
+### Renaming an ID
+```intscript
+[02mf] = [jns8] // renames jns8 to 02mf, but doesn't change references to jns8
+
+[02mf] = [jns8].move() // any references to [jns8] now go to [02mf]
+```
+
+### Creating IntScript variables
+To create variables in IntScript, simply use the `=` sign.
+
+```intscript
+value = "Hello!"
+
+// with manual type
+value: string = "World!"
+```
+
+### Access ICC2 variables
+To access and modify the variables made in ICC2, use the `#` sign.
+
+if `#name` is equal to "Mary" and `#name2` is equal to "John" then:
+
+`++` is used to concatenation, whereas `+` is used solely for addition.
+
+```intscript
+welcome_message = "Welcome " ++ #name ++ "!"
+
+log(welcome_message) // prints: Welcome Mary!
+
+log("And welcome to you too {#name2}!") // prints: And welcome to you too John!
+```
+
+### Functions
+Declare functions with the `fn` keyword:
+
+```intscript
+fn hello(name):
+    log("Hello {name}!")
+
+hello("Tommy") // prints: Hello Tommy!
+hello("Julia") // prints: Hello Julia!
 ```
 
 ## IntScript in Choices
@@ -40,7 +83,7 @@ fn im_selected():
 
 this.on_select(im_selected)
 
-this.on_select((): {
+this.on_select((_): {
     log("This choice was selected with an anonymous function!")
 })
 ```
