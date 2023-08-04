@@ -34,7 +34,7 @@ choices = choice::all_members() // returns array of type Choice
 ```intscript
 [02mf] = [jns8] // renames jns8 to 02mf, but doesn't change references to jns8
 
-[02mf] = [jns8].move() // any references to [jns8] now go to [02mf]
+[jns8].move([02mf]) // any references to [jns8] now go to [02mf]
 ```
 
 ### Creating IntScript variables
@@ -72,6 +72,14 @@ fn hello(name):
 hello("Tommy") // prints: Hello Tommy!
 hello("Julia") // prints: Hello Julia!
 ```
+
+### Access the parent object
+Access the parent object with the `this` keyword. `this` is just a shortcut to
+the object of the parent. So if the parent were a Choice with the ID `ns7g`,
+then `this` would be shorthand for `[ns7g]`.
+
+This means any example you see here that does `this.something()` is applicable
+to any object, such as `[m29f].something()`.
 
 ## IntScript in Choices
 ### Code execution on event
