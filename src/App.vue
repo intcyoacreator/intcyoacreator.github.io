@@ -2,12 +2,11 @@
   <v-app>
     <v-row
       v-if="currentComponent == 0"
-      style="text-align: center;"
     >
     <v-dialog
       v-model="dialog"
       persistent
-      max-width="900px"
+      width="auto"
       style="text-align: center;"
     >
       <v-card>
@@ -25,14 +24,14 @@
             >
               <!-- Buttons for the menu -->
               <v-col
-                cols="auto"
+                cols="12"
                 v-for="button in menuButtons"
                 :key="button.id"
               >
                 <v-btn
-                  small
+                  variant="outlined"
+                  block
                   @click="currentComponent = button.id"
-                  style=""
                 >
                   {{ button.text }}
                 </v-btn>
@@ -52,10 +51,14 @@
 
 <script setup lang="ts">
   import { onActivated, ref } from "vue";
+  import Creator from "./views/Creator.vue";
+  import Viewer from "./views/Viewer.vue";
   import About from "./views/About.vue";
 
   const components = [
     "Home", // Placeholder value
+    Creator,
+    Viewer,
     About,
   ];
 
@@ -63,8 +66,16 @@
   const currentComponent = ref(0);
   const dialog = ref(true); // open dialog by default or not
   const menuButtons = {
-    about: {
+    creator: {
       id: 1,
+      text: "Open CYOA Creator",
+    },
+    viewer: {
+      id: 2,
+      text: "Open CYOA Viewer",
+    },
+    about: {
+      id: 3,
       text: "About this Creator",
     },
   }
