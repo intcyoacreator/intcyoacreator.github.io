@@ -1,13 +1,8 @@
 <template>
   <v-app>
-
-
-    <!-- <router-view v-slot="{ Component }"> -->
-    <!-- <router-view v-slot="{ components[currentComponent] }"> -->
     <keep-alive>
       <component :is="components[currentComponent]"/>
     </keep-alive>
-    <!-- </router-view> -->
   </v-app>
 </template>
 
@@ -21,10 +16,13 @@
     About,
   ];
 
-  const currentComponent = ref();
+  // Default value is Home
+  const currentComponent = ref(0);
 
   // When the app is launched
   onActivated(() => {
-    currentComponent.value = 0; // Default view is Home
+    // called on initial mount
+    // and every time it is re-inserted from the cache
+    // currentComponent.value = 0; // Default view is Home
   });
 </script>
