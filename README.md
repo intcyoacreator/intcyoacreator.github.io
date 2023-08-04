@@ -162,7 +162,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
   Whole type vs Decimal type, for example.
     - [ ] Option to switch between native floating point integers, accurate
       (but slow ones), or native + rounding
-
+- [ ] Change Tauri icon to actual web icon
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
