@@ -194,15 +194,53 @@ yarn
 
 ### Compiles and hot-reloads for development
 
-```
+```sh
+# Web
 yarn dev
+
+# Desktop app
+yarn tauri dev
 ```
 
 ### Compiles and minifies for production
 
-```
+```sh
+# Web
 yarn build
+
+# Desktop app
+yarn tauri build
+
+# Build for 64 bit Windows
+rustup target add x86_64-pc-windows-msvc
+yarn tauri build --target x86_64-pc-windows-msvc
+# Build for 32 bit Windows
+rustup target add i686-pc-windows-msvc
+yarn tauri build --target i686-pc-windows-msvc
+# Build for ARM64
+# Install `C++ ARM64 build tools` from the `Visual Studio Installer`
+rustup target add aarch64-pc-windows-msvc
+yarn tauri build --target aarch64-pc-windows-msvc
+
+# Supporting Windows 7: https://tauri.app/v1/guides/building/windows/#supporting-windows-7
+
+# MacOS
+# targets Apple silicon machines.
+rustup target add aarch64-apple-darwin
+yarn tauri build --target aarch64-apple-darwin
+# targets Intel-based machines.
+rustup target add x86_64-apple-darwin
+yarn tauri build --target x86_64-apple-darwin
+# produces a universal macOS binary that runs on both Apple silicon and
+# Intel-based Macs.
+rustup target add universal-apple-darwin
+yarn tauri build --target universal-apple-darwin
+
+# Linux
+
 ```
+
+Building using GitHub Actions: https://github.com/tauri-apps/tauri-action
 
 ### Lints and fixes files
 

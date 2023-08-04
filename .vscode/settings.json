@@ -1,14 +1,22 @@
 {
     "cSpell.words": [
+        "aarch",
+        "Bootstrapper",
         "Composables",
         "fontface",
+        "fullscreen",
+        "icns",
         "intcyoacreator",
         "intscript",
         "lshy",
+        "msvc",
         "pinia",
         "roboto",
+        "rustup",
         "Sakura",
         "sass",
+        "Tauri",
+        "upasadena",
         "vuetify",
         "webfontloader"
     ]
