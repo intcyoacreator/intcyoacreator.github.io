@@ -148,6 +148,21 @@ A successor to MeanDelay's Interactive CYOA Creator.
     - [ ] Italian
     - [ ] Esperanto
     - [ ] Ido
+- [ ] Requirements can use a custom logic code that is handwritten, for
+  advanced users
+    - [ ] Maybe inline JavaScript — I'd have to make a guide on how to manually
+      interact with Vue variables and check if an option is selected and stuff
+        - [ ] Maybe by turning on Javascript it will auto-declare shortcut
+          variables to the extremely complicated Vue process, meaning you can
+          see if Rows exist using something like `row["fjw6"].exists()` and see
+          if a choice is selected by going `choice["lso9"].is_pressed()`.
+    - [ ] A custom scripting language
+        - [ ] [IntScript](./IntScript.md) is one I'm working on
+- [ ] Support for decimals in Point Types, perhaps requiring a different type.
+  Whole type vs Decimal type, for example.
+    - [ ] Option to switch between native floating point integers, accurate
+      (but slow ones), or native + rounding
+
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/

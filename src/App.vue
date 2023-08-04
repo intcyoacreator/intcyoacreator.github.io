@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <!-- <router-view v-slot="{ Component }"> -->
-    <router-view v-slot="currentComponent">
+    <router-view v-slot="{ currentComponent }">
       <keep-alive>
-        <component :is="currentComponent"/>
+        <component :is="components[currentComponent]"/>
       </keep-alive>
     </router-view>
   </v-app>
@@ -11,12 +11,16 @@
 
 <script lang="ts" setup>
   import { onActivated, ref } from 'vue';
-  import { About } from './views/About.vue';
+  import About from './views/About.vue';
 
-  const currentComponent = ref("");
+  const components = {
+    "About": About,
+  };
+
+  const currentComponent = ref("About");
 
   // When the app is launched
   onActivated(() => {
-    currentComponent.value = "Home";
+    // currentComponent = "Home";
   });
 </script>
