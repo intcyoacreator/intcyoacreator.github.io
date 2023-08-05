@@ -61,7 +61,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
     - [ ] Validates which version it is using somehow, auto-detecting it
         - [ ] v1.1 and v2 can have a special "version" metadata tag
     - [ ] Project v1.1 and above should use JSON5. Comments would be used in
-      the development phase, but when "exporting"
+      the development phase, but not when "exporting", where it would minify
+      all JSON files
 - [ ] Export menu
     - [ ] Different from ICC1 in that exporting doesn't always separate images,
       though that is an option in this menu. Instead it does a lot of other
@@ -170,6 +171,15 @@ A successor to MeanDelay's Interactive CYOA Creator.
           if a choice is selected by going `choice["lso9"].is_pressed()`.
     - [ ] A custom scripting language
         - [ ] [IntScript](./IntScript.md) is one I'm working on
+- [ ] Alerts
+    - [ ] Allow certain alerts to be triggered
+        - [ ] Can either be a one-off alert triggered when an event happens
+          (such as when a Row has its requirements or when a choice is pressed)
+          or Choices could have a function where it triggers a preset alert, or
+          it could trigger an alert that is changeable
+    - [ ] Allow variables to be used inside of alerts
+- [ ] Add Dividers
+
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
