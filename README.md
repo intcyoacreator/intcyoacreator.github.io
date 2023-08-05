@@ -311,3 +311,11 @@ yarn lint
 ### Customize configuration
 
 See [Configuration Reference](https://vitejs.dev/config/).
+
+## Disclaimer
+As of writing this and starting the project, I barely know any JavaScript (let
+alone TypeScript), CSS, and Vue 3. The fact that it's actually working is a
+miracle on its own lol.
+
+If I've made some code that could be done more elegantly and efficiently,
+please make a PR and I'll get right on that.
