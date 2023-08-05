@@ -25,6 +25,53 @@
         </li>
       </ul>
     </div>
+
+    <div>
+      <h2>Licences</h2>
+
+      <div>
+        <h3>Favicon</h3>
+        <p>
+          This favicon was generated using the following font:
+        </p>
+        <ul>
+          <li>Font Title: Fira Code</li>
+          <li>
+            Font Author: Copyright 2014-2020 The Fira Code Project Authors
+            (
+            <a
+              href="https://github.com/tonsky/FiraCode"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/tonsky/FiraCode
+            </a>
+            )
+          </li>
+          <li>
+            Font Source:
+            <a
+              href="http://fonts.gstatic.com/s/firacode/v21/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprFVfxN87gsj0.ttf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              http://fonts.gstatic.com/s/firacode/v21/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprFVfxN87gsj0.ttf
+            </a>
+          </li>
+          <li>
+            Font License: SIL Open Font License, 1.1 (
+              <a
+                href="http://scripts.sil.org/OFL"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                http://scripts.sil.org/OFL
+              </a>
+            )
+          </li>
+        </ul>
+      </div>
+    </div>
   </Sheet>
 </template>
 
@@ -49,6 +96,7 @@
 
 <style scoped lang="scss">
   div {
-    padding-bottom: 10px;
+    // padding-bottom: 10px;
+    padding-block: 5px;
   }
 </style>

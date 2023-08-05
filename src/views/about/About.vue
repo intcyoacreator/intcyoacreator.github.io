@@ -52,15 +52,15 @@
 
   const navigationItems: Array<NavigationItem> = [
     {
+      name: "Information",
+      icon: "mdi-information-outline",
+      component: Information
+    },
+    {
       name: "Changelog",
       icon: "mdi-format-list-bulleted",
       component: Changelog
     },
-    {
-      name: "Information",
-      icon: "mdi-information-outline",
-      component: Information
-    }
 
   ];
   const currentPage = ref(navigationItems[0]);
