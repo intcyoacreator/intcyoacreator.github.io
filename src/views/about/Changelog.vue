@@ -1,25 +1,35 @@
 <template>
-  <v-sheet
-    elevation="0"
-    rounded
-    border
-    class="pa-10"
-  >
-    <h1 class="text-h3">Changelog</h1>
-    <div v-if="changelog.versions[0].version !== '0.1.0'">
-      <div v-for="(version_note, index) in changelog.versions" :key="index">
-        <h2 class="text-h5">v{{ version_note.version }}</h2>
-        <ul>
-          <li
-            v-for="(patch_note, index) in version_note.patch_notes"
+  <v-container :fill-height="true">
+    <v-row>
+      <v-col align="center">
+        <v-sheet
+          elevation="0"
+          rounded
+          border
+          class="pa-10"
+          max-width="700px"
+        >
+          <h1 class="text-h3">Changelog</h1>
+          <div
+            v-for="(version_note, index) in changelog.versions"
             :key="index"
           >
-            {{ patch_note }}
-          </li>
-        </ul>
-      </div>
-    </div>
-  </v-sheet>
+            <h2 class="text-h5 my-2" align="left">
+              v{{ version_note.version }} – {{ version_note.release_date }}
+            </h2>
+            <ul style="text-align: left;">
+              <li
+                v-for="(patch_note, index) in version_note.patch_notes"
+                :key="index"
+              >
+                {{ patch_note }}
+              </li>
+            </ul>
+          </div>
+        </v-sheet>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup lang="ts">
@@ -47,20 +57,16 @@
   });
   defineEmits(["resetCurrentComponent"]);
 
-  onMounted(() => {
-    let changelog_file: string = "";
-
+  onMounted(async () => {
     try {
-      fetch("./changelog.json5").then((result) => {
-        changelog_file = result.toString();
-      });
+      let file_response = await fetch("./changelog.json5");
+      let file_data = await file_response.text();
 
-      console.log(changelog_file);
+      // console.log(file_data);
 
       try {
-        JSON5.parse(changelog_file).then((result: Changelog) => {
-          changelog.value = result;
-        });
+        let json_value = await JSON5.parse(file_data);
+        changelog.value = json_value;
       } catch(e) {
         console.log(`JSON5 parser error: "${e}"`);
       }
