@@ -2,7 +2,7 @@
   <v-navigation-drawer
     :permanent="true"
   >
-    <v-list>
+    <v-list nav>
       <v-list-item
         title="Return to Menu"
         prepend-icon="mdi-arrow-left"
@@ -42,7 +42,7 @@
   import type { Component } from "vue";
 
   import Changelog from "./Changelog.vue";
-  import DevInfo from "./DevInfo.vue";
+  import Information from "./Information.vue";
 
   type NavigationItem = {
     name: string;
@@ -57,9 +57,9 @@
       component: Changelog
     },
     {
-      name: "Development Info",
-      icon: "mdi-code-json",
-      component: DevInfo
+      name: "Information",
+      icon: "mdi-information-outline",
+      component: Information
     }
 
   ];

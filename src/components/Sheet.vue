@@ -9,8 +9,8 @@
           class="pa-10"
           max-width="700px"
         >
-          <h1 class="text-h3">{{ props.title }}</h1>
-          <div style="text-align: left;">
+          <h1 class="text-h3 pb-6">{{ props.title }}</h1>
+          <div style="text-align: left; ">
             <slot></slot>
           </div>
         </v-sheet>

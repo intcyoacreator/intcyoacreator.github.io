@@ -196,7 +196,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Change `changelog.json5` file to support arbitrary nesting of list items.
   Perhaps achieve this by using Markdown and converting it on-demand into list
   items
-
+- [ ] Stats for amount of pages, amount of words, amount of sections, amount of
+  choices, etc
 
 ## Ideas
 

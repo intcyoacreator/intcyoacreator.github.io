@@ -20,7 +20,7 @@
             </div>
 
             <div>
-              Version: 0.1.0
+              Version: {{ app_version }}
             </div>
           </v-card-subtitle>
         </v-card-item>
@@ -62,9 +62,15 @@
 
 <script setup lang="ts">
   import { onActivated, ref } from "vue";
+  import { useAppStore } from "./store/app";
+
   import Creator from "./views/Creator.vue";
   import Viewer from "./views/Viewer.vue";
   import About from "./views/about/About.vue";
+import { storeToRefs } from "pinia";
+
+  const appStore = useAppStore();
+  const { app_version } = storeToRefs(appStore);
 
   const components = [
     "Home", // Placeholder value
