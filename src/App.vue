@@ -64,7 +64,7 @@
   import { onActivated, ref } from "vue";
   import Creator from "./views/Creator.vue";
   import Viewer from "./views/Viewer.vue";
-  import About from "./views/About.vue";
+  import About from "./views/about/About.vue";
 
   const components = [
     "Home", // Placeholder value

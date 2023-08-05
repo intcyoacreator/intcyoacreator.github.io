@@ -21,13 +21,26 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref, shallowRef } from "vue";
+  import { onMounted, shallowRef } from "vue";
   import JSON5 from "json5";
 
   const changelog = shallowRef();
+  defineEmits(["resetCurrentComponent"]);
 
   onMounted(async () => {
-    let changelog_file = await fetch("./changelog.json5");
-    changelog.value = await JSON5.parse(changelog_file.toString());
+    let changelog_file;
+
+    try {
+      changelog_file = await fetch("./changelog.json5").toString();
+
+      try {
+        changelog.value = await JSON5.parse(changelog_file);
+      } catch(e) {
+        console.log(`JSON5 parser error: "${e}"`);
+      }
+    } catch(e) {
+      console.log(`File fetch error: "${e}"`);
+    }
+
   });
 </script>
