@@ -54,4 +54,7 @@ export default defineConfig({
     // produce sourcemaps for debug builds
     sourcemap: !!process.env.TAURI_DEBUG,
   },
+  // For GitHub hosting
+  // Base defaults to "/"
+  base: "/",
 })
