@@ -6,6 +6,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
 * Written in TypeScript rather than JavaScript
 * Written using Vue 3 with Composition API rather than Vue 2 with Options API
 * Written using Vuetify 3 rather than Vuetify 2
+* State managed with Pinia instead of Vuex
 * Written using the latest libraries
 * Shipped with native Desktop apps (On Windows, Mac OS, and Linux) using Tauri,
   rather than only a web version and a Windows version using Electron
