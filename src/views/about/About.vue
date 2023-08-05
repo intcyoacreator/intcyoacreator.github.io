@@ -36,12 +36,11 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from "vue";
-  import type { Component, Ref } from "vue";
+  import { ref, computed } from "vue";
+  import type { Component } from "vue";
 
   import Changelog from "./Changelog.vue";
   import DevInfo from "./DevInfo.vue";
-import { computed } from "vue";
 
   type NavigationItem = {
     name: string;
@@ -62,7 +61,7 @@ import { computed } from "vue";
     }
 
   ];
-  const currentPage: Ref<NavigationItem> = ref(navigationItems[0]);
+  const currentPage = ref(navigationItems[0]);
   const aboutTitle = computed(() => {
     return "About – " + currentPage.value.name
   });
