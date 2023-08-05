@@ -14,14 +14,14 @@ jobs:
       matrix:
         # was `platform`
         os: [macos-latest, ubuntu-20.04, windows-latest]
-    runs-on: ${{ matrix.platform }}
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install dependencies (ubuntu only)
-        if: matrix.platform == "ubuntu-20.04"
+        if: matrix.os == "ubuntu-20.04"
         # You can remove libayatana-appindicator3-dev if you don"t use the system tray feature.
         run: |
           sudo apt-get update
