@@ -41,6 +41,7 @@
 
   import Changelog from "./Changelog.vue";
   import DevInfo from "./DevInfo.vue";
+import { computed } from "vue";
 
   type NavigationItem = {
     name: string;
@@ -62,7 +63,9 @@
 
   ];
   const currentPage: Ref<NavigationItem> = ref(navigationItems[0]);
-  const aboutTitle = ref("About – " + currentPage.value.name);
+  const aboutTitle = computed(() => {
+    return "About – " + currentPage.value.name
+  });
 
   defineEmits(["resetCurrentComponent"]);
 </script>
