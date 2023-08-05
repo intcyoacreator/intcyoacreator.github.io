@@ -1902,6 +1902,7 @@ __metadata:
     core-js: ^3.29.0
     eslint: ^8.37.0
     eslint-plugin-vue: ^9.3.0
+    json5: ^2.2.3
     pinia: ^2.0.0
     roboto-fontface: "*"
     sass: ^1.60.0
@@ -2018,6 +2019,15 @@ __metadata:
   version: 1.0.1
   resolution: "json-stable-stringify-without-jsonify@npm:1.0.1"
   checksum: cff44156ddce9c67c44386ad5cddf91925fe06b1d217f2da9c4910d01f358c6e3989c4d5a02683c7a5667f9727ff05831f7aa8ae66c8ff691c556f0884d49215
+  languageName: node
+  linkType: hard
+
+"json5@npm:^2.2.3":
+  version: 2.2.3
+  resolution: "json5@npm:2.2.3"
+  bin:
+    json5: lib/cli.js
+  checksum: 2a7436a93393830bce797d4626275152e37e877b265e94ca69c99e3d20c2b9dab021279146a39cdb700e71b2dd32a4cebd1514cd57cee102b1af906ce5040349
   languageName: node
   linkType: hard
 

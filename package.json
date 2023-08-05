@@ -12,6 +12,7 @@
   "dependencies": {
     "@mdi/font": "7.0.96",
     "core-js": "^3.29.0",
+    "json5": "^2.2.3",
     "pinia": "^2.0.0",
     "roboto-fontface": "*",
     "vue": "^3.2.0",
