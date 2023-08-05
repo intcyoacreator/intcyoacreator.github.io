@@ -17,7 +17,7 @@
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
-      "copyright": "",
+      "copyright": "Copyright (c) 2023 Pasadena under the MIT licence",
       "deb": {
         "depends": []
       },

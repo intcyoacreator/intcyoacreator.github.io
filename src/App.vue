@@ -11,7 +11,9 @@
     >
       <v-card>
         <v-card-item>
-          <v-card-title>Interactive CYOA Creator 2</v-card-title>
+          <v-card-title
+            class="text-h4 pa-5"
+          >Interactive CYOA Creator 2</v-card-title>
           <v-card-subtitle>
             A spiritual successor to MeanDelay's Creator.
           </v-card-subtitle>
@@ -44,7 +46,10 @@
     </v-row>
 
     <keep-alive>
-      <component :is="components[currentComponent]"/>
+      <component
+        :is="components[currentComponent]"
+        @resetCurrentComponent="currentComponent = 0"
+      />
     </keep-alive>
   </v-app>
 </template>
@@ -87,3 +92,9 @@
     // currentComponent.value = 0; // Default view is Home
   });
 </script>
+<!--
+<style lang="scss">
+  @forward "vuetify/settings" with (
+    $card-title-font-size: 32px
+  );
+</style> -->

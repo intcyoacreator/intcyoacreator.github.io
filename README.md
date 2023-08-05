@@ -1,6 +1,18 @@
 # Interactive CYOA Creator 2
 A successor to MeanDelay's Interactive CYOA Creator.
 
+## Comparison with MeanDelay's Creator
+
+* Written in TypeScript
+* Written using Vue 3 using Composition API rather than Vue 2 and Options API
+* Written using Vuetify 3 rather than Vuetify 2
+* Written using the latest libraries
+* Shipped with native Desktop apps using Tauri
+* Open-Source, so anyone can contribute or fork
+* As this Creator has yet to reach `v1.0.0`, MeanDelay's Creator has more
+  features
+* Actively maintained
+
 ## Features
 
 - [ ] Backwards compatible with IntCyoaCreator 1's `project.json` files

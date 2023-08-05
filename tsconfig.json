@@ -4,7 +4,8 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "allowSyntheticDefaultImports": true,
-    "composite": true,
+    // Errors
+    "composite": false,
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
