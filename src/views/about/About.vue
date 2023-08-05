@@ -9,6 +9,8 @@
         @click="$emit('resetCurrentComponent')"
       />
 
+      <v-divider/>
+
       <v-list-item
         v-for="(item, index) in navigationItems" :key="index"
         :title="item.name"

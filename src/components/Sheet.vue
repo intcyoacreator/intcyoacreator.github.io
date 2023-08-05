@@ -10,7 +10,7 @@
           max-width="700px"
         >
           <h1 class="text-h3 pb-6">{{ props.title }}</h1>
-          <div style="text-align: left; ">
+          <div class="slot">
             <slot></slot>
           </div>
         </v-sheet>
@@ -24,3 +24,10 @@
     title: String,
   });
 </script>
+
+<style scoped lang="scss">
+  .slot:deep(*) {
+    text-align: left;
+    padding-block: 5px;
+  }
+</style>

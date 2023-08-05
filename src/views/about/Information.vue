@@ -8,6 +8,25 @@
     </div>
 
     <div>
+      <h2>Contributing</h2>
+      <p>
+        You may view the source code here:
+        <a
+          href="https://github.com/intcyoacreator/intcyoacreator.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://github.com/intcyoacreator/intcyoacreator.github.io
+        </a>
+      </p>
+
+      <p>
+        Feel free to fork the repository and make a Pull Request (PR) with
+        potential changes you feel would improve the program.
+      </p>
+    </div>
+
+    <div>
       <h2>Acknowledgements</h2>
       <p>Thanks to these awesome projects for inspiring me:</p>
       <ul>
@@ -78,7 +97,14 @@
 <script setup lang="ts">
   import Sheet from '@/components/Sheet.vue';
 
-  const inspirations = [
+  type Inspiration = {
+    name: string,
+    link: string,
+    author: string,
+    author_link: string,
+  };
+
+  const inspirations: Array<Inspiration> = [
     {
       name: "Interactive CYOA Creator",
       link: "https://intcyoacreator.onrender.com/",
@@ -93,10 +119,3 @@
     },
   ];
 </script>
-
-<style scoped lang="scss">
-  div {
-    // padding-bottom: 10px;
-    padding-block: 5px;
-  }
-</style>

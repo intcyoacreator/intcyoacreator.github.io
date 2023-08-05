@@ -2,7 +2,7 @@
   "versions": [
     {
       version: "0.1.0",
-      release_date: "2023-08-05",
+      release_date: "UNKNOWN",
       patch_notes: [
         "Initial release",
         "Basic functionality",

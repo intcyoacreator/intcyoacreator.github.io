@@ -180,7 +180,9 @@ A successor to MeanDelay's Interactive CYOA Creator.
           it could trigger an alert that is changeable
     - [ ] Allow variables to be used inside of alerts
 - [ ] Add Dividers
-
+- [ ] Point Bar
+    - [ ] It automatically switches on when you create your first Point Type,
+      but it can be manually turned off
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
@@ -198,6 +200,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
   items
 - [ ] Stats for amount of pages, amount of words, amount of sections, amount of
   choices, etc
+- [ ] Have the Sidebar permanently extend if, and only if, the screen is
+  massive enough (probably more than 1920px)
 
 ## Ideas
 
