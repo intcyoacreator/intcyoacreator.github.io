@@ -184,6 +184,11 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Point Bar
     - [ ] It automatically switches on when you create your first Point Type,
       but it can be manually turned off
+- [ ] App intensive functions
+    - [ ] Might code them in Rust and interop with them using WebAssembly
+- [ ] Add a custom menu (https://tauri.app/v1/guides/features/menu) for stuff
+  like reloading, existing, and maybe links to the source as well as a tutorial
+  for IntScript (if it is ever made)
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
@@ -203,8 +208,16 @@ A successor to MeanDelay's Interactive CYOA Creator.
   choices, etc
 - [ ] Have the Sidebar permanently extend if, and only if, the screen is
   massive enough (probably more than 1920px)
+- [ ] Change Tauri config so that Desktop apps (at least Linux) don't start so
+  small. In fact, it would be best if they started maximized.
+- [ ] Combined Project Version select with the Save/Load Menu
 
-## Ideas
+## Issues / Errors
+
+- [ ] About/Information Page on Linux AND Mobile trails off the edge with large
+  URLs
+
+# Ideas
 
 To work with Global, Row, and Private settings and styling, we could have an
 array attached to each object called like "settings" or "styling" or something.
