@@ -1,10 +1,14 @@
 <template>
-  <v-btn
-    icon="mdi-chevron-left"
-    @click="$emit('resetCurrentComponent')"
-  />
-  <h1>Interactive CYOA Creator 2 Information</h1>
+  <v-app-bar>
+    <v-app-bar-nav-icon
+      icon="mdi-arrow-left"
+      @click="$emit('resetCurrentComponent')"
+    />
+
+    <v-app-bar-title text="About"/>
+  </v-app-bar>
 </template>
 
 <script lang="ts" setup>
+
 </script>

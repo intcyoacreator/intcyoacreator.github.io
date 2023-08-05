@@ -15,7 +15,13 @@
             class="text-h4 pa-5"
           >Interactive CYOA Creator 2</v-card-title>
           <v-card-subtitle>
-            A spiritual successor to MeanDelay's Creator.
+            <div class="mb-2">
+              A spiritual successor to MeanDelay's Creator.
+            </div>
+
+            <div>
+              Version: 0.1.0
+            </div>
           </v-card-subtitle>
         </v-card-item>
 
