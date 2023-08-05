@@ -1,6 +1,6 @@
 <template>
   <v-sheet
-    elevation="8"
+    elevation="0"
     rounded
     border
     class="pa-10"
@@ -21,10 +21,10 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref } from "vue";
+  import { onMounted, ref, shallowRef } from "vue";
   import JSON5 from "json5";
 
-  const changelog = ref();
+  const changelog = shallowRef();
 
   onMounted(async () => {
     let changelog_file = await fetch("./changelog.json5");

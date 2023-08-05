@@ -2,10 +2,9 @@
   <v-navigation-drawer>
     <v-list>
       <v-list-item
-        title="Return to menu"
-        @click="$emit('resetCurrentComponent')"
+        title="Return to Menu"
         prepend-icon="mdi-arrow-left"
-        border="dotted"
+        @click="$emit('resetCurrentComponent')"
       />
 
       <v-list-item
@@ -19,7 +18,7 @@
   </v-navigation-drawer>
 
   <v-app-bar>
-    <v-app-bar-title text="About – {{ currentPage.name }}"/>
+    <v-app-bar-title :text="aboutTitle"/>
   </v-app-bar>
 
   <v-main>
@@ -54,4 +53,6 @@
     },
   ];
   const currentPage: Ref<NavigationItem> = ref(navigationItems[0]);
+
+  const aboutTitle = ref("About – " + currentPage.value.name);
 </script>
