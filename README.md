@@ -170,14 +170,19 @@ A successor to MeanDelay's Interactive CYOA Creator.
           if a choice is selected by going `choice["lso9"].is_pressed()`.
     - [ ] A custom scripting language
         - [ ] [IntScript](./IntScript.md) is one I'm working on
+
+[fluent-vue]: https://github.com/fluent-vue/fluent-vue
+[vue-i18n]: https://kazupon.github.io/vue-i18n/
+
+## Immediate TODO
+
 - [ ] Support for decimals in Point Types, perhaps requiring a different type.
   Whole type vs Decimal type, for example.
     - [ ] Option to switch between native floating point integers, accurate
       (but slow ones), or native + rounding
 - [ ] Change Tauri icon to actual web icon
+- [ ] 
 
-[fluent-vue]: https://github.com/fluent-vue/fluent-vue
-[vue-i18n]: https://kazupon.github.io/vue-i18n/
 
 ## Ideas
 
@@ -233,6 +238,39 @@ yarn tauri build --target i686-pc-windows-msvc
 # Install `C++ ARM64 build tools` from the `Visual Studio Installer`
 rustup target add aarch64-pc-windows-msvc
 yarn tauri build --target aarch64-pc-windows-msvc
+
+# Build for Windows on Linux
+yay -S nsis
+sudo pacman -S lld llvm
+rustup target add x86_64-pc-windows-msvc
+cargo install xwin
+xwin splat --output ~/.xwin
+# If that fails with an error message like this:
+# Error: failed to splat Microsoft.VC.14.29.16.10.CRT.x64.Desktop.base.vsix
+# you can try adding the --disable-symlinks flag to the command:
+# xwin splat --output ~/.xwin --disable-symlinks
+# ---
+# Add this to your project's .cargo/config.toml:
+# [target.x86_64-pc-windows-msvc]
+# linker = "lld"
+# rustflags = [
+#   "-Lnative=/home/username/.xwin/crt/lib/x86_64",
+#   "-Lnative=/home/username/.xwin/sdk/lib/um/x86_64",
+#   "-Lnative=/home/username/.xwin/sdk/lib/ucrt/x86_64"
+# ]
+# ---
+# then:
+yarn tauri build --target x86_64-pc-windows-msvc
+
+# Build for Windows on Linux (doesn't work)
+sudo pacman -S mingw-w64
+sudo apt install mingw-w64
+# in ~/.cargo/config write:
+# [target.x86_64-pc-windows-gnu]
+# linker = "x86_64-w64-mingw32-gcc"
+# ar = "x86_64-w64-mingw32-gcc-ar"
+rustup target add x86_64-pc-windows-gnu
+yarn tauri build --target x86_64-pc-windows-gnu
 
 # Supporting Windows 7: https://tauri.app/v1/guides/building/windows/#supporting-windows-7
 

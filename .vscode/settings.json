@@ -8,16 +8,23 @@
         "icns",
         "intcyoacreator",
         "intscript",
+        "Lnative",
         "lshy",
         "msvc",
+        "nsis",
+        "pacman",
         "pinia",
         "roboto",
+        "rustflags",
         "rustup",
         "Sakura",
         "sass",
         "Tauri",
+        "ucrt",
         "upasadena",
+        "vsix",
         "vuetify",
-        "webfontloader"
+        "webfontloader",
+        "xwin"
     ]
 }
