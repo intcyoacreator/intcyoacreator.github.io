@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "io.github.upasadena",
+      "identifier": "io.github.intcyoacreator",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -59,10 +59,11 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 640,
+        "width": 840,
+        "maximized": true,
         "resizable": true,
-        "title": "Interactive CYOA Creator 2",
-        "width": 800
+        "title": "Interactive CYOA Creator 2"
       }
     ]
   }
