@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed } from "vue";
+  import { ref, computed, shallowRef } from "vue";
   import type { Component } from "vue";
 
   import Changelog from "./Changelog.vue";
@@ -65,7 +65,7 @@
     },
 
   ];
-  const currentPage = ref(navigationItems[0]);
+  const currentPage = shallowRef(navigationItems[0]);
   const aboutTitle = computed(() => {
     return ["About", currentPage.value.name];
   });
