@@ -193,6 +193,10 @@ A successor to MeanDelay's Interactive CYOA Creator.
       (but slow ones), or native + rounding
 - [ ] Change Tauri icon to actual web icon
 - [ ] Plus sign on the bottom right for adding Rows and Dividers and stuff
+- [ ] Change `changelog.json5` file to support arbitrary nesting of list items.
+  Perhaps achieve this by using Markdown and converting it on-demand into list
+  items
+
 
 ## Ideas
 
