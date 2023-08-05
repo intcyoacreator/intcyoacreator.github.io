@@ -19,7 +19,9 @@
   </v-navigation-drawer>
 
   <v-app-bar>
-    <v-app-bar-title :text="aboutTitle"/>
+    <v-app-bar-title>
+      <v-breadcrumbs :items="aboutTitle"/>
+    </v-app-bar-title>
   </v-app-bar>
 
   <v-main>
@@ -63,7 +65,7 @@
   ];
   const currentPage = ref(navigationItems[0]);
   const aboutTitle = computed(() => {
-    return "About – " + currentPage.value.name
+    return ["About", currentPage.value.name];
   });
 
   defineEmits(["resetCurrentComponent"]);
