@@ -19,7 +19,7 @@
               </div>
 
               <div>
-                Version: {{ app_version }}
+                Version: {{ appVersion }}
               </div>
             </v-card-subtitle>
           </v-card-item>
@@ -67,7 +67,7 @@
   import { storeToRefs } from "pinia";
 
   const appStore = useAppStore();
-  const { app_version } = storeToRefs(appStore);
+  const { appVersion } = storeToRefs(appStore);
 
   const components = [
     "Home", // Placeholder value

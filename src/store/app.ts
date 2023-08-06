@@ -14,7 +14,8 @@ export const useAppStore = defineStore("app", {
        *
        * Assume V1 by default
        */
-      loadedProjectVersion: ProjectVersion.V1,
+      // loadedProjectVersion: ProjectVersion.V1,
+      loadedProjectVersion: "Project v1",
 
       /**
        * Dialogues

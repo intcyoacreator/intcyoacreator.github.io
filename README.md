@@ -222,6 +222,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
       the max by multiplying the amount of characters–hex or alphanumeric
       presumably–with the length, and if the array is over that number, then
       increment the `idLength` by one)
+- [ ] Dropdown / `v-select` menus, where you (optionally) have to select a
+  choice. Each option has its own ID.
 
 ## Issues / Errors
 
