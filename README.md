@@ -32,7 +32,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
         - [ ] What is a CYOA? etc
     - [ ] Help
         - [ ] How to upload online
-    - [ ] Changelog
+    - [x] Changelog
 
 ## TODO
 

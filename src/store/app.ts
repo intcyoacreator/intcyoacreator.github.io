@@ -1,6 +1,6 @@
 // Utilities
 import { defineStore } from "pinia"
-import { ProjectVersion } from "@/types";
+// import { ProjectVersion } from "@/types";
 
 export const useAppStore = defineStore("app", {
   state: () => {

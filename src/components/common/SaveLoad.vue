@@ -30,7 +30,9 @@
 
           <v-row>
             <v-col>
-              <p>Here you can save and load your project.</p>
+              <p class="text-subtitle-1">
+                Here you can save and load your project.
+              </p>
             </v-col>
           </v-row>
 
@@ -91,6 +93,18 @@
                   native to this Creator only.
                 </li>
               </ul>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col>
+              <v-btn
+                block
+                variant="tonal"
+                @click="showSaveLoadDialog = !showSaveLoadDialog"
+              >
+                Close
+              </v-btn>
             </v-col>
           </v-row>
         </v-container>
