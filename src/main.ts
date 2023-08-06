@@ -13,6 +13,15 @@ import { createApp } from "vue"
 // Plugins
 import { registerPlugins } from "@/plugins"
 
+// Tauri
+import { invoke } from '@tauri-apps/api/tauri'
+
+document.addEventListener('DOMContentLoaded', () => {
+  // This will wait for the window to load, but you could
+  // run this function on whatever trigger you want
+  invoke('close_splashscreen')
+})
+
 const app = createApp(App)
 
 // Registers plugins, which includes the router

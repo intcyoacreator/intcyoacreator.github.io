@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed, shallowRef } from "vue";
+  import { computed, shallowRef } from "vue";
   import type { Component } from "vue";
 
   import Changelog from "./Changelog.vue";

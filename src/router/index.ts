@@ -28,9 +28,7 @@ const routes = [
       {
         path: "",
         name: "Splashscreen",
-        component: () => import(
-          "@/views/Splashscreen.vue"
-        ),
+        component: () => import("@/layouts/Splashscreen.vue"),
       }
     ]
   },

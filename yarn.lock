@@ -338,6 +338,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tauri-apps/api@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "@tauri-apps/api@npm:1.4.0"
+  checksum: 0c24b72d6bdb1180aafc6a19bdaad1501810f880f1a52f0fbe1b1b2b04fe0b6148deba7a3769a03b877e4ddf3008348b6e1c6cb725f17effb78c9a0a0e099dc5
+  languageName: node
+  linkType: hard
+
 "@tauri-apps/cli-darwin-arm64@npm:1.4.0":
   version: 1.4.0
   resolution: "@tauri-apps/cli-darwin-arm64@npm:1.4.0"
@@ -1894,6 +1901,7 @@ __metadata:
   dependencies:
     "@babel/types": ^7.21.4
     "@mdi/font": 7.0.96
+    "@tauri-apps/api": ^1.4.0
     "@tauri-apps/cli": ^1.4.0
     "@types/node": ^18.15.0
     "@types/webfontloader": ^1.6.35

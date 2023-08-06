@@ -73,7 +73,7 @@
         "maximized": true,
         "resizable": true,
         "title": "Interactive CYOA Creator 2 – Loading",
-        "url": "splashscreen",
+        "url": "splashscreen.html",
         "label": "splashscreen"
       }
     ]

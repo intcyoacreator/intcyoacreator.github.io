@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive CYOA Creator 2 – Loading</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.3.11/dist/vuetify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.3.11/dist/vuetify.min.js"/>
+</head>
+<body>
+  <script>
+    const { createApp } = Vue
+    const { createVuetify } = Vuetify
+
+    const vuetify = createVuetify()
+
+    const app = createApp()
+    app.use(vuetify).mount('#app')
+  </script>
+
+  <v-app>
+    <v-container>
+      <h1>Loading…</h1>
+      <v-skeleton-loader/>
+    </v-container>
+  </v-app>
+</body>
+</html>

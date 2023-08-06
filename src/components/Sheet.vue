@@ -7,10 +7,10 @@
           rounded
           border
           class="pa-10"
-          max-width="700px"
+          max-width="65%"
         >
           <h1 class="text-h3 pb-6">{{ props.title }}</h1>
-          <div class="slot">
+          <div class="slot overflow-auto">
             <slot></slot>
           </div>
         </v-sheet>

@@ -189,6 +189,10 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Add a custom menu (https://tauri.app/v1/guides/features/menu) for stuff
   like reloading, existing, and maybe links to the source as well as a tutorial
   for IntScript (if it is ever made)
+- [ ] Local point types – Point Types native to a Section or Page that can't be
+  used or seen outside of it. Useful for 
+    - [ ] Can convert local types into global ones by moving them while
+      preserving default value, options, and ID
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
@@ -211,6 +215,13 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Change Tauri config so that Desktop apps (at least Linux) don't start so
   small. In fact, it would be best if they started maximized.
 - [ ] Combined Project Version select with the Save/Load Menu
+- [ ] All created IDs are also copied to an array in the store, which will then
+  be checked against in case duplicates are made
+    - [ ] There will also be an `idLength` number that starts at 4 (can be
+      user-configured in the future). If all possible IDs are taken (calculate
+      the max by multiplying the amount of characters–hex or alphanumeric
+      presumably–with the length, and if the array is over that number, then
+      increment the `idLength` by one)
 
 ## Issues / Errors
 

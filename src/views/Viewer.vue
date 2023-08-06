@@ -37,6 +37,7 @@
   import { ProjectVersion } from "@/types";
 
   const appStore = useAppStore();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { current_project_version } = storeToRefs(appStore);
 
   const projectVersions = [
