@@ -9,19 +9,23 @@
 </head>
 <body>
   <script>
-    const { createApp } = Vue
-    const { createVuetify } = Vuetify
+    const { createApp } = Vue;
+    const { createVuetify } = Vuetify;
 
-    const vuetify = createVuetify()
+    const vuetify = createVuetify();
 
-    const app = createApp()
-    app.use(vuetify).mount('#app')
+    const app = createApp();
+    app.use(vuetify).mount("#app");
   </script>
 
   <v-app>
-    <v-container>
-      <h1>Loading…</h1>
-      <v-skeleton-loader/>
+    <v-container fill-height>
+      <v-row>
+        <v-col>
+          <h1>Loading…</h1>
+          <v-skeleton-loader/>
+        </v-col>
+      </v-row>
     </v-container>
   </v-app>
 </body>

@@ -14,13 +14,20 @@
       <v-container>
         <v-row>
           <v-col>
-            <v-select
+            <!-- <v-select
               label="Project Version"
               variant="solo-filled"
               density="compact"
               :items="projectVersions.map((p) => p.description)"
             >
-            </v-select>
+            </v-select> -->
+
+            <v-btn
+              prepend-icon="mdi-content-save-outline"
+              variant="tonal"
+            >
+              Save/Load
+            </v-btn>
           </v-col>
         </v-row>
       </v-container>
@@ -40,6 +47,7 @@
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { current_project_version } = storeToRefs(appStore);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const projectVersions = [
     {
       version: ProjectVersion.V1,

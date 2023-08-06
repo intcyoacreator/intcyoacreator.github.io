@@ -63,18 +63,7 @@
         "width": 840,
         "maximized": true,
         "resizable": true,
-        "title": "Interactive CYOA Creator 2",
-        "visible": false
-      },
-      {
-        "fullscreen": false,
-        "height": 640,
-        "width": 840,
-        "maximized": true,
-        "resizable": true,
-        "title": "Interactive CYOA Creator 2 – Loading",
-        "url": "splashscreen.html",
-        "label": "splashscreen"
+        "title": "Interactive CYOA Creator 2"
       }
     ]
   }
