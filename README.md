@@ -227,6 +227,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
 
 - [ ] About/Information Page on Linux AND Mobile trails off the edge with large
   URLs
+- [ ] Fix About page not working with lists properly – overflow?
 
 # Ideas
 

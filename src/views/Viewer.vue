@@ -14,6 +14,15 @@
       <v-container>
         <v-row>
           <v-col>
+            <v-btn
+              prepend-icon="mdi-download"
+              variant="tonal"
+            >
+              Download as Image
+            </v-btn>
+          </v-col>
+
+          <v-col>
             <!-- <v-select
               label="Project Version"
               variant="solo-filled"
@@ -25,6 +34,7 @@
             <v-btn
               prepend-icon="mdi-content-save-outline"
               variant="tonal"
+              @click="showSaveLoadDialog = !showSaveLoadDialog"
             >
               Save/Load
             </v-btn>
@@ -34,34 +44,22 @@
     </template>
   </v-app-bar>
 
+  <!-- Save/Load Dialog -->
+  <SaveLoad/>
+
   <Viewer></Viewer>
 </template>
 
 <script setup lang="ts">
-  import Viewer from '@/components/Viewer.vue';
   import { useAppStore } from '@/store/app';
   import { storeToRefs } from 'pinia';
   import { ProjectVersion } from "@/types";
 
-  const appStore = useAppStore();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { current_project_version } = storeToRefs(appStore);
+  import Viewer from '@/components/Viewer.vue';
+  import SaveLoad from '@/components/common/SaveLoad.vue';
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const projectVersions = [
-    {
-      version: ProjectVersion.V1,
-      description: "Project v1 – Used by the original Creator"
-    },
-    // {
-    //   version: ProjectVersion.V1_1,
-    //   description: "Project v1.1 – Backwards-compatible enhanced projects"
-    // },
-    // {
-    //   version: ProjectVersion.V2,
-    //   description: "Project v2 – File type only compatible with this creator"
-    // },
-  ]
+  const appStore = useAppStore();
+  const { showSaveLoadDialog } = storeToRefs(appStore);
 
   defineEmits(["resetCurrentComponent"]);
 </script>
