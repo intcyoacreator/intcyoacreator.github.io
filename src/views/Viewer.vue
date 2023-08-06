@@ -23,14 +23,6 @@
           </v-col>
 
           <v-col>
-            <!-- <v-select
-              label="Project Version"
-              variant="solo-filled"
-              density="compact"
-              :items="projectVersions.map((p) => p.description)"
-            >
-            </v-select> -->
-
             <v-btn
               prepend-icon="mdi-content-save-outline"
               variant="tonal"
@@ -53,7 +45,6 @@
 <script setup lang="ts">
   import { useAppStore } from '@/store/app';
   import { storeToRefs } from 'pinia';
-  import { ProjectVersion } from "@/types";
 
   import Viewer from '@/components/Viewer.vue';
   import SaveLoad from '@/components/common/SaveLoad.vue';
