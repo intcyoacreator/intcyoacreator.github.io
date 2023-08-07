@@ -38,16 +38,24 @@
 
           <v-row>
             <v-col>
-              <v-btn block>
-                Save Project
-              </v-btn>
+              <v-file-input
+                clearable
+                persistent-clear
+                label="Load Project"
+                variant="outlined"
+                accept=".json,.json5"
+                show-size
+                counter
+                :model-value="projectFile"
+                @update:modelValue="parseFile"
+              />
             </v-col>
           </v-row>
 
           <v-row>
             <v-col>
               <v-btn block>
-                Load Project
+                Save Project
               </v-btn>
             </v-col>
           </v-row>
@@ -115,13 +123,25 @@
 
 <script setup lang="ts">
   import { useAppStore } from '@/store/app';
-  // import { ProjectVersion } from '@/types';
   import { storeToRefs } from 'pinia';
-  // import { computed } from 'vue';
+import { ref } from 'vue';
 
   const appStore = useAppStore();
-  const { loadedProjectVersion, showSaveLoadDialog } = storeToRefs(appStore);
+  const {
+    loadedProjectVersion,
+    showSaveLoadDialog,
+    projectV1
+  } = storeToRefs(appStore);
   let selectProjectVersion = "Project v1";
+  const projectFile = ref();
+
+  function parseFile() {
+    try {
+      projectV1.value = JSON.parse(projectFile.value)
+    } catch(e) {
+      console.log(`JSON Parse error: ${e}`);
+    }
+  }
 
   function updateProjectVersion() {
     loadedProjectVersion.value = selectProjectVersion;
