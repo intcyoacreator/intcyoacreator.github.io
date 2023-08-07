@@ -31,11 +31,11 @@
                 show-size
                 counter
                 :model-value="projectFile"
-                @change="parseFile"
-                validate-on="input lazy"
+                @update:model-value="(files: Array<File>) => parseFile(files)"
               />
               <!--
-                @update:modelValue="parseFile" -->
+                @update:modelValue="parseFile"
+                validate-on="input lazy"-->
             </v-col>
           </v-row>
 
@@ -111,7 +111,7 @@
 <script setup lang="ts">
   import { useAppStore } from '@/store/app';
   import { storeToRefs } from 'pinia';
-import { Ref, ref } from 'vue';
+  import { Ref, ref } from 'vue';
 
   const appStore = useAppStore();
   const {
@@ -122,14 +122,24 @@ import { Ref, ref } from 'vue';
   let selectProjectVersion = "Project v1";
   const projectFile: Ref<Array<File> | undefined> = ref();
 
-  function parseFile() {
-    if (projectFile.value === undefined) {
+  function parseFile(files: Array<File>) {
+    // console.log(`file: ${files}`);
+
+    if (files === undefined) {
       console.log("Error receiving file: undefined");
+      return;
+    } else if (files.length <= 0) {
+      console.log("Error receiving file: files.length <= 0");
       return;
     }
 
     try {
-      projectV1.value = JSON.parse(projectFile.value[0].toString());
+      for (let file in files.values) {
+        let parsedProject = JSON.parse(file);
+        console.log(`parsedProject: ${parsedProject}`);
+        projectV1.value = parsedProject;
+        console.log(`projectV1: ${projectV1}`);
+      }
     } catch(e) {
       console.log(`JSON Parse error: ${e}`);
     }
