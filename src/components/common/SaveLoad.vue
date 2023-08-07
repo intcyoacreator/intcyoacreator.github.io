@@ -123,7 +123,7 @@
   const projectFile: Ref<Array<File> | undefined> = ref();
 
   function parseFile(files: Array<File>) {
-    // console.log(`file: ${files}`);
+    console.log(`parseFile called!\nfile: ${files}`);
 
     if (files === undefined) {
       console.log("Error receiving file: undefined");
@@ -134,11 +134,25 @@
     }
 
     try {
-      for (let file in files.values) {
-        let parsedProject = JSON.parse(file);
-        console.log(`parsedProject: ${parsedProject}`);
-        projectV1.value = parsedProject;
-        console.log(`projectV1: ${projectV1}`);
+      const reader = new FileReader();
+
+      for (const file of files) {
+        console.log("Parsing file…");
+
+        reader.readAsText(file);
+        reader.onload = () => {
+          switch (typeof reader.result) {
+            case "string": {
+            let parsedProject = JSON.parse(reader.result);
+              console.log(`parsedProject:`);
+              console.log(parsedProject);
+              projectV1.value = parsedProject;
+              return;
+            }
+            default:
+              console.log("File is of type null, ArrayBuffer, or other");
+          }
+        }
       }
     } catch(e) {
       console.log(`JSON Parse error: ${e}`);
