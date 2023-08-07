@@ -4,22 +4,6 @@
     max-width="700px"
   >
     <v-card>
-      <!-- <v-container>
-        <v-row>
-            <v-col>
-              <v-card-title>Save/Load Project</v-card-title>
-            </v-col>
-          </v-row>
-
-          <v-row>
-            <v-col>
-              <v-card-subtitle>
-                <p>Here you can save and load your project.</p>
-              </v-card-subtitle>
-            </v-col>
-          </v-row>
-      </v-container> -->
-
       <v-card-text>
         <v-container>
           <v-row>
@@ -43,12 +27,15 @@
                 persistent-clear
                 label="Load Project"
                 variant="outlined"
-                accept=".json,.json5"
+                accept=".json, .json5"
                 show-size
                 counter
                 :model-value="projectFile"
-                @update:modelValue="parseFile"
+                @change="parseFile"
+                validate-on="input lazy"
               />
+              <!--
+                @update:modelValue="parseFile" -->
             </v-col>
           </v-row>
 
@@ -124,7 +111,7 @@
 <script setup lang="ts">
   import { useAppStore } from '@/store/app';
   import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 
   const appStore = useAppStore();
   const {
@@ -133,11 +120,16 @@ import { ref } from 'vue';
     projectV1
   } = storeToRefs(appStore);
   let selectProjectVersion = "Project v1";
-  const projectFile = ref();
+  const projectFile: Ref<Array<File> | undefined> = ref();
 
   function parseFile() {
+    if (projectFile.value === undefined) {
+      console.log("Error receiving file: undefined");
+      return;
+    }
+
     try {
-      projectV1.value = JSON.parse(projectFile.value)
+      projectV1.value = JSON.parse(projectFile.value[0].toString());
     } catch(e) {
       console.log(`JSON Parse error: ${e}`);
     }
