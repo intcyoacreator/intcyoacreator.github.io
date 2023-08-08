@@ -2,7 +2,7 @@
   <v-app>
     <v-row v-if="currentComponent == 0">
       <v-dialog
-        v-model="dialog"
+        v-model="showDialog"
         persistent
         width="auto"
         style="text-align: center;"
@@ -78,7 +78,7 @@
 
   // Default value is Home
   const currentComponent = ref(0);
-  const dialog = ref(true); // open dialog by default or not
+  const showDialog = ref(true);
   const menuButtons = {
     creator: {
       id: 1,

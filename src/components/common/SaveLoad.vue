@@ -30,6 +30,8 @@
                 accept=".json, .json5"
                 show-size
                 counter
+                hint="Select this info box to upload your project file"
+                :persistent-hint="true"
                 :model-value="projectFile"
                 @update:model-value="(files: Array<File>) => parseFile(files)"
               />
@@ -137,15 +139,15 @@
       const reader = new FileReader();
 
       for (const file of files) {
-        console.log("Parsing file…");
+        // console.log("Parsing file…");
 
         reader.readAsText(file);
         reader.onload = () => {
           switch (typeof reader.result) {
             case "string": {
             let parsedProject = JSON.parse(reader.result);
-              console.log(`parsedProject:`);
-              console.log(parsedProject);
+              // console.log(`parsedProject:`);
+              // console.log(parsedProject);
               projectV1.value = parsedProject;
               return;
             }
