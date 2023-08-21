@@ -1,5 +1,5 @@
 <template>
-  <ViewerAppBar/>
+  <ViewerAppBar @reset-current-component="$emit('resetCurrentComponent')"/>
 
   <!-- Save/Load Dialog -->
   <SaveLoad/>

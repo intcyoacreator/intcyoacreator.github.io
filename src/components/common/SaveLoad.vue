@@ -59,7 +59,7 @@
             </v-col>
           </v-row>
 
-          <v-row>
+          <!-- <v-row>
             <v-col>
               <v-select
                 label="Project Version"
@@ -67,8 +67,6 @@
                 :items="projectVersionOptions"
                 :model-value="selectProjectVersion"
               />
-              <!--
-                @update:model-value="updateProjectVersion" -->
             </v-col>
           </v-row>
 
@@ -94,7 +92,7 @@
                 </li>
               </ul>
             </v-col>
-          </v-row>
+          </v-row> -->
 
           <v-row>
             <v-col>
@@ -120,13 +118,13 @@
 
   const appStore = useAppStore();
   const {
-    loadedProjectVersion,
+    // loadedProjectVersion,
     showSaveLoadDialog,
-    projectV1
+    // projectV1
   } = storeToRefs(appStore);
 
-  const projectVersionOptions = ["Project v1", "Project v1.1", "Project v2"];
-  const selectProjectVersion = ref("Project v1");
+  // const projectVersionOptions = ["Project v1", "Project v1.1", "Project v2"];
+  // const selectProjectVersion = ref("Project v1");
   const projectFile: Ref<Array<File> | undefined> = ref();
 
   function parseFile(files: Array<File>) {
@@ -150,10 +148,13 @@
         reader.onload = () => {
           switch (typeof reader.result) {
             case "string": {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             let parsedProject = JSON.parse(reader.result);
               // console.log(`parsedProject:`);
               // console.log(parsedProject);
-              projectV1.value = parsedProject;
+
+              // Uncomment the below when necessary
+              // projectV1.value = parsedProject;
               return;
             }
             default:
