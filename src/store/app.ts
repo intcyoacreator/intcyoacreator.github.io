@@ -3,7 +3,7 @@ import { defineStore } from "pinia"
 
 // Imports
 // import { defaultProjectV1 } from "@/constants"
-import { defaultProjectV2 } from "@/constants"
+import { defaultProjectV2, sampleProjectV2 } from "@/constants"
 
 export const useAppStore = defineStore("app", {
   state: () => {
@@ -31,7 +31,8 @@ export const useAppStore = defineStore("app", {
        * stored in the object below
        */
       // projectV1: defaultProjectV1,
-      projectV2: defaultProjectV2
+      // projectV2: defaultProjectV2
+      projectV2: sampleProjectV2
     }
   },
 })

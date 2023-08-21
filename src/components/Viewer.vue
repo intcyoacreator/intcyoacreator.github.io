@@ -18,8 +18,13 @@
       </v-col>
     </v-row>
 
-    <!-- Sections -->
+    <!-- Pages -->
     <!-- v-for -->
+    <v-row v-for="(page, index) in projectV2.pages" :key="index">
+      <v-col v-if="index == projectV2.state.currentPage - 1">
+        {{ page }}
+      </v-col>
+    </v-row>
   </v-container>
 
   <h1>TEST VIEWER</h1>

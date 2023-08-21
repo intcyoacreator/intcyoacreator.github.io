@@ -25,6 +25,48 @@ export const defaultProjectV2: projectV2 = {
   ],
 }
 
+export const sampleProjectV2: projectV2 = {
+  // Project Version
+  version: 2,
+  settings: {
+    // Whether pagination is turned on
+    pagesOn: false,
+  },
+  state: {
+    currentPage: 1,
+    // All activated choices
+    activatedChoices: [],
+  },
+  pages: [
+    // The default first page
+    {
+      id: "main",
+      pageName: "CYOA",
+      sections: [
+        {
+          id: "row1",
+          title: "First Row",
+          text: "This is my first Row",
+          choices: [],
+        }
+      ],
+    },
+    // Second page:
+    {
+      id: "second",
+      pageName: "Second page",
+      sections: [
+        {
+          id: "row2",
+          title: "Second row",
+          text: "This is my second row. Teehee!",
+          choices: [],
+        }
+      ],
+    }
+  ],
+}
+
 /**
  * The default project file for a Project V1 file
  */
