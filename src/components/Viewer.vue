@@ -1,3 +1,7 @@
+<!--
+  The actual file of the Viewer
+-->
+
 <template>
   <!-- <h2>Viewer!!!</h2> -->
 

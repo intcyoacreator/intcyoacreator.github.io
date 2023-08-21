@@ -70,6 +70,9 @@ A successor to MeanDelay's Interactive CYOA Creator.
       though that is an option in this menu. Instead it does a lot of other
       optimizations, such as minifying and sanitizing comments in the
       `project.json5`
+    - [ ] Choice between exporting as `project.json` + viewer (images
+      separated or included) or exporting the entire thing (irreversibly) to
+      HTML, CSS, and JavaScript
 - [ ] Sub-choices
     * Like Choices within Choices
     * Perhaps limit this to prevent arbitrary nesting
@@ -173,6 +176,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
           if a choice is selected by going `choice["lso9"].is_pressed()`.
     - [ ] A custom scripting language
         - [ ] [IntScript](./IntScript.md) is one I'm working on
+            - [ ] Have something like `or(choice1, and(choice2, choice3))` for
+              conditionals
 - [ ] Alerts
     - [ ] Allow certain alerts to be triggered
         - [ ] Can either be a one-off alert triggered when an event happens
@@ -193,6 +198,103 @@ A successor to MeanDelay's Interactive CYOA Creator.
   used or seen outside of it. Useful for 
     - [ ] Can convert local types into global ones by moving them while
       preserving default value, options, and ID
+- [ ] Interop with Rust-compiled Wasm and test speed comparisons to see if it
+  should be used for functions that target manipulating state or something
+- [ ] Switch for Points to enable fractional point types, allowing for
+  modifying in the decimals
+    - [ ] Switch to round it up to a certain point (like 2 decimal places)
+- [ ] Keyboard Shortcuts, like (c) to open up the create button down the
+  bottom, (esc) to go back to the home menu, (r) to create a new row, and stuff
+  like that. Have it show in the settings
+- [ ] Add New Object button down the bottom right, it opens a dropdown (dropup)
+  menu that lists stuff like "Row", "Page" (but that should be its own
+  setting), and "Divider".
+- [ ] Eventually have some convoluted export without JS button.
+    - [ ] This will use HTML for "only select 1 item" stuff and CSS for
+      variables (however it can do so) and it will be EXTREMELY hacky
+- [ ] Pages
+    - [ ] Option to toggle whether the pagination buttons show on the top or
+      bottom or both
+    - [ ] It'll do numbers for pages by default, but you can customize it to
+      either do default names (the name of the page set somewhere) or custom
+      names (different from the page names)
+        * The distinction is useful if the Page name is too long for the
+          Pagination thing
+- [ ] App Themes
+    - [ ] Dark mode
+        - [ ] Have this be separate from 
+    - [ ] Eventually have the capability to sync the creator theme with the
+      loaded's CYOAs theme, changing the font colour automatically so it's
+      always seen
+- [ ] Proper handling for tabs instead of using choices, to make a distinction
+  between structure and content
+- [ ] Multiple row types to allow for content other than choices like lore
+  without having to use choices for that
+    - [ ] Essentially a "Block" or "Row" type that is just a
+      block/div/container of text
+- [ ] Make multiple choice selection actually good
+- [ ] Global/local difficulty multiplier
+    - [ ] Can change things so that:
+        - [ ] Easy Difficulty = Multiply all Gain Points in sections X, Y, Z by
+          150%
+        - [ ] Cheap Items = Multiply all Cost Points in section X by 50%
+    - [ ] Can do it globally, for a list of sections, and locally (for just one
+      list)
+- [ ] Optimized images, lazy loading and / or resized versions of images to be
+  displayed when needed.
+    - [ ] Global option to automatically set all images to a pre-set aspect
+      ratio
+    - [ ] Ability to view a full version of an image (with a link to the
+      creator / source if author provided one).
+    - [ ] Ability to hide/blur/warn about NSFW images.
+        - [ ] Create can set to these options (these are two separate options
+          that can be mixed and matched):
+            * Warn in advance, once user confirms they are over 18, show CYOA
+              (off by default) – Option name could be "Contains NSFW content or
+              images?"
+            * Blur images by default, unblur on hover (off by default)
+- [ ] Choices preserved between page loads (plus an option to restart if
+  needed). LocalStorage?
+- [ ] Ability to download the CYOA for offline use. This can be a separate
+  version the author can upload as a zip somewhere.
+    * This will be an actual icon or button in the viewer
+- [ ] Markdown in text fields
+- [ ] Multiple point systems with an ability to make some of them hidden from
+  the player.
+    * The Point Types/Systems should have two tabs: Public and Private, and you
+      can easily move Point Types between them
+- [ ] Point Types should have a clear border between them.
+- [ ] Multiple ways of displaying groups of choices or sub-choices: standard
+  grid of boxes, table, list, link to a subpage.
+- [ ] Backgrounds that change (and transition) depending on which section is in
+  focus (like I made manually)
+- [ ] "Disabled" and "hidden" properties, both as conditionals.
+    - [ ] Disabled options can stay "selected" (to remember their state in case
+  they become enabled again) but do not count toward points total and are not
+  displayed in the summary.
+    - [ ] Hidden options are not displayed but count towards point totals if
+  selected (this can be useful for some additional conditions).
+- [ ] Ability to add custom properties to options. They can be then used in
+  calculating properties of other options.
+    - [ ] Can select different types, an identifier, and a value
+    * An example of a choice using this is doing a calculation such as
+      multiplying points, and you get the number based on the "mValue" of an
+      option
+- [ ] Options with sliders (to, for example, select gender ratios in your
+  world)
+- [ ] Groups of options, each with a slider for choosing its weight. They are
+  then converted into ratios and displayed as a pie chart.
+- [ ] Give players an ability to create multiple instances of an option and
+  then customize each one. For example you could add any number of custom
+  companions and then name them and add skills for each of them.
+- [ ] The ability to automatically generate random picks when the CYOA calls
+  for it without having to use outside dice rollers would be nice
+    * Better RNG support, basically
+- [ ] Built-in progress loading indicator, with ability to choose a custom
+  background until it is loaded
+    * With a nice looking loading thing too
+- [ ] Buttons, with a whole lot more features, including the functions that
+  were present in the original Creator
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
@@ -224,6 +326,37 @@ A successor to MeanDelay's Interactive CYOA Creator.
       increment the `idLength` by one)
 - [ ] Dropdown / `v-select` menus, where you (optionally) have to select a
   choice. Each option has its own ID.
+- [ ] Cut down file size of Project V2 by not copying ALL styles for private
+  styling, and instead just the ones that need to be overwritten.
+    - [ ] When turning on private styling, offer two choices. "Shallow" private
+      styling, which will simply overwrite the parts you change, and "deep"
+      private styling, which will completely copy the global styling, and can't
+      easily be changed once done.
+- [ ] Optional (opt in) button in settings to credit the ICC2
+- [ ] CSS Styling
+    - [ ] Allow embedding custom CSS (maybe even SCSS? probably not) into the
+      CYOA itself
+- [ ] A plugin system for extensibility
+- [ ] Save stuff in the browser localStorage to avoid an impromptu reload of
+  the page losing word, and the ability to save builds as well
+- [ ]
+
+## Possible TODOs
+Will have to reconsider these later.
+
+- [ ] Hierarchical structure of choices with ability to browse them in multiple
+  subpages. For example to be able to open cyoa/companions and
+  cyoa/companions/saber as their own subpages.
+    * This would have to use the router like I haven't bothered
+- [ ] This might be a bit hard to explain, and might not be worth implementing,
+  but a way to add options to a 'group' of sorts, of which logic can be made
+  using it. For example, you can make it so that in regards to all choices
+  apart of the group, only 2 may be selected, but you could also add a
+  requirement to an individual choice that says no choices apart of the
+  'illegal' group must be pressed in order for the individual choice to be
+  selectable.
+    * My own suggestion from 2 years ago lol
+
 
 ## Issues / Errors
 
@@ -241,6 +374,13 @@ array attached to each object called like "settings" or "styling" or something.
 Then, I create a function that will "resolve" a settings or styling, by going
 down the list until it reaches the lowest override or up the list until it
 encounters its first variable, and then returning that value.
+
+## Useful links
+
+* https://www.reddit.com/r/InteractiveCYOA/comments/shnqx1/what_features_would_you_want_in_an_interactive/
+* https://www.reddit.com/r/InteractiveCYOA/comments/sexyk3/does_anyone_know_how_to_contact_them/
+  (problems)
+
 
 ### Frameworks and stuff
 

@@ -5,6 +5,7 @@
         "Bootstrapper",
         "clearable",
         "Composables",
+        "dropup",
         "dtolnay",
         "fontface",
         "fullscreen",
@@ -29,6 +30,7 @@
         "roboto",
         "rustflags",
         "rustup",
+        "saber",
         "Sakura",
         "sass",
         "Satur",
@@ -45,5 +47,6 @@
     ],
     "yaml.schemas": {
         "https://json.schemastore.org/github-workflow.json": "file:///home/user/Documents/Coding/intcyoacreator2/.github/workflows/deploy.yml"
-    }
+    },
+    "vscord.enabled": false
 }

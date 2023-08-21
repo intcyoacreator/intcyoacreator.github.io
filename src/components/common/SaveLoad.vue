@@ -36,6 +36,8 @@
                 @update:model-value="(files: Array<File>) => parseFile(files)"
               />
               <!--
+                :model-value="projectFile"
+                @update:model-value="(files: Array<File>) => parseFile(files)"
                 @update:modelValue="parseFile"
                 validate-on="input lazy"-->
             </v-col>
@@ -62,10 +64,11 @@
               <v-select
                 label="Project Version"
                 variant="solo-filled"
-                :items="['Project v1', 'Project v1.1', 'Project v2']"
+                :items="projectVersionOptions"
                 :model-value="selectProjectVersion"
-                @update:model-value="updateProjectVersion"
               />
+              <!--
+                @update:model-value="updateProjectVersion" -->
             </v-col>
           </v-row>
 
@@ -121,7 +124,9 @@
     showSaveLoadDialog,
     projectV1
   } = storeToRefs(appStore);
-  let selectProjectVersion = "Project v1";
+
+  const projectVersionOptions = ["Project v1", "Project v1.1", "Project v2"];
+  const selectProjectVersion = ref("Project v1");
   const projectFile: Ref<Array<File> | undefined> = ref();
 
   function parseFile(files: Array<File>) {
@@ -161,7 +166,9 @@
     }
   }
 
-  function updateProjectVersion() {
-    loadedProjectVersion.value = selectProjectVersion;
-  }
+  // function updateProjectVersion() {
+  //   loadedProjectVersion.value = selectProjectVersion;
+  // }
+
+
 </script>
