@@ -11,7 +11,7 @@ export const defaultProjectV2: projectV2 = {
     pagesOn: false,
   },
   state: {
-    currentPage: 0,
+    currentPage: 1,
     // All activated choices
     activatedChoices: [],
   },

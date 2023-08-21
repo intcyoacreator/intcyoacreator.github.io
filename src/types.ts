@@ -6,53 +6,55 @@ export enum ProjectVersion {
 
 export type projectV2 = {
   /** The version number of the project format. Each increment indicates
-   * backward-incompatible changes */
+   * backward-incompatible changes. */
   version: number,
 
-  /** The project settings */
+  /** The project settings. */
   settings: {
-    /** Whether pagination is turned on or not */
+    /** Whether pagination is turned on or not. */
     pagesOn: boolean,
   },
 
-  /** The state of the project */
+  /** The state of the project. */
   state: {
     currentPage: number,
     activatedChoices: Array<Id>,
   },
 
-  /** The main content of the CYOA */
+  /** The main content of the CYOA. */
   pages: Array<Page>,
 }
 
-/** The unique identifier of an object */
+/** The unique identifier of an object. */
 type Id = string;
 
+/** A page in the CYOA. */
 type Page = {
-  /** The ID of a page */
+  /** The ID of a page. */
   id: Id,
-  /** The name of the page, used in pagination */
+  /** The name of the page, used in pagination. */
   pageName: string,
-  /** The sections */
+  /** The sections. */
   sections: Array<Section>,
 }
 
+/** A section in the CYOA. Equivalent to a Row in the first Creator. */
 type Section = {
-  /** The ID of a section */
+  /** The ID of a section. */
   id: Id,
-  /** The title of a section */
+  /** The title of a section. */
   title: string,
-  /** The accompanying text of a section */
+  /** The accompanying text of a section. */
   text: string,
-  /** The choices within a section */
+  /** The choices within a section. */
   choices: Array<Choice>,
 }
 
 type Choice = {
-  /** The ID of a choice */
+  /** The ID of a choice. */
   id: Id,
-  /** The title of a choice */
+  /** The title of a choice. */
   title: string,
-  /** The text of a choice */
+  /** The text of a choice. */
   text: string,
 }

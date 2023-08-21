@@ -6,11 +6,20 @@
   <!-- <h2>Viewer!!!</h2> -->
 
   <v-container >
+    <!-- Pagination -->
     <v-row v-if="projectV2.settings.pagesOn">
       <v-col>
-        <v-pagination :length="6"></v-pagination>
+        <v-pagination
+          :length="projectV2.pages.length"
+          :model-value="projectV2.state.currentPage"
+          @update:model-value="(page) => {projectV2.state.currentPage = page}"
+        >
+        </v-pagination>
       </v-col>
     </v-row>
+
+    <!-- Sections -->
+    <!-- v-for -->
   </v-container>
 
   <h1>TEST VIEWER</h1>
