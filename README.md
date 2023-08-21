@@ -220,6 +220,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
       names (different from the page names)
         * The distinction is useful if the Page name is too long for the
           Pagination thing
+    - [ ] Option in settings to add a pagination section down the bottom (in
+      the case of large CYOAs)
 - [ ] App Themes
     - [ ] Dark mode
         - [ ] Have this be separate from 

@@ -44,6 +44,7 @@ export const sampleProjectV2: projectV2 = {
       pageName: "CYOA",
       sections: [
         {
+          type: "section",
           id: "row1",
           title: "First Row",
           text: "This is my first Row",
@@ -58,6 +59,7 @@ export const sampleProjectV2: projectV2 = {
       pageName: "Second page",
       sections: [
         {
+          type: "section",
           id: "row2",
           title: "Second row",
           text: "This is my second row. Teehee!",

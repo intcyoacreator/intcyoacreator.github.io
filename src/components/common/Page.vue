@@ -6,7 +6,7 @@
   <p>Sections: {{ pageData.sections }}</p> -->
   <v-container>
     <v-col v-for="(section, index) in pageData.sections" :key="index">
-      <v-row>
+      <v-row v-if="section.type == 'section'">
         <Section :section-data="section"/>
       </v-row>
     </v-col>

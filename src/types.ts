@@ -35,11 +35,22 @@ export type Page = {
   /** The name of the page, used in pagination. */
   pageName: string,
   /** The sections. */
-  sections: Array<Section>,
+  sections: Array<PageItem>,
 }
+
+/** An item/row that is made of all types of objects */
+export type PageItem =
+  | Section
+  | Divider;
+
+/** A divider */
+type Divider = {
+  type: "divider",
+};
 
 /** A section in the CYOA. Equivalent to a Row in the first Creator. */
 export type Section = {
+  type: "section",
   /** The ID of a section. */
   id: Id,
   /** The title of a section. */
