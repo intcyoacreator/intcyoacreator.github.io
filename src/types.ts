@@ -44,7 +44,7 @@ export type PageItem =
   | Divider;
 
 /** A divider */
-type Divider = {
+export type Divider = {
   type: "divider",
 };
 

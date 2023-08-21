@@ -50,7 +50,20 @@ export const sampleProjectV2: projectV2 = {
           text: "This is my first Row",
           editModeEnabled: false,
           choices: [],
-        }
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          id: "row3",
+          title: "Third section",
+          text: "This is my third section, for testing purposes lmao.",
+          editModeEnabled: false,
+          choices: [
+
+          ],
+        },
       ],
     },
     // Second page:
