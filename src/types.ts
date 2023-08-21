@@ -39,18 +39,20 @@ export type Page = {
 }
 
 /** A section in the CYOA. Equivalent to a Row in the first Creator. */
-type Section = {
+export type Section = {
   /** The ID of a section. */
   id: Id,
   /** The title of a section. */
   title: string,
   /** The accompanying text of a section. */
   text: string,
+  /** Whether it shows the edit menu or not */
+  editModeEnabled: boolean,
   /** The choices within a section. */
   choices: Array<Choice>,
 }
 
-type Choice = {
+export type Choice = {
   /** The ID of a choice. */
   id: Id,
   /** The title of a choice. */
