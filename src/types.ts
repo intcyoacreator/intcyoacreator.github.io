@@ -29,7 +29,7 @@ export type projectV2 = {
 type Id = string;
 
 /** A page in the CYOA. */
-type Page = {
+export type Page = {
   /** The ID of a page. */
   id: Id,
   /** The name of the page, used in pagination. */

@@ -22,7 +22,7 @@
     <!-- v-for -->
     <v-row v-for="(page, index) in projectV2.pages" :key="index">
       <v-col v-if="index == projectV2.state.currentPage - 1">
-        {{ page }}
+        <Page :page-data="page"/>
       </v-col>
     </v-row>
   </v-container>
@@ -38,6 +38,7 @@
   import { useAppStore } from '@/store/app';
   import { storeToRefs } from 'pinia';
   import { onMounted } from 'vue';
+  import Page from "@/components/common/Page.vue";
 
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);

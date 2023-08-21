@@ -170,6 +170,4 @@
   // function updateProjectVersion() {
   //   loadedProjectVersion.value = selectProjectVersion;
   // }
-
-
 </script>
