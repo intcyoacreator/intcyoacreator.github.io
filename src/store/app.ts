@@ -10,6 +10,7 @@ export const useAppStore = defineStore("app", {
     // Functions
     return {
       // The version of this application
+      // is this needed?
       appVersion: "0.1.0",
 
       /**

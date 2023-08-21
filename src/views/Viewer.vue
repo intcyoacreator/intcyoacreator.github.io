@@ -1,10 +1,27 @@
 <template>
-  <ViewerAppBar @reset-current-component="$emit('resetCurrentComponent')"/>
+  <v-container>
+    <v-row>
+      <v-col>
+        <ViewerAppBar
+          @reset-current-component="$emit('resetCurrentComponent')"
+        />
+      </v-col>
+    </v-row>
 
-  <!-- Save/Load Dialog -->
-  <SaveLoad/>
+    <v-row>
+      <v-col>
+        <!-- Save/Load Dialog -->
+        <SaveLoad/>
+      </v-col>
+    </v-row>
 
-  <Viewer></Viewer>
+    <v-row>
+      <v-col>
+        <Viewer></Viewer>
+      </v-col>
+    </v-row>
+  </v-container>
+
 </template>
 
 <script setup lang="ts">
