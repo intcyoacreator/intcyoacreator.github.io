@@ -44,5 +44,6 @@
   const appStore = useAppStore();
   const { showSaveLoadDialog } = storeToRefs(appStore);
 
+  // const emit = defineEmits(["resetCurrentComponent"]);
   defineEmits(["resetCurrentComponent"]);
 </script>

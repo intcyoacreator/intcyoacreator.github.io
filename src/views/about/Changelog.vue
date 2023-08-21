@@ -48,7 +48,7 @@
       }
     ]
   });
-  defineEmits(["resetCurrentComponent"]);
+  // defineEmits(["resetCurrentComponent"]);
 
   onMounted(async () => {
     try {

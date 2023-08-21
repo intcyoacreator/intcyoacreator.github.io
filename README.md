@@ -295,6 +295,21 @@ A successor to MeanDelay's Interactive CYOA Creator.
     * With a nice looking loading thing too
 - [ ] Buttons, with a whole lot more features, including the functions that
   were present in the original Creator
+* Points Bar in the footer
+    - [ ] Button to show/hide points in the footer
+    - [ ] Sub-menu in the footer that shows more Point Types (for smaller
+      screens)
+    * Maybe make this all according to the project options
+- [ ] Automatically rename IDs to be readable
+    * By default it will be `{object_type}_{object_title_snakecase}`, where it
+      will automatically rename the ID when the title is changed, though it
+      will be snakecase-ified.
+- [ ] Conditionally show pages. E.g.:
+    * Only show pages when X option is selected
+    * Hide page when Y option is selected
+- [ ] Add way to include point total inside the text. Using variables perhaps?
+- [ ] Variables list
+
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/

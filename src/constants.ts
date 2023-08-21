@@ -1,3 +1,29 @@
+import { projectV2 } from "@/types";
+
+/**
+ * The default project file for a Project V2 file
+ */
+export const defaultProjectV2: projectV2 = {
+  // Project Version
+  version: 2,
+  settings: {
+    // Whether pagination is turned on
+    pagesOn: false,
+  },
+  state: {
+    currentPage: 0,
+    // All activated choices
+    activatedChoices: [],
+  },
+  pages: [
+    // The default first page
+    {
+      id: "main",
+      pageName: "CYOA",
+      sections: [],
+    },
+  ],
+}
 
 /**
  * The default project file for a Project V1 file

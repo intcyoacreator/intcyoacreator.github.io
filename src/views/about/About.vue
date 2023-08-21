@@ -39,7 +39,7 @@
   </v-main>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import { computed, shallowRef } from "vue";
   import type { Component } from "vue";
 
@@ -63,7 +63,6 @@
       icon: "mdi-format-list-bulleted",
       component: Changelog
     },
-
   ];
   const currentPage = shallowRef(navigationItems[0]);
   const aboutTitle = computed(() => {

@@ -2,7 +2,8 @@
 import { defineStore } from "pinia"
 
 // Imports
-import { defaultProjectV1 } from "@/constants"
+// import { defaultProjectV1 } from "@/constants"
+import { defaultProjectV2 } from "@/constants"
 
 export const useAppStore = defineStore("app", {
   state: () => {
@@ -17,7 +18,7 @@ export const useAppStore = defineStore("app", {
        * Assume V1 by default
        */
       // loadedProjectVersion: ProjectVersion.V1,
-      loadedProjectVersion: "Project v1",
+      loadedProjectVersion: 2,
 
       /**
        * Dialogues
@@ -28,7 +29,8 @@ export const useAppStore = defineStore("app", {
        * Everything that is stored in the currently loaded project will be
        * stored in the object below
        */
-      projectV1: defaultProjectV1,
+      // projectV1: defaultProjectV1,
+      projectV2: defaultProjectV2
     }
   },
 })

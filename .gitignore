@@ -1,3 +1,6 @@
+# Custom files
+project.json/jrpg_traitor.json
+
 .DS_Store
 node_modules
 /dist
