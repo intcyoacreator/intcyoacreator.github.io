@@ -6,6 +6,39 @@
 
 import { Component } from "vue";
 
+export type CreatorMode = "none" | "create" | "preview" | "view";
+
+export type ApplicationState = {
+  /** The version of this application. */
+  appVersion: string,
+
+  /**
+   * The project version of the currently loaded project.
+   *
+   * Assume V2 by default.
+   */
+  loadedProjectVersion: number,
+
+  /** Whether the Save/Load Dialog is shown. */
+  showSaveLoadDialog: boolean,
+
+  /**
+   * Creator mode:
+   * none – In the menu
+   * create – Creating the CYOA
+   * preview – The viewer inside of the ICC2, still has options
+   * view – What the exported Viewer will use, there will be no other
+   *        visual elements than the ones needed
+   */
+  creatorMode: CreatorMode,
+
+  /**
+   * Everything that is stored in the currently loaded project will be
+   * stored in the object below
+   */
+  projectV2: projectV2,
+}
+
 export type projectV2 = {
   /** The version number of the project format. Each increment indicates
    * backward-incompatible changes. */
@@ -104,3 +137,4 @@ export type NavigationItem = {
  * Perhaps too much abstraction?
  */
 export type NavigationItems = Array<NavigationItem>;
+

@@ -3,8 +3,6 @@
 -->
 
 <template>
-  <!-- <h2>Viewer!!!</h2> -->
-
   <v-container >
     <!-- Pagination -->
     <v-row v-if="projectV2.settings.pagesOn">
@@ -19,7 +17,6 @@
     </v-row>
 
     <!-- Pages -->
-    <!-- v-for -->
     <v-row v-for="(page, index) in projectV2.pages" :key="index">
       <v-col v-if="index == projectV2.state.currentPage - 1">
         <Page :page-data="page"/>
