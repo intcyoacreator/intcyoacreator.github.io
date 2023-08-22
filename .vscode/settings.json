@@ -48,5 +48,5 @@
     "yaml.schemas": {
         "https://json.schemastore.org/github-workflow.json": "file:///home/user/Documents/Coding/intcyoacreator2/.github/workflows/deploy.yml"
     },
-    "vscord.enabled": false
+    "vscord.enabled": false,
 }

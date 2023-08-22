@@ -3,10 +3,12 @@ import { projectV2 } from "@/types";
 /**
  * The default project file for a Project V2 file
  */
-export const defaultProjectV2: projectV2 = {
+export const emptyProjectV2: projectV2 = {
   // Project Version
   version: 2,
   settings: {
+    scope: "global",
+
     // Whether pagination is turned on
     pagesOn: false,
   },
@@ -14,6 +16,9 @@ export const defaultProjectV2: projectV2 = {
     currentPage: 1,
     // All activated choices
     activatedChoices: [],
+  },
+  styling: {
+    scope: "global",
   },
   pages: [
     // The default first page
@@ -29,6 +34,7 @@ export const sampleProjectV2: projectV2 = {
   // Project Version
   version: 2,
   settings: {
+    scope: "global",
     // Whether pagination is turned on
     pagesOn: false,
   },
@@ -36,6 +42,9 @@ export const sampleProjectV2: projectV2 = {
     currentPage: 1,
     // All activated choices
     activatedChoices: [],
+  },
+  styling: {
+    scope: "global",
   },
   pages: [
     // The default first page

@@ -222,6 +222,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
           Pagination thing
     - [ ] Option in settings to add a pagination section down the bottom (in
       the case of large CYOAs)
+    - [ ] Transitions
 - [ ] App Themes
     - [ ] Dark mode
         - [ ] Have this be separate from 
@@ -292,6 +293,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] The ability to automatically generate random picks when the CYOA calls
   for it without having to use outside dice rollers would be nice
     * Better RNG support, basically
+    - [ ] Ability to generate a random integer within a stated range, to help
+      with random encounters between main story plot points
 - [ ] Built-in progress loading indicator, with ability to choose a custom
   background until it is loaded
     * With a nice looking loading thing too
@@ -311,7 +314,15 @@ A successor to MeanDelay's Interactive CYOA Creator.
     * Hide page when Y option is selected
 - [ ] Add way to include point total inside the text. Using variables perhaps?
 - [ ] Variables list
-
+- [ ] In the option to hide certain sections, enable the option (on by default)
+  to hide all "child" sections, i.e. all sections that are dependent on that
+  section being visible to be shown
+    - [ ] A setting (off by default) to deselect the options of child elements.
+      By default it remembers the previous options, unless the sub-option below
+      is toggled off
+        - [ ] A sub-option to remember (on by default) what options were chosen
+          previously, such that if the parent is re-shown it re-selects the
+          options
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
