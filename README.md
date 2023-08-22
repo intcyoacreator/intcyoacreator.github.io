@@ -369,7 +369,18 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] A plugin system for extensibility
 - [ ] Save stuff in the browser localStorage to avoid an impromptu reload of
   the page losing word, and the ability to save builds as well
-- [ ]
+- [ ] Counters
+    - [ ] With "Groups", any choices you add to Groups you can use comparison
+      methods on those groups, such as "more than 5 group choices selected",
+      "no group choices selected", "less than 9 group choices selected", etc.
+    - [ ] Not just a "currently selected counter" but an "overall selected
+      counter". This is an absolute counter that never decrements, only
+      increasing, so it counts total mutations regardless of unselecting stuff,
+      which could be useful
+        * https://vuetifyjs.com/en/directives/mutate/
+- [ ] Ripple for choices https://vuetifyjs.com/en/directives/ripple/
+    - [ ] A "Change Ripple Colour" option
+
 
 ## Possible TODOs
 Will have to reconsider these later.

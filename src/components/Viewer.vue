@@ -4,7 +4,7 @@
 
 <template>
   <v-container >
-    <!-- Pagination -->
+    <!-- Pagination buttons -->
     <v-row v-if="projectV2.settings.pagesOn">
       <v-col>
         <v-pagination
@@ -16,19 +16,13 @@
       </v-col>
     </v-row>
 
-    <!-- Pages -->
+    <!-- Pages' contents -->
     <v-row v-for="(page, index) in projectV2.pages" :key="index">
       <v-col v-if="index == projectV2.state.currentPage - 1">
         <Page :page-data="page"/>
       </v-col>
     </v-row>
   </v-container>
-
-  <h1>TEST VIEWER</h1>
-
-  <v-bottom-navigation>
-
-  </v-bottom-navigation>
 </template>
 
 <script setup lang="ts">

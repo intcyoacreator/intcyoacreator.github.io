@@ -1,40 +1,49 @@
 <template>
-  <v-layout>
-    <v-container>
-      <v-row>
-        <v-col>
-          <v-navigation-drawer expand-on-hover :permanent="true">
-            <v-list nav>
-              <v-list-item
-                title="Return to Menu"
-                prepend-icon="mdi-arrow-left"
-                @click="$emit('resetCurrentComponent')"
-              />
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-navigation-drawer expand-on-hover :permanent="true">
+          <v-list nav>
+            <v-list-item
+              title="Return to Menu"
+              prepend-icon="mdi-arrow-left"
+              @click="$emit('resetCurrentComponent')"
+            />
 
-              <v-divider/>
+            <v-divider/>
 
-              <v-list-item
-                v-for="(item, index) in navigationItems" :key="index"
-                :title="item.name"
-                :prepend-icon="item.icon"
-              />
-              <!-- above
-                @click="currentPage = item" -->
-            </v-list>
-          </v-navigation-drawer>
-        </v-col>
+            <v-list-item
+              v-for="(item, index) in navigationItems" :key="index"
+              :title="item.name"
+              :prepend-icon="item.icon"
+            />
+            <!-- above
+              @click="currentPage = item" -->
+          </v-list>
+        </v-navigation-drawer>
+      </v-col>
 
-        <v-col>
-          <viewer></viewer>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-layout>
+      <v-col>
+        <v-row>
+          <v-col>
+            <viewer></viewer>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+            <points-bar/>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts" setup>
   import Viewer from '@/components/Viewer.vue';
-import { NavigationItems } from '@/types';
+  import PointsBar from '@/components/common/PointsBar.vue';
+  import { NavigationItems } from '@/types';
 
   const navigationItems: NavigationItems = [
     // {
