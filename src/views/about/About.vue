@@ -41,18 +41,12 @@
 
 <script setup lang="ts">
   import { computed, shallowRef } from "vue";
-  import type { Component } from "vue";
 
+  import { NavigationItems } from "@/types";
   import Changelog from "./Changelog.vue";
   import Information from "./Information.vue";
 
-  type NavigationItem = {
-    name: string;
-    icon: string,
-    component: Component;
-  }
-
-  const navigationItems: Array<NavigationItem> = [
+  const navigationItems: NavigationItems = [
     {
       name: "Information",
       icon: "mdi-information-outline",

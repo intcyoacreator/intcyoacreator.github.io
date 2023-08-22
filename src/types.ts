@@ -4,6 +4,8 @@
 //   V2,
 // }
 
+import { Component } from "vue";
+
 export type projectV2 = {
   /** The version number of the project format. Each increment indicates
    * backward-incompatible changes. */
@@ -43,7 +45,7 @@ type Styling = {
 type Id = string;
 
 /** The different scopes for styles, settings, etc. */
-type Scope = "global" | "local";
+type Scope = "global" | "page" | "local";
 
 /** A page in the CYOA. */
 export type Page = {
@@ -88,3 +90,17 @@ export type Choice = {
   /** The text of a choice. */
   text: string,
 }
+
+/** A navigation item in the sidebar */
+export type NavigationItem = {
+  name: string;
+  icon: string,
+  component: Component;
+}
+
+/**
+ * An array of sidebar navigation items
+ *
+ * Perhaps too much abstraction?
+ */
+export type NavigationItems = Array<NavigationItem>;

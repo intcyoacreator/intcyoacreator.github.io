@@ -360,6 +360,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
       styling, which will simply overwrite the parts you change, and "deep"
       private styling, which will completely copy the global styling, and can't
       easily be changed once done.
+        * Deep copy is basically useful in cases where you plan to full-proof
+          the styling against global changes
 - [ ] Optional (opt in) button in settings to credit the ICC2
 - [ ] CSS Styling
     - [ ] Allow embedding custom CSS (maybe even SCSS? probably not) into the
@@ -384,6 +386,9 @@ Will have to reconsider these later.
   'illegal' group must be pressed in order for the individual choice to be
   selectable.
     * My own suggestion from 2 years ago lol
+- [ ] An option near the "Required: {Choices}" field that allows the user to
+  auto-select any requirements, and any requirements they might have, and so on
+  (might implement this using recursion)
 
 
 ## Issues / Errors

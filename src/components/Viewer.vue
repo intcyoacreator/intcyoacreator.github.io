@@ -44,6 +44,7 @@
   const { projectV2 } = storeToRefs(appStore);
 
   onMounted(() => {
+    // Maybe turn this on automatically if the length of pages is more than 1?
     projectV2.value.settings.pagesOn = true;
   });
 </script>
