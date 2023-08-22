@@ -41,7 +41,6 @@
 
 <script setup lang="ts">
   import { computed, shallowRef } from "vue";
-
   import { NavigationItems } from "@/types";
   import Changelog from "./Changelog.vue";
   import Information from "./Information.vue";

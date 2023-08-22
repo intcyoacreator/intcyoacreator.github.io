@@ -36,7 +36,7 @@
                   <v-btn
                     variant="outlined"
                     block
-                    @click="currentComponent = button.id"
+                    @click="switchToComponent(button.id)"
                   >
                     {{ button.text }}
                   </v-btn>
@@ -65,9 +65,10 @@
   import Viewer from "./views/Viewer.vue";
   import About from "./views/about/About.vue";
   import { storeToRefs } from "pinia";
+  import { CreatorMode } from "./types";
 
   const appStore = useAppStore();
-  const { appVersion } = storeToRefs(appStore);
+  const { appVersion, creatorMode } = storeToRefs(appStore);
 
   const components = [
     "Home", // Placeholder value
@@ -79,18 +80,31 @@
   // Default value is Home
   const currentComponent = ref(0);
   const showDialog = ref(true);
-  const menuButtons = {
-    creator: {
+
+  const menuButtons: Array<{
+    id: number,
+    text: string,
+    creatorMode: CreatorMode,
+  }> = [
+    {
       id: 1,
       text: "Open CYOA Creator",
+      creatorMode: "create",
     },
-    viewer: {
+    {
       id: 2,
       text: "Open CYOA Viewer",
+      creatorMode: "preview",
     },
-    about: {
+    {
       id: 3,
       text: "About this Creator",
+      creatorMode: "none",
     },
+  ];
+
+  function switchToComponent(buttonId: number) {
+    creatorMode.value = menuButtons[buttonId - 1].creatorMode;
+    currentComponent.value = buttonId;
   }
 </script>

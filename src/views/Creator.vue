@@ -1,29 +1,40 @@
 <template>
   <v-layout>
-    <v-navigation-drawer expand-on-hover>
-      <v-list nav>
-        <v-list-item
-          title="Return to Menu"
-          prepend-icon="mdi-arrow-left"
-          @click="$emit('resetCurrentComponent')"
-        />
+    <v-container>
+      <v-row>
+        <v-col>
+          <v-navigation-drawer expand-on-hover :permanent="true">
+            <v-list nav>
+              <v-list-item
+                title="Return to Menu"
+                prepend-icon="mdi-arrow-left"
+                @click="$emit('resetCurrentComponent')"
+              />
 
-        <v-divider/>
+              <v-divider/>
 
-        <v-list-item
-          v-for="(item, index) in navigationItems" :key="index"
-          :title="item.name"
-          :prepend-icon="item.icon"
-        />
-        <!-- above
-          @click="currentPage = item" -->
-      </v-list>
-    </v-navigation-drawer>
+              <v-list-item
+                v-for="(item, index) in navigationItems" :key="index"
+                :title="item.name"
+                :prepend-icon="item.icon"
+              />
+              <!-- above
+                @click="currentPage = item" -->
+            </v-list>
+          </v-navigation-drawer>
+        </v-col>
+
+        <v-col>
+          <viewer></viewer>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-layout>
 </template>
 
 <script lang="ts" setup>
-  import { NavigationItems } from '@/types';
+  import Viewer from '@/components/Viewer.vue';
+import { NavigationItems } from '@/types';
 
   const navigationItems: NavigationItems = [
     // {
