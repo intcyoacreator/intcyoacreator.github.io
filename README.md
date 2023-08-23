@@ -323,6 +323,35 @@ A successor to MeanDelay's Interactive CYOA Creator.
         - [ ] A sub-option to remember (on by default) what options were chosen
           previously, such that if the parent is re-shown it re-selects the
           options
+- [ ] Dropdown / `v-select` menus, where you (optionally) have to select a
+  choice. Each option has its own ID.
+- [ ] Cut down file size of Project V2 by not copying ALL styles for private
+  styling, and instead just the ones that need to be overwritten.
+    - [ ] When turning on private styling, offer two choices. "Shallow" private
+      styling, which will simply overwrite the parts you change, and "deep"
+      private styling, which will completely copy the global styling, and can't
+      easily be changed once done.
+        * Deep copy is basically useful in cases where you plan to full-proof
+          the styling against global changes
+- [ ] Optional (opt in) button in settings to credit the ICC2
+- [ ] CSS Styling
+    - [ ] Allow embedding custom CSS (maybe even SCSS? probably not) into the
+      CYOA itself
+- [ ] A plugin system for extensibility
+- [ ] Save stuff in the browser localStorage to avoid an impromptu reload of
+  the page losing word, and the ability to save builds as well
+- [ ] Counters
+    - [ ] With "Groups", any choices you add to Groups you can use comparison
+      methods on those groups, such as "more than 5 group choices selected",
+      "no group choices selected", "less than 9 group choices selected", etc.
+    - [ ] Not just a "currently selected counter" but an "overall selected
+      counter". This is an absolute counter that never decrements, only
+      increasing, so it counts total mutations regardless of unselecting stuff,
+      which could be useful
+        * https://vuetifyjs.com/en/directives/mutate/
+- [ ] Ripple for choices https://vuetifyjs.com/en/directives/ripple/
+    - [ ] A "Change Ripple Colour" option
+- [ ] Ability to SET a Point to a certain value, rather than simply mutating it
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
@@ -352,35 +381,6 @@ A successor to MeanDelay's Interactive CYOA Creator.
       the max by multiplying the amount of characters–hex or alphanumeric
       presumably–with the length, and if the array is over that number, then
       increment the `idLength` by one)
-- [ ] Dropdown / `v-select` menus, where you (optionally) have to select a
-  choice. Each option has its own ID.
-- [ ] Cut down file size of Project V2 by not copying ALL styles for private
-  styling, and instead just the ones that need to be overwritten.
-    - [ ] When turning on private styling, offer two choices. "Shallow" private
-      styling, which will simply overwrite the parts you change, and "deep"
-      private styling, which will completely copy the global styling, and can't
-      easily be changed once done.
-        * Deep copy is basically useful in cases where you plan to full-proof
-          the styling against global changes
-- [ ] Optional (opt in) button in settings to credit the ICC2
-- [ ] CSS Styling
-    - [ ] Allow embedding custom CSS (maybe even SCSS? probably not) into the
-      CYOA itself
-- [ ] A plugin system for extensibility
-- [ ] Save stuff in the browser localStorage to avoid an impromptu reload of
-  the page losing word, and the ability to save builds as well
-- [ ] Counters
-    - [ ] With "Groups", any choices you add to Groups you can use comparison
-      methods on those groups, such as "more than 5 group choices selected",
-      "no group choices selected", "less than 9 group choices selected", etc.
-    - [ ] Not just a "currently selected counter" but an "overall selected
-      counter". This is an absolute counter that never decrements, only
-      increasing, so it counts total mutations regardless of unselecting stuff,
-      which could be useful
-        * https://vuetifyjs.com/en/directives/mutate/
-- [ ] Ripple for choices https://vuetifyjs.com/en/directives/ripple/
-    - [ ] A "Change Ripple Colour" option
-
 
 ## Possible TODOs
 Will have to reconsider these later.
@@ -400,6 +400,8 @@ Will have to reconsider these later.
 - [ ] An option near the "Required: {Choices}" field that allows the user to
   auto-select any requirements, and any requirements they might have, and so on
   (might implement this using recursion)
+- [ ] A section in the Creator where you can check for the contrast of your
+  styling, and it lists all occurrences of bad contrast
 
 
 ## Issues / Errors
