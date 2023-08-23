@@ -1,24 +1,41 @@
 <template>
   <v-navigation-drawer expand-on-hover :permanent="true">
     <v-list nav>
-      <v-list-item title="Return to Menu" prepend-icon="mdi-arrow-left" @click="$emit('resetCurrentComponent')" />
+      <v-list-item
+        title="Return to Menu"
+        prepend-icon="mdi-arrow-left"
+        @click="$emit('resetCurrentComponent')"
+      />
 
       <v-divider />
 
-      <v-list-item title="Create New Page" prepend-icon="mdi-plus" @click="createPage" />
+      <v-list-item
+        title="Create New Page"
+        prepend-icon="mdi-plus"
+        @click="createPage"
+      />
 
-      <v-list-item title="Create New Section" prepend-icon="mdi-plus" @click="createSection" />
+      <v-list-item
+        title="Create New Section"
+        prepend-icon="mdi-plus"
+        @click="createSection"
+      />
 
       <v-divider />
 
-      <v-list-item v-for="(item, index) in navigationItems" :key="index" :title="item.name" :prepend-icon="item.icon"
-        @click="currentPage = item">
-      </v-list-item>
+      <v-list-item
+        v-for="(item, index) in navigationItems"
+        :key="index"
+        :title="item.name"
+        :prepend-icon="item.icon"
+        @click="currentPage = item"
+      />
 
-      <v-list-item title="Save/Load Project" prepend-icon="mdi-content-save-outline"
-        @click="showSaveLoadDialog = !showSaveLoadDialog" />
-      <!-- above
-        @click="currentPage = item" -->
+      <v-list-item
+      title="Save/Load Project"
+      prepend-icon="mdi-content-save-outline"
+      @click="showSaveLoadDialog = !showSaveLoadDialog"
+      />
     </v-list>
   </v-navigation-drawer>
 

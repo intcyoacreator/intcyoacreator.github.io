@@ -164,14 +164,17 @@ export const defaultPage: Page = {
 //    * Rows/Sections
 //    */
 //   "defaultRowTitle": "Row",
+// eslint-disable-next-line max-len
 //   "defaultRowText": "This is a row, and inside of it, you can place choices. On both rows and choices Requirements can be placed, which will block a row from being viewed, or make the player unable to select a choice, depending on either Point-types or the Ids of other choices. Point-types can be made in Features then Manage Points. Hovering over buttons will explain what they do. The Design of the project can be changed in 'Modify Design' at the side navigation bar, and private styling for each row can be turned on in the rows Settings. Default text like this can be turned off in Features -> Manage Defaults.",
 //   "defaultChoiceTitle": "Choice",
+// eslint-disable-next-line max-len
 //   "defaultChoiceText": "This is a Choice, and inside of it, you can place images and text. Scores can be added to it, and have Point-types attached. Addons can be added underneath the image and text. In the Functions at the bottom of the choice, there is an array of different things that can be done. Default text like this can be turned off in Features then Manage Defaults.",
 //   "defaultBeforePoint": "Cost:",
 //   "defaultAfterPoint": "points",
 //   "defaultBeforeReq": "Required:",
 //   "defaultAfterReq": "choice",
 //   "defaultAddonTitle": "Addon",
+// eslint-disable-next-line max-len
 //   "defaultAddonText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 //   "styling": {
 //     "rowTitle": "Times New Roman",

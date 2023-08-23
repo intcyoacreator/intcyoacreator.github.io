@@ -24,7 +24,7 @@
       <v-tooltip activator="parent" location="top">Edit Section</v-tooltip>
     </v-btn>
 
-    <v-btn icon>
+    <v-btn icon @click="$emit('deleteRow')">
       <v-icon>mdi-delete</v-icon>
       <v-tooltip activator="parent" location="top">Delete Section</v-tooltip>
     </v-btn>
@@ -76,6 +76,7 @@
             ></v-textarea>
           </v-col>
 
+          <!-- Section ID -->
           <v-col>
             <v-textarea
               label="Section ID"
@@ -142,7 +143,7 @@
     // toggleSectionEditMode: Function,
   }>();
 
-  defineEmits(["toggleEditMode"]);
+  defineEmits(["toggleEditMode", "deleteRow"]);
 </script>
 
 <style scoped>

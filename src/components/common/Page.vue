@@ -3,7 +3,10 @@
     <v-col v-for="(item, index) in pageData.sections" :key="index">
       <!-- Section -->
       <v-row v-if="item.type == 'section'">
-        <Section :section-data="item" @toggle-edit-mode="toggleSectionEditMode(item)" />
+        <Section
+          :section-data="item"
+          @toggle-edit-mode="toggleSectionEditMode(item)"
+        />
       </v-row>
 
       <!-- Divider -->

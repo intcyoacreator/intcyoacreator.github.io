@@ -70,11 +70,11 @@
           <li>
             Font Source:
             <a
-              href="http://fonts.gstatic.com/s/firacode/v21/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprFVfxN87gsj0.ttf"
+              :href="fontSourceLink"
               target="_blank"
               rel="noopener noreferrer"
             >
-              http://fonts.gstatic.com/s/firacode/v21/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprFVfxN87gsj0.ttf
+              {{ fontSourceLink }}
             </a>
           </li>
           <li>
@@ -96,6 +96,9 @@
 
 <script setup lang="ts">
   import Sheet from "@/components/Sheet.vue";
+
+  const fontSourceLink = "http://fonts.gstatic.com/s/firacode/v21/\
+uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprFVfxN87gsj0.ttf";
 
   type Inspiration = {
     name: string,
