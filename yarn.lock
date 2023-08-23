@@ -484,6 +484,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/showdown@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@types/showdown@npm:2.0.1"
+  checksum: 75078b292d645bb6adbda7d440415fa06f37433225ba097d8f56391fc6f1234beaeb7339baf01c4093b5f1be51fa285f81b32d11055892758294bb63de92fb01
+  languageName: node
+  linkType: hard
+
 "@types/webfontloader@npm:^1.6.35":
   version: 1.6.35
   resolution: "@types/webfontloader@npm:1.6.35"
@@ -1109,6 +1116,13 @@ __metadata:
   bin:
     color-support: bin.js
   checksum: 9b7356817670b9a13a26ca5af1c21615463b500783b739b7634a0c2047c16cef4b2865d7576875c31c3cddf9dd621fa19285e628f20198b233a5cfdda6d0793b
+  languageName: node
+  linkType: hard
+
+"commander@npm:^9.0.0":
+  version: 9.5.0
+  resolution: "commander@npm:9.5.0"
+  checksum: c7a3e27aa59e913b54a1bafd366b88650bc41d6651f0cbe258d4ff09d43d6a7394232a4dadd0bf518b3e696fdf595db1028a0d82c785b88bd61f8a440cecfade
   languageName: node
   linkType: hard
 
@@ -1904,6 +1918,7 @@ __metadata:
     "@tauri-apps/api": ^1.4.0
     "@tauri-apps/cli": ^1.4.0
     "@types/node": ^18.15.0
+    "@types/showdown": ^2.0.1
     "@types/webfontloader": ^1.6.35
     "@vitejs/plugin-vue": ^4.0.0
     "@vue/eslint-config-typescript": ^11.0.0
@@ -1914,11 +1929,13 @@ __metadata:
     pinia: ^2.0.0
     roboto-fontface: "*"
     sass: ^1.60.0
+    showdown: ^2.1.0
     typescript: ^5.0.0
     vite: ^4.2.0
     vite-plugin-vuetify: ^1.0.0
     vue: ^3.2.0
     vue-router: ^4.0.0
+    vue-showdown: ^4.1.1
     vue-tsc: ^1.2.0
     vuetify: ^3.0.0
     webfontloader: ^1.0.0
@@ -2752,6 +2769,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"showdown@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "showdown@npm:2.1.0"
+  dependencies:
+    commander: ^9.0.0
+  bin:
+    showdown: bin/showdown.js
+  checksum: 9e33607612c4465f9ef39de356e2cee512e248eb71d4725e1d4353cf3ab4bbe89a94601ce6bfbd8245000633693c8b90e7d85a9613dfeba7704a7422cee78282
+  languageName: node
+  linkType: hard
+
 "signal-exit@npm:^3.0.7":
   version: 3.0.7
   resolution: "signal-exit@npm:3.0.7"
@@ -3112,6 +3140,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vue-showdown@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "vue-showdown@npm:4.1.1"
+  dependencies:
+    "@types/showdown": ^2.0.1
+    showdown: ^2.1.0
+    vue: ^3.3.4
+  checksum: fd982aaafecd08fc4d246406d00eae4ae774f9db9ca06757965cfdbd623b49ca8fd4a4807d65968a809de7a412694b317d858cf0db82b3f44fd72b9da1bf4d7a
+  languageName: node
+  linkType: hard
+
 "vue-template-compiler@npm:^2.7.14":
   version: 2.7.14
   resolution: "vue-template-compiler@npm:2.7.14"
@@ -3137,7 +3176,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue@npm:^3.2.0":
+"vue@npm:^3.2.0, vue@npm:^3.3.4":
   version: 3.3.4
   resolution: "vue@npm:3.3.4"
   dependencies:

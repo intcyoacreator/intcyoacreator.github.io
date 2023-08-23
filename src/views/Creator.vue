@@ -27,11 +27,11 @@
     <v-spacer></v-spacer>
 
     <!-- Button to add more stuff -->
-    <v-div>
+    <div>
       <v-btn icon>
         <v-icon>mdi-plus</v-icon>
       </v-btn>
-    </v-div>
+    </div>
 
   </v-main>
 </template>

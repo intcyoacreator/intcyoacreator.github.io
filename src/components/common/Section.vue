@@ -90,7 +90,9 @@
           v-if="sectionData.text != ''"
           class="text-body-1"
         >
-          {{ sectionData.text }}
+          <VueShowdown
+            :markdown="sectionData.text"
+          />
         </p>
       </v-col>
     </v-row>
