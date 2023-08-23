@@ -19,8 +19,10 @@ export type ApplicationState = {
    */
   loadedProjectVersion: number,
 
-  /** Whether the Save/Load Dialog is shown. */
+  /** Whether the Save/Load dialog is shown. */
   showSaveLoadDialog: boolean,
+  /** Whether the Page Settings dialog is shown. */
+  showPageSettingsDialog: boolean,
 
   /**
    * Creator mode:

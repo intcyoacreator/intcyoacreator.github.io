@@ -16,6 +16,7 @@ export const useAppStore = defineStore("app", {
       appVersion: "0.1.0",
       loadedProjectVersion: 2,
       showSaveLoadDialog: false,
+      showPageSettingsDialog: false,
       creatorMode: "none",
       projectV2: sampleProjectV2
     };

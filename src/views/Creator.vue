@@ -28,26 +28,30 @@
         :key="index"
         :title="item.name"
         :prepend-icon="item.icon"
-        @click="currentPage = item"
       />
+      <!--
+        Above ^^^
+        @click="currentComponent = item"
+       -->
 
       <v-list-item
-      title="Save/Load Project"
-      prepend-icon="mdi-content-save-outline"
-      @click="showSaveLoadDialog = !showSaveLoadDialog"
+        title="Save/Load Project"
+        prepend-icon="mdi-content-save-outline"
+        @click="showSaveLoadDialog = !showSaveLoadDialog"
       />
     </v-list>
   </v-navigation-drawer>
 
   <!-- <points-bar></points-bar> -->
 
-  <component :is="currentPage" keep-alive />
+  <!-- <component :is="currentPage" keep-alive /> -->
 
   <PointsBar />
   <SaveLoad />
 
   <v-main>
-    <Viewer align="start" />
+    <!-- <Viewer align="start"/> -->
+    <Viewer align="start"/>
 
     <v-spacer />
 
@@ -70,39 +74,15 @@ import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
 
 import { NavigationItems } from "@/types";
-import { defaultSection, defaultPage } from "@/constants";
-import { generateId } from "@/functions";
-
-import type { Component } from "vue";
+import { createSection, createPage } from "@/functions";
 
 const appStore = useAppStore();
-const { projectV2, showSaveLoadDialog } = storeToRefs(appStore);
-const defaults = projectV2.value.settings.defaults;
+const { showSaveLoadDialog } = storeToRefs(appStore);
 
-let currentPage: Component | null = null;
+// import type { Component } from "vue";
+// let currentComponent: Component | null = null;
 
-function createPage() {
-  let newPage = { ...defaultPage };
-  newPage.pageName = defaults.pageName;
-  newPage.id = generateId(projectV2.value);
-  // The new page seem to be pre-populated with the
-  // sections of the previously created page.
-  newPage.sections = [];
 
-  projectV2.value.pages.push(newPage);
-}
-
-function createSection() {
-  // For readability
-  let currentPage = projectV2.value.state.currentPage - 1;
-
-  let newSection = { ...defaultSection };
-  newSection.title = defaults.sectionTitle;
-  newSection.text = defaults.sectionText;
-  newSection.id = generateId(projectV2.value);
-
-  projectV2.value.pages[currentPage].sections.push(newSection);
-}
 
 const navigationItems: NavigationItems = [
   // {

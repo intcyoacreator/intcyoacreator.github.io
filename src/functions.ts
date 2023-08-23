@@ -2,6 +2,7 @@ import type { PageItem, projectV2 } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
+import { defaultPage, defaultSection } from "./constants";
 
 function genRanHex(size: number): string {
   return [...Array(size)]
@@ -61,4 +62,37 @@ export function deletePageItem(pageItem: PageItem) {
   } catch (e) {
     console.log(`Error deleting Page Item: ${e}`);
   }
+}
+
+/** Creates an empty page. */
+export function createPage() {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+  const defaults = projectV2.value.settings.defaults;
+
+  const newPage = { ...defaultPage };
+  newPage.pageName = defaults.pageName;
+  newPage.id = generateId(projectV2.value);
+  // The new page seem to be pre-populated with the
+  // sections of the previously created page.
+  newPage.sections = [];
+
+  projectV2.value.pages.push(newPage);
+}
+
+/** Creates a default section. */
+export function createSection() {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+  const defaults = projectV2.value.settings.defaults;
+
+  // For readability
+  const currentPage = projectV2.value.state.currentPage - 1;
+
+  const newSection = { ...defaultSection };
+  newSection.title = defaults.sectionTitle;
+  newSection.text = defaults.sectionText;
+  newSection.id = generateId(projectV2.value);
+
+  projectV2.value.pages[currentPage].sections.push(newSection);
 }

@@ -3,7 +3,7 @@
 -->
 
 <template>
-  <v-container >
+  <v-container>
     <!-- Pagination buttons -->
     <v-row v-if="projectV2.settings.pagesOn">
       <v-spacer/>
@@ -14,7 +14,7 @@
         cols="1"
         align-self="center"
       >
-        <v-btn icon>
+        <v-btn icon @click="showPageSettingsDialog = !showPageSettingsDialog">
           <v-icon>mdi-cog</v-icon>
           <v-tooltip activator="parent" location="bottom">
             Page Settings
@@ -23,7 +23,11 @@
       </v-col>
 
       <!-- Pagination component -->
-      <v-col cols="5">
+      <v-col
+        :cols="projectV2.pages.length > 2
+          ? 4
+          : projectV2.pages.length + 2"
+      >
         <v-pagination
           :length="projectV2.pages.length"
           :model-value="projectV2.state.currentPage"
@@ -55,6 +59,10 @@
       </v-col>
     </v-row>
   </v-container>
+
+  <v-dialog v-model="showPageSettingsDialog">
+
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
@@ -64,7 +72,11 @@
   import Page from "@/components/common/Page.vue";
 
   const appStore = useAppStore();
-  const { projectV2, creatorMode } = storeToRefs(appStore);
+  const {
+    projectV2,
+    creatorMode,
+    showPageSettingsDialog
+  } = storeToRefs(appStore);
 
   function updateCurrentPage(pageNumber: number) {
     projectV2.value.state.currentPage = pageNumber;
