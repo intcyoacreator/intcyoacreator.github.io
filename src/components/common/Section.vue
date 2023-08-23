@@ -5,7 +5,16 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn icon>
+    <v-btn
+      v-if="sectionData.editModeEnabled"
+      icon
+      @click="$emit('toggleEditMode')"
+    >
+      <v-icon>mdi-arrow-left</v-icon>
+      <v-tooltip activator="parent" location="top">Preview Section</v-tooltip>
+    </v-btn>
+
+    <v-btn v-else icon @click="$emit('toggleEditMode')">
       <v-icon>mdi-wrench</v-icon>
       <v-tooltip activator="parent" location="top">Edit Section</v-tooltip>
     </v-btn>
@@ -23,7 +32,7 @@
     </v-btn>
   </v-toolbar>
 
-  <!-- If the "Edit Section" has been pressed -->
+  <!-- If the "Edit Section" has been pressed; Edit mode -->
   <div v-if="sectionData.editModeEnabled">
 
   </div>
@@ -56,11 +65,13 @@
   import { storeToRefs } from 'pinia';
 
   const appStore = useAppStore();
-  const { creatorMode } = storeToRefs(appStore)
+  const { creatorMode } = storeToRefs(appStore);
 
   defineProps<{
-    sectionData: Section
+    sectionData: Section,
+    // toggleSectionEditMode: Function,
   }>();
+  defineEmits(["toggleEditMode"]);
 </script>
 
 <style scoped>

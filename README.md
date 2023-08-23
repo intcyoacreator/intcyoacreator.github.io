@@ -386,6 +386,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
       the max by multiplying the amount of characters–hex or alphanumeric
       presumably–with the length, and if the array is over that number, then
       increment the `idLength` by one)
+- [ ] Change **Changelog** from loading from JSON5 to rendering markdown.
+
 
 ## Possible TODOs
 Will have to reconsider these later.
@@ -416,6 +418,8 @@ Will have to reconsider these later.
 - [ ] Fix About page not working with lists properly – overflow?
 <!-- - [ ] Fix Project Version selector not updating the store -->
 - [ ] Fix Viewer centring instead of beginning from the top
+- [ ] Viewer looks bad on devices with less than 500px width. See if I can make
+  it `permanent` when above 500px, but collapsible when not.
 
 
 # Ideas

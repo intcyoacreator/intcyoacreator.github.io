@@ -137,4 +137,3 @@ export type NavigationItem = {
  * Perhaps too much abstraction?
  */
 export type NavigationItems = Array<NavigationItem>;
-
