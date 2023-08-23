@@ -357,7 +357,6 @@ A successor to MeanDelay's Interactive CYOA Creator.
     * Maybe separate the settings menu into "Project Settings" and "Site
       Settings"
 
-
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
 

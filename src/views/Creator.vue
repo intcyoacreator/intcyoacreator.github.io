@@ -19,12 +19,20 @@
     </v-list>
   </v-navigation-drawer>
 
-  <points-bar></points-bar>
-
   <v-main>
-    <viewer></viewer>
-  </v-main>
+    <viewer align="start"></viewer>
 
+    <v-divider></v-divider>
+
+    <!-- Button to add more stuff -->
+    <v-div>
+      <v-btn icon>
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </v-div>
+
+    <points-bar align="stretch"></points-bar>
+  </v-main>
 </template>
 
 <script lang="ts" setup>

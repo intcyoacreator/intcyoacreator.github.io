@@ -34,7 +34,7 @@
 
   <!-- If the "Edit Section" has been pressed; Edit mode -->
   <div v-if="sectionData.editModeEnabled">
-
+    Edit mode
   </div>
 
   <!-- Preview mode -->
