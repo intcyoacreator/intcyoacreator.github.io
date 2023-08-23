@@ -361,6 +361,9 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Option to overflow the Point Bar (thus making it bigger; not great for
   MASSIVE amounts of Point Types) or having a separate button that appears
   that, when pressed, will open up a popup displaying the other Point Types
+- [ ] Choice Function to immediately change the page
+  - [ ] Maybe even one to GOTO a Choice… somehow
+
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
@@ -394,7 +397,6 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Add an edit section for dividers to be able to change their IDs
 - [ ] Allow adding Sections / Dividers / other stuff to the START of the page
   using `unshift()`.
-- [ ] 
 
 ## Possible TODOs
 Will have to reconsider these later.

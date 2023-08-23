@@ -23,11 +23,7 @@
       </v-col>
 
       <!-- Pagination component -->
-      <v-col
-        :cols="projectV2.pages.length > 2
-          ? 4
-          : projectV2.pages.length + 2"
-      >
+      <v-col cols="5">
         <v-pagination
           :length="projectV2.pages.length"
           :model-value="projectV2.state.currentPage"
@@ -41,7 +37,7 @@
         cols="1"
         align-self="center"
       >
-        <v-btn icon>
+        <v-btn icon @click="createPage">
           <v-icon>mdi-plus</v-icon>
           <v-tooltip activator="parent" location="bottom">
             Create New Page
@@ -101,6 +97,7 @@
   import { onMounted } from "vue";
   import Page from "@/components/common/Page.vue";
   import { computed } from "vue";
+  import { createPage } from "@/functions";
 
   const appStore = useAppStore();
   const {
