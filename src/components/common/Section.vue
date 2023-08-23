@@ -50,7 +50,7 @@
         <v-row>
           <!-- Section Title -->
           <v-col>
-            <v-textarea
+            <v-text-field
               label="Section Title"
               auto-grow
               variant="outlined"
@@ -59,7 +59,7 @@
               :model-value="sectionData.title"
               @update:model-value="(title) =>
                 changeSectionTitle(sectionData, title)"
-            ></v-textarea>
+            ></v-text-field>
           </v-col>
 
           <!-- Section Text -->
@@ -78,7 +78,7 @@
 
           <!-- Section ID -->
           <v-col>
-            <v-textarea
+            <v-text-field
               label="Section ID"
               auto-grow
               variant="outlined"

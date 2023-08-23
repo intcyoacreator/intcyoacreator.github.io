@@ -60,8 +60,38 @@
     </v-row>
   </v-container>
 
-  <v-dialog v-model="showPageSettingsDialog">
+  <v-dialog v-model="showPageSettingsDialog" width="auto">
+    <v-card max-width="450">
+      <v-card-item>
+        <v-card-title>
+          Page Settings for: {{ getCurrentPage.pageName }}
+        </v-card-title>
+      </v-card-item>
 
+      <v-card-text>
+        <v-text-field
+          label="Page Name"
+          :model-value="getCurrentPage.pageName"
+          @update:model-value="(name) => getCurrentPage.pageName = name"
+        />
+
+        <v-text-field
+          label="Page ID"
+          :model-value="getCurrentPage.id"
+          @update:model-value="(id) => getCurrentPage.id = id"
+        />
+      </v-card-text>
+
+      <v-card-actions class="justify-center mx-3 mb-3">
+        <v-btn
+          block
+          variant="outlined"
+          @click="showPageSettingsDialog = !showPageSettingsDialog"
+        >
+          Close
+        </v-btn>
+      </v-card-actions>
+    </v-card>
   </v-dialog>
 </template>
 
@@ -70,6 +100,7 @@
   import { storeToRefs } from "pinia";
   import { onMounted } from "vue";
   import Page from "@/components/common/Page.vue";
+  import { computed } from "vue";
 
   const appStore = useAppStore();
   const {
@@ -81,6 +112,11 @@
   function updateCurrentPage(pageNumber: number) {
     projectV2.value.state.currentPage = pageNumber;
   }
+
+  const getCurrentPage = computed(() => {
+    let currentPageIndex = projectV2.value.state.currentPage - 1;
+    return projectV2.value.pages[currentPageIndex];
+  });
 
   onMounted(() => {
     // Maybe turn this on automatically if the length of pages is more than 1?
