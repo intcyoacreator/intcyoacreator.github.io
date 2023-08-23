@@ -1,6 +1,6 @@
 <template>
   <!-- The settings toolbar at the top -->
-  <v-toolbar v-if="creatorMode === 'create'" border>
+  <v-toolbar v-if="creatorMode === 'create'" :elevation="2">
     <!-- That little icon that shows before the title -->
     <template v-slot:prepend>
       <v-icon>mdi-table</v-icon>
@@ -40,7 +40,7 @@
   <!-- If the "Edit Section" has been pressed; Edit mode -->
   <div v-if="sectionData.editModeEnabled">
     <v-card class="my-4 mx-2">
-      <v-toolbar>
+      <v-toolbar border density="compact">
         <v-spacer></v-spacer>
 
         <!-- Icons for Section functionality -->
