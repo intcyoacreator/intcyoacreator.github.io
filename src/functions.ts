@@ -1,4 +1,4 @@
-import type { Section, projectV2 } from "@/types";
+import type { Divider, PageItem, Section, projectV2 } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
@@ -34,7 +34,14 @@ export function generateId(
   return randomId;
 }
 
-export function deleteSection(section: Section) {
+/**
+ * Deletes any page item; that is:
+ *
+ * * Sections
+ * * Dividers
+ * @param pageItem The item that should be deleted.
+ */
+export function deletePageItem(pageItem: PageItem) {
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
 
@@ -42,20 +49,16 @@ export function deleteSection(section: Section) {
   const currentPage = projectV2.value.state.currentPage - 1;
   const sections = projectV2.value.pages[currentPage].sections;
   const index = sections.findIndex((i) => {
-    return i.id === section.id;
+    return i.id === pageItem.id;
   });
-
-  console.log(currentPage);
-  console.log(sections);
-  console.log(index);
 
   // Remove it
   try {
     sections.splice(index, 1);
 
     // Remove ID from allIds set
-    projectV2.value.state.allIds.delete(section.id);
+    projectV2.value.state.allIds.delete(pageItem.id);
   } catch (e) {
-    console.log(`Error deleting Section: ${e}`);
+    console.log(`Error deleting Page Item: ${e}`);
   }
 }

@@ -10,7 +10,7 @@
 
     <v-spacer/>
 
-    <v-btn icon>
+    <v-btn icon @click="$emit('deleteDivider')">
       <v-icon>mdi-delete</v-icon>
       <v-tooltip activator="parent" location="top">
         Delete Divider
@@ -36,4 +36,6 @@
   defineProps<{
     dividerData: Divider
   }>();
+
+  defineEmits(["deleteDivider"]);
 </script>

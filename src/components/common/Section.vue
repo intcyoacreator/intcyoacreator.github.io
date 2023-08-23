@@ -100,7 +100,7 @@
       <v-col>
         <h2
           v-if="sectionData.title != ''"
-          class="text-h2"
+          class="text-h2 mb-5"
         >
           {{ sectionData.title }}
         </h2>

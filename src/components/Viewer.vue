@@ -6,6 +6,12 @@
   <v-container >
     <!-- Pagination buttons -->
     <v-row v-if="projectV2.settings.pagesOn">
+      <!-- <v-col>
+        <v-btn icon>
+          <v-icon>mdi-cog</v-icon>
+        </v-btn>
+      </v-col> -->
+
       <v-col>
         <v-pagination
           :length="projectV2.pages.length"
