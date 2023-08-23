@@ -1,17 +1,11 @@
-// import { storeToRefs } from "pinia";
-// import { useAppStore } from "./store/app";
-
-// const appStore = useAppStore();
-// const { projectV2 } = storeToRefs(appStore);
-
 import type { projectV2 } from "@/types";
 
-const genRanHex = (size: number) => {
+function genRanHex(size: number): string {
   return [...Array(size)]
     .map(() => Math.floor(Math.random() * 16)
     .toString(16))
     .join("");
-};
+}
 
 /**
  * A function that generates an ID for you automatically
@@ -19,7 +13,10 @@ const genRanHex = (size: number) => {
  * automatically be added to the allIds Set
  * @returns the random ID
  */
-export function generateId(project: projectV2, addToSet: boolean = true): string {
+export function generateId(
+  project: projectV2,
+  addToSet: boolean = true
+): string {
   let randomId: string;
   // Continues generating random IDs if they exist
   do {

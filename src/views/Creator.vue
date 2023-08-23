@@ -65,9 +65,12 @@ const defaults = projectV2.value.settings.defaults;
 let currentPage: Component | null = null;
 
 function createPage() {
-  // let pageNumber;
   let newPage = { ...defaultPage };
   newPage.pageName = defaults.pageName;
+  newPage.id = generateId(projectV2.value);
+  // The new page seem to be pre-populated with the
+  // sections of the previously created page.
+  newPage.sections = [];
 
   projectV2.value.pages.push(newPage);
 }
