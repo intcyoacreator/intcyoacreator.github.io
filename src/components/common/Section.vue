@@ -57,8 +57,8 @@
               rows="1"
               clearable
               :model-value="sectionData.title"
-              @update:model-value="(text) =>
-                changeSectionTitle(sectionData, text)"
+              @update:model-value="(title) =>
+                changeSectionTitle(sectionData, title)"
             ></v-textarea>
           </v-col>
 
@@ -74,6 +74,19 @@
               @update:model-value="(text) =>
                 changeSectionText(sectionData, text)"
             ></v-textarea>
+          </v-col>
+
+          <v-col>
+            <v-textarea
+              label="Section ID"
+              auto-grow
+              variant="outlined"
+              rows="1"
+              clearable
+              :model-value="sectionData.id"
+              @update:model-value="(id) =>
+                changeSectionId(sectionData, id)"
+            />
           </v-col>
         </v-row>
       </v-container>
@@ -118,6 +131,10 @@
 
   function changeSectionText(section: Section, newText: string) {
     section.text = newText;
+  }
+
+  function changeSectionId(section: Section, newId: string) {
+    section.id = newId;
   }
 
   defineProps<{
