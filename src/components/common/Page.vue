@@ -27,14 +27,8 @@
   } from "@/types";
   import Section from "./Section.vue";
   import Divider from "./Divider.vue";
-  // import PointsBar from "./PointsBar.vue";
 
   function toggleSectionEditMode(section: SectionType) {
-    // if (section.editModeEnabled === undefined) {
-    //   section.editModeEnabled = false;
-    // } else {
-    //   section.editModeEnabled = !section.editModeEnabled;
-    // }
     section.editModeEnabled === undefined
       ? section.editModeEnabled = false
       : section.editModeEnabled = !section.editModeEnabled;

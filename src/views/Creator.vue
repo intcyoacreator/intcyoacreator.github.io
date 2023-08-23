@@ -83,7 +83,7 @@
   let currentPage: Component | null = null;
 
   function createPage() {
-    let pageNumber;
+    // let pageNumber;
   }
 
   function createSection() {

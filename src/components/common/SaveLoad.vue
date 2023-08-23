@@ -45,7 +45,7 @@
 
           <v-row>
             <v-col>
-              <v-btn block>
+              <v-btn block @click="saveProject">
                 Save Project
               </v-btn>
             </v-col>
@@ -112,23 +112,35 @@
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from '@/store/app';
-  import { storeToRefs } from 'pinia';
-  import { Ref, ref } from 'vue';
+  import { useAppStore } from "@/store/app";
+  import { storeToRefs } from "pinia";
+  import { Ref, ref } from "vue";
+  import { saveAs } from "file-saver";
 
   const appStore = useAppStore();
   const {
     // loadedProjectVersion,
     showSaveLoadDialog,
-    // projectV1
+    // projectV1,
+    projectV2,
   } = storeToRefs(appStore);
 
   // const projectVersionOptions = ["Project v1", "Project v1.1", "Project v2"];
   // const selectProjectVersion = ref("Project v1");
   const projectFile: Ref<Array<File> | undefined> = ref();
 
+  function saveProject() {
+    let project = JSON.stringify(projectV2.value);
+    let projectFile = new File(
+      [project],
+      "project.json",
+      { type: "application/json;charset=utf-8" }
+    );
+    saveAs(projectFile);
+  }
+
   function parseFile(files: Array<File>) {
-    console.log(`parseFile called!\nfile: ${files}`);
+    // console.log(`parseFile called!\nfile: ${files}`);
 
     if (files === undefined) {
       console.log("Error receiving file: undefined");
@@ -155,7 +167,8 @@
 
               // Uncomment the below when necessary
               // projectV1.value = parsedProject;
-              return;
+              projectV2.value = parsedProject;
+              break;
             }
             default:
               console.log("File is of type null, ArrayBuffer, or other");

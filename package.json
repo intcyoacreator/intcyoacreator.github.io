@@ -2,7 +2,7 @@
   "name": "intcyoacreator2",
   "version": "0.1.0",
   "private": true,
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -13,6 +13,7 @@
     "@mdi/font": "7.0.96",
     "@tauri-apps/api": "^1.4.0",
     "core-js": "^3.29.0",
+    "file-saver": "^2.0.5",
     "json5": "^2.2.3",
     "pinia": "^2.0.0",
     "roboto-fontface": "*",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@babel/types": "^7.21.4",
     "@tauri-apps/cli": "^1.4.0",
+    "@types/file-saver": "^2.0.5",
     "@types/node": "^18.15.0",
     "@types/showdown": "^2.0.1",
     "@types/webfontloader": "^1.6.35",
