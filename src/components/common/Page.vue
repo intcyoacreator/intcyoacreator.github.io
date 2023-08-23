@@ -6,6 +6,7 @@
         <Section
           :section-data="item"
           @toggle-edit-mode="toggleSectionEditMode(item)"
+          @delete-row="deleteSection(item)"
         />
       </v-row>
 
@@ -27,6 +28,7 @@ import {
 } from "@/types";
 import Section from "./Section.vue";
 import Divider from "./Divider.vue";
+import { deleteSection } from "@/functions";
 
 function toggleSectionEditMode(section: SectionType) {
   section.editModeEnabled === undefined
@@ -34,9 +36,11 @@ function toggleSectionEditMode(section: SectionType) {
     : section.editModeEnabled = !section.editModeEnabled;
 }
 
-function deleteDivider(item: DividerType) {
 
-}
+
+// function deleteDivider(item: DividerType) {
+
+// }
 
 defineProps<{
   pageData: Page,
