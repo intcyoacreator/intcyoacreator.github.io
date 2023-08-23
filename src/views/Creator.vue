@@ -19,10 +19,12 @@
     </v-list>
   </v-navigation-drawer>
 
+  <points-bar></points-bar>
+
   <v-main>
     <viewer></viewer>
-    <points-bar></points-bar>
   </v-main>
+
 </template>
 
 <script lang="ts" setup>

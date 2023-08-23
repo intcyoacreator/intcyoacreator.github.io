@@ -1,8 +1,27 @@
 <template>
-  <!-- Edit mode -->
-  <v-container v-if="sectionData.editModeEnabled">
+  <!-- The settings toolbar at the top -->
+  <v-toolbar v-if="creatorMode === 'create'" border>
+    <v-toolbar-title>{{ sectionData.title }}</v-toolbar-title>
 
-  </v-container>
+    <v-spacer></v-spacer>
+
+    <v-btn icon>
+      <v-icon>mdi-wrench</v-icon>
+    </v-btn>
+
+    <v-btn icon>
+      <v-icon>mdi-delete</v-icon>
+    </v-btn>
+
+    <v-btn icon>
+      <v-icon>mdi-content-copy</v-icon>
+    </v-btn>
+  </v-toolbar>
+
+  <!-- If the "Edit Section" has been pressed -->
+  <div v-if="sectionData.editModeEnabled">
+
+  </div>
 
   <!-- Preview mode -->
   <v-container v-else>
@@ -27,7 +46,12 @@
 </template>
 
 <script setup lang="ts">
+  import { useAppStore } from '@/store/app';
   import type { Section } from '@/types';
+  import { storeToRefs } from 'pinia';
+
+  const appStore = useAppStore();
+  const { creatorMode } = storeToRefs(appStore)
 
   defineProps<{
     sectionData: Section

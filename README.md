@@ -352,6 +352,11 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Ripple for choices https://vuetifyjs.com/en/directives/ripple/
     - [ ] A "Change Ripple Colour" option
 - [ ] Ability to SET a Point to a certain value, rather than simply mutating it
+- [ ] Settings option to auto-close toolbar. This is stored in LocalStorage or
+  Cookies, never into a project
+    * Maybe separate the settings menu into "Project Settings" and "Site
+      Settings"
+
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
