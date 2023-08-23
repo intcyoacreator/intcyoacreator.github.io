@@ -7,14 +7,19 @@
 
     <v-btn icon>
       <v-icon>mdi-wrench</v-icon>
+      <v-tooltip activator="parent" location="top">Edit Section</v-tooltip>
     </v-btn>
 
     <v-btn icon>
       <v-icon>mdi-delete</v-icon>
+      <v-tooltip activator="parent" location="top">Delete Section</v-tooltip>
     </v-btn>
 
     <v-btn icon>
       <v-icon>mdi-content-copy</v-icon>
+      <v-tooltip activator="parent" location="top">
+        Duplicate Section
+      </v-tooltip>
     </v-btn>
   </v-toolbar>
 

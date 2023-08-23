@@ -414,8 +414,8 @@ Will have to reconsider these later.
 - [ ] About/Information Page on Linux AND Mobile trails off the edge with large
   URLs
 - [ ] Fix About page not working with lists properly – overflow?
-- [ ] Fix Project Version selector not updating the store
-
+<!-- - [ ] Fix Project Version selector not updating the store -->
+- [ ] Fix Viewer centring instead of beginning from the top
 
 
 # Ideas
