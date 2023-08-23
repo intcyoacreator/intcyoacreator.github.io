@@ -13,6 +13,7 @@ export const emptyProjectV2: projectV2 = {
     pagesOn: false,
 
     defaults: {
+      pageName: "Page",
       sectionTitle: "Section",
       sectionText: `This is a section, and inside of it you can place
 choices.
@@ -49,6 +50,7 @@ export const sampleProjectV2: projectV2 = {
     // Whether pagination is turned on
     pagesOn: false,
     defaults: {
+      pageName: "Page",
       sectionTitle: "Section",
       sectionText: "This is a section, and inside of it you can place choices.\
   \

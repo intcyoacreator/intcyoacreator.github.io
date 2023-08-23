@@ -75,6 +75,7 @@ type Settings = {
 
   /** The defaults of the program */
   defaults: {
+    pageName: string,
     sectionTitle: string,
     sectionText: string,
   }

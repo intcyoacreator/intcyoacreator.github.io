@@ -416,6 +416,8 @@ Will have to reconsider these later.
   (might implement this using recursion)
 - [ ] A section in the Creator where you can check for the contrast of your
   styling, and it lists all occurrences of bad contrast
+- [ ] The Points Bar is glitching in the Creator, as the main content doesn't
+  realize that it's there
 
 
 ## Issues / Errors
