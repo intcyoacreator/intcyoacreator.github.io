@@ -356,6 +356,11 @@ A successor to MeanDelay's Interactive CYOA Creator.
   Cookies, never into a project
     * Maybe separate the settings menu into "Project Settings" and "Site
       Settings"
+- [ ] Date picker (it's in Vuetify's labs, so it may not be stable)
+- [ ] Data tables (vuetify labs)
+- [ ] Option to overflow the Point Bar (thus making it bigger; not great for
+  MASSIVE amounts of Point Types) or having a separate button that appears
+  that, when pressed, will open up a popup displaying the other Point Types
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/

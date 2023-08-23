@@ -20,12 +20,15 @@
       </v-row>
     </v-col>
   </v-container>
+
+  <PointsBar/>
 </template>
 
 <script setup lang="ts">
   import { Page, Section as SectionType } from "@/types";
   import Section from "./Section.vue";
   import Divider from "./Divider.vue";
+  import PointsBar from "./PointsBar.vue";
 
   function toggleSectionEditMode(section: SectionType) {
     if (section.editModeEnabled === undefined) {

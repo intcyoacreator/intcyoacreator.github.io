@@ -19,10 +19,12 @@
     </v-list>
   </v-navigation-drawer>
 
-  <v-main>
-    <viewer align="start"></viewer>
+  <!-- <points-bar></points-bar> -->
 
-    <v-divider></v-divider>
+  <v-main>
+    <Viewer align="start"></Viewer>
+
+    <v-spacer></v-spacer>
 
     <!-- Button to add more stuff -->
     <v-div>
@@ -31,13 +33,12 @@
       </v-btn>
     </v-div>
 
-    <points-bar align="stretch"></points-bar>
   </v-main>
 </template>
 
 <script lang="ts" setup>
   import Viewer from '@/components/Viewer.vue';
-  import PointsBar from '@/components/common/PointsBar.vue';
+  // import PointsBar from '@/components/common/PointsBar.vue';
   import { NavigationItems } from '@/types';
 
   const navigationItems: NavigationItems = [
