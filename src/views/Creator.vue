@@ -30,6 +30,12 @@
         @click="currentPage = item"
       >
       </v-list-item>
+
+      <v-list-item
+        title="Save/Load Project"
+        prepend-icon="mdi-content-save-outline"
+        @click="showSaveLoadDialog = !showSaveLoadDialog"
+      />
       <!-- above
         @click="currentPage = item" -->
     </v-list>
@@ -37,14 +43,15 @@
 
   <!-- <points-bar></points-bar> -->
 
-  <component :is="currentPage" keep-alive></component>
+  <component :is="currentPage" keep-alive/>
 
   <PointsBar/>
+  <SaveLoad/>
 
   <v-main>
-    <Viewer align="start"></Viewer>
+    <Viewer align="start"/>
 
-    <v-spacer></v-spacer>
+    <v-spacer/>
 
     <!-- Button to add more stuff -->
     <!-- <div>
@@ -71,7 +78,7 @@
   import type { Component } from 'vue';
 
   const appStore = useAppStore();
-  const { projectV2 } = storeToRefs(appStore);
+  const { projectV2, showSaveLoadDialog } = storeToRefs(appStore);
 
   let currentPage: Component | null = null;
 
@@ -103,11 +110,12 @@
     //   icon: "mdi-format-list-bulleted",
     //   component: Changelog
     // },
-    {
-      name: "Save/Load Project",
-      icon: "mdi-content-save-outline",
-      component: SaveLoad,
-    }
+
+    // {
+    //   name: "Save/Load Project",
+    //   icon: "mdi-content-save-outline",
+    //   component: SaveLoad,
+    // }
   ];
 
   defineEmits(["resetCurrentComponent"]);
