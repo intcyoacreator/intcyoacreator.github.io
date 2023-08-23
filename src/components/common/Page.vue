@@ -28,9 +28,6 @@
   import Divider from "./Divider.vue";
 
   function toggleSectionEditMode(section: SectionType) {
-    console.log("toggleSectionEditMode called!")
-    console.log(`${section.editModeEnabled}\n---`)
-    // section.editModeEnabled ? section.editModeEnabled = !section.editModeEnabled : true;
     if (section.editModeEnabled === undefined) {
       section.editModeEnabled = false;
     } else {

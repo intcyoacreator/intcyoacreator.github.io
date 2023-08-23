@@ -10,7 +10,7 @@
         <v-pagination
           :length="projectV2.pages.length"
           :model-value="projectV2.state.currentPage"
-          @update:model-value="(page) => {projectV2.state.currentPage = page}"
+          @update:model-value="(page) => updateCurrentPage(page)"
         >
         </v-pagination>
       </v-col>
@@ -33,6 +33,10 @@
 
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
+
+  function updateCurrentPage(pageNumber: number) {
+    projectV2.value.state.currentPage = pageNumber;
+  }
 
   onMounted(() => {
     // Maybe turn this on automatically if the length of pages is more than 1?
