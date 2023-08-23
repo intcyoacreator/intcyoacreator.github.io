@@ -11,6 +11,16 @@ export const emptyProjectV2: projectV2 = {
 
     // Whether pagination is turned on
     pagesOn: false,
+
+    defaults: {
+      sectionTitle: "Section",
+      sectionText: `This is a section, and inside of it you can place
+choices.
+
+On both Sections and Choices, Requirements can be placed, which will block a
+Section from being shown or make the player unable to select a choice,
+respectively.`,
+    }
   },
   state: {
     currentPage: 1,
@@ -38,6 +48,14 @@ export const sampleProjectV2: projectV2 = {
     scope: "global",
     // Whether pagination is turned on
     pagesOn: false,
+    defaults: {
+      sectionTitle: "Section",
+      sectionText: "This is a section, and inside of it you can place choices.\
+  \
+  On both Sections and Choices, Requirements can be placed, which will block a\
+  Section from being shown or make the player unable to select a choice,\
+  respectively.",
+    },
   },
   state: {
     currentPage: 1,

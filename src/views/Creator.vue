@@ -58,17 +58,18 @@
   const { projectV2 } = storeToRefs(appStore);
 
   function createPage() {
-
+    let pageNumber;
   }
 
   function createSection() {
+    // For readability
     let currentPage = projectV2.value.state.currentPage - 1;
-    let newSection = { ...defaultSection };
-    // if defaultTitle != "" defaultSection.title = defaultTitle;
-    // if defaultText != "" defaultSection.text = defaultText;
-    newSection.id = generateId(projectV2.value);
+    let defaults = projectV2.value.settings.defaults;
 
-    console.log(newSection);
+    let newSection = { ...defaultSection };
+    newSection.title = defaults.sectionTitle;
+    newSection.text = defaults.sectionText;
+    newSection.id = generateId(projectV2.value);
 
     projectV2.value.pages[currentPage].sections.push(newSection);
   }

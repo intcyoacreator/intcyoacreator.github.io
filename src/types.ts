@@ -54,6 +54,7 @@ export type projectV2 = {
     allIds: Set<Id>,
   },
 
+  /** The project's styling */
   styling: Styling,
 
   /** The main content of the CYOA. */
@@ -67,6 +68,12 @@ type Settings = {
 
   /** Whether pagination is turned on or not. */
   pagesOn: boolean,
+
+  /** The defaults of the program */
+  defaults: {
+    sectionTitle: string,
+    sectionText: string,
+  }
 }
 
 /** The styling. */
