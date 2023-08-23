@@ -1,4 +1,4 @@
-import type { Divider, PageItem, Section, projectV2 } from "@/types";
+import type { PageItem, projectV2 } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
