@@ -1,9 +1,4 @@
 <template>
-  <!-- <p>Page name: {{ pageData.pageName }}</p>
-
-  <p>Page ID: {{ pageData.id }}</p>
-
-  <p>Sections: {{ pageData.sections }}</p> -->
   <v-container>
     <v-col v-for="(item, index) in pageData.sections" :key="index">
       <!-- Section -->
@@ -21,7 +16,7 @@
     </v-col>
   </v-container>
 
-  <PointsBar/>
+  <!-- <PointsBar/> -->
 </template>
 
 <script setup lang="ts">
@@ -32,7 +27,7 @@
   } from "@/types";
   import Section from "./Section.vue";
   import Divider from "./Divider.vue";
-  import PointsBar from "./PointsBar.vue";
+  // import PointsBar from "./PointsBar.vue";
 
   function toggleSectionEditMode(section: SectionType) {
     // if (section.editModeEnabled === undefined) {

@@ -9,7 +9,12 @@
 
       <v-divider/>
 
-      <v-list-item title="Create New Page"/>
+      <v-list-item
+        title="Create New Page"
+        prepend-icon="mdi-plus"
+        @click="createPage"
+      />
+
       <v-list-item
         title="Create New Section"
         prepend-icon="mdi-plus"
@@ -22,6 +27,7 @@
         v-for="(item, index) in navigationItems" :key="index"
         :title="item.name"
         :prepend-icon="item.icon"
+        @click="currentPage = item"
       >
       </v-list-item>
       <!-- above
@@ -31,31 +37,43 @@
 
   <!-- <points-bar></points-bar> -->
 
+  <component :is="currentPage" keep-alive></component>
+
+  <PointsBar/>
+
   <v-main>
     <Viewer align="start"></Viewer>
 
     <v-spacer></v-spacer>
 
     <!-- Button to add more stuff -->
-    <div>
+    <!-- <div>
       <v-btn icon>
         <v-icon>mdi-plus</v-icon>
       </v-btn>
-    </div>
+    </div> -->
 
   </v-main>
 </template>
 
 <script lang="ts" setup>
   import Viewer from '@/components/Viewer.vue';
+  import SaveLoad from '@/components/common/SaveLoad.vue';
+  import PointsBar from '@/components/common/PointsBar.vue';
+
   import { useAppStore } from '@/store/app';
-  import { NavigationItems } from '@/types';
   import { storeToRefs } from 'pinia';
+
+  import { NavigationItems } from '@/types';
   import { defaultSection } from "@/constants";
   import { generateId } from "@/functions";
 
+  import type { Component } from 'vue';
+
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
+
+  let currentPage: Component | null = null;
 
   function createPage() {
     let pageNumber;
@@ -85,6 +103,11 @@
     //   icon: "mdi-format-list-bulleted",
     //   component: Changelog
     // },
+    {
+      name: "Save/Load Project",
+      icon: "mdi-content-save-outline",
+      component: SaveLoad,
+    }
   ];
 
   defineEmits(["resetCurrentComponent"]);

@@ -2,7 +2,7 @@
   <!-- <v-footer border>
     Footer
   </v-footer> -->
-  <v-bottom-navigation :order="1">
+  <v-bottom-navigation order="1">
     Points Bar
   </v-bottom-navigation>
 </template>
