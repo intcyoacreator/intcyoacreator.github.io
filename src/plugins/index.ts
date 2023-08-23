@@ -15,7 +15,7 @@ import { VueShowdownPlugin } from "vue-showdown";
 import type { App } from "vue";
 
 export function registerPlugins (app: App) {
-  loadFonts()
+  loadFonts();
   app
     .use(vuetify)
     .use(router)
@@ -27,5 +27,5 @@ export function registerPlugins (app: App) {
       // options: {
       //   emoji: false,
       // }
-    })
+    });
 }

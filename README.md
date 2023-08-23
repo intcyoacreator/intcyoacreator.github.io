@@ -19,7 +19,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
 
 - [ ] Backwards compatible with IntCyoaCreator 1's `project.json` files
 - [ ] Viewer
-    - [ ] View projects from file
+    - [x] View projects from file
     - [ ] View projects from URL
     - [ ] View projects from cloud storage
         - [ ] Google Drive
@@ -77,7 +77,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
     * Like Choices within Choices
     * Perhaps limit this to prevent arbitrary nesting
 - [ ] Custom Pop-ups / Alerts
-- [ ] Inline Markdown formatting
+- [x] Inline Markdown formatting
     - [ ] Option in Settings to turn use Markdown or HTML
         * Markdown on by default (with a rich text editor)
         * Can turn into HTML

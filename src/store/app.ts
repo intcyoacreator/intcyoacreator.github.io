@@ -1,11 +1,11 @@
 // Utilities
-import { defineStore } from "pinia"
+import { defineStore } from "pinia";
 
 // Imports
 // import { defaultProjectV1 } from "@/constants"
 // import { defaultProjectV2, sampleProjectV2 } from "@/constants"
-import { sampleProjectV2 } from "@/constants"
-import { ApplicationState } from "@/types"
+import { sampleProjectV2 } from "@/constants";
+import { ApplicationState } from "@/types";
 
 export const useAppStore = defineStore("app", {
   state: (): ApplicationState => {
@@ -18,6 +18,6 @@ export const useAppStore = defineStore("app", {
       showSaveLoadDialog: false,
       creatorMode: "none",
       projectV2: sampleProjectV2
-    }
+    };
   },
-})
+});

@@ -24,10 +24,14 @@ export type ApplicationState = {
 
   /**
    * Creator mode:
-   * none – In the menu
-   * create – Creating the CYOA
-   * preview – The viewer inside of the ICC2, still has options
-   * view – What the exported Viewer will use, there will be no other
+   *
+   * `none` – In the menu
+   *
+   * `create` – Creating the CYOA
+   *
+   * `preview` – The viewer inside of the ICC2, still has options
+   *
+   * `view` – What the exported Viewer will use, there will be no other
    *        visual elements than the ones needed
    */
   creatorMode: CreatorMode,

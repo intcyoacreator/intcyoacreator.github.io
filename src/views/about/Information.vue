@@ -95,7 +95,7 @@
 </template>
 
 <script setup lang="ts">
-  import Sheet from '@/components/Sheet.vue';
+  import Sheet from "@/components/Sheet.vue";
 
   type Inspiration = {
     name: string,

@@ -11,7 +11,7 @@ const genRanHex = (size: number) => {
     .map(() => Math.floor(Math.random() * 16)
     .toString(16))
     .join("");
-}
+};
 
 /**
  * A function that generates an ID for you automatically

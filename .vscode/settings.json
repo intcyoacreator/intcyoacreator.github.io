@@ -50,4 +50,12 @@
         "https://json.schemastore.org/github-workflow.json": "file:///home/user/Documents/Coding/intcyoacreator2/.github/workflows/deploy.yml"
     },
     "vscord.enabled": false,
+    "editor.formatOnSave": true,
+    // Tell Eslint to run on save
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+    },
+    "[javascript, vue]": {
+        "editor.formatOnSave": false,
+    },
 }

@@ -26,9 +26,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from '@/store/app';
-  import { storeToRefs } from 'pinia';
-  import { onMounted } from 'vue';
+  import { useAppStore } from "@/store/app";
+  import { storeToRefs } from "pinia";
+  import { onMounted } from "vue";
   import Page from "@/components/common/Page.vue";
 
   const appStore = useAppStore();

@@ -64,18 +64,18 @@
 </template>
 
 <script lang="ts" setup>
-  import Viewer from '@/components/Viewer.vue';
-  import SaveLoad from '@/components/common/SaveLoad.vue';
-  import PointsBar from '@/components/common/PointsBar.vue';
+  import Viewer from "@/components/Viewer.vue";
+  import SaveLoad from "@/components/common/SaveLoad.vue";
+  import PointsBar from "@/components/common/PointsBar.vue";
 
-  import { useAppStore } from '@/store/app';
-  import { storeToRefs } from 'pinia';
+  import { useAppStore } from "@/store/app";
+  import { storeToRefs } from "pinia";
 
-  import { NavigationItems } from '@/types';
-  import { defaultSection } from "@/constants";
+  import { NavigationItems } from "@/types";
+  import { defaultSection, defaultPage } from "@/constants";
   import { generateId } from "@/functions";
 
-  import type { Component } from 'vue';
+  import type { Component } from "vue";
 
   const appStore = useAppStore();
   const { projectV2, showSaveLoadDialog } = storeToRefs(appStore);
@@ -84,6 +84,7 @@
 
   function createPage() {
     // let pageNumber;
+    let newPage = { ...defaultPage };
   }
 
   function createSection() {

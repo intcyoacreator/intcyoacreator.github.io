@@ -1,0 +1,74 @@
+{
+  "version": 2,
+  "settings": {
+    "scope": "global",
+    "pagesOn": true,
+    "defaults": {
+      "sectionTitle": "Section",
+      "sectionText": "This is a section, and inside of it you can place choices.    On both Sections and Choices, Requirements can be placed, which will block a  Section from being shown or make the player unable to select a choice,  respectively."
+    }
+  },
+  "state": {
+    "currentPage": 1,
+    "activatedChoices": [],
+    "allIds": {}
+  },
+  "styling": {
+    "scope": "global"
+  },
+  "pages": [{
+    "id": "main",
+    "pageName": "CYOA",
+    "sections": [{
+      "type": "section",
+      "id": "row1",
+      "title": "I love oranges",
+      "text": "Tomatoes too y'know\n\n# First things first, I'm the realest\nCut your head on the *chillest*.\n\n[click here](https://google.com)! **not a scam!!!!**\n\n",
+      "editModeEnabled": false,
+      "choices": []
+    }, {
+      "type": "divider",
+      "id": "9f7s",
+      "editModeEnabled": false
+    }, {
+      "type": "section",
+      "id": "row3",
+      "title": "Third section",
+      "text": "This is my third section, for testing purposes lmao.",
+      "editModeEnabled": false,
+      "choices": []
+    }, {
+      "type": "section",
+      "id": "840d",
+      "title": "Section",
+      "text": "This is a section, and inside of it you can place choices.    On both Sections and Choices, Requirements can be placed, which will block a  Section from being shown or make the player unable to select a choice,  respectively.",
+      "editModeEnabled": false,
+      "choices": []
+    }, {
+      "type": "section",
+      "id": "1436",
+      "title": "Section",
+      "text": "This is a section, and inside of it you can place choices.    On both Sections and Choices, Requirements can be placed, which will block a  Section from being shown or make the player unable to select a choice,  respectively.",
+      "editModeEnabled": false,
+      "choices": []
+    }, {
+      "type": "section",
+      "id": "8a37",
+      "title": "Section",
+      "text": "This is a section, and inside of it you can place choices.    On both Sections and Choices, Requirements can be placed, which will block a  Section from being shown or make the player unable to select a choice,  respectively.",
+      "editModeEnabled": false,
+      "choices": []
+    }]
+  }, {
+    "id": "second",
+    "pageName": "Second page",
+    "sections": [{
+      "type": "section",
+      "id": "row2",
+      "title": "Second row",
+      "text": "This is my second row. Teehee!",
+      "editModeEnabled": false,
+      "choices": []
+    }]
+  }]
+}

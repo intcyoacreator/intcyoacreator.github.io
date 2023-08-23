@@ -173,7 +173,7 @@
             default:
               console.log("File is of type null, ArrayBuffer, or other");
           }
-        }
+        };
       }
     } catch(e) {
       console.log(`JSON Parse error: ${e}`);

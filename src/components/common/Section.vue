@@ -118,9 +118,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from '@/store/app';
-  import type { Section } from '@/types';
-  import { storeToRefs } from 'pinia';
+  import { useAppStore } from "@/store/app";
+  import type { Section } from "@/types";
+  import { storeToRefs } from "pinia";
 
   const appStore = useAppStore();
   const { creatorMode } = storeToRefs(appStore);

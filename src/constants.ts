@@ -1,4 +1,4 @@
-import { Section, projectV2 } from "@/types";
+import { Page, Section, projectV2 } from "@/types";
 
 /**
  * The default project file for a Project V2 file
@@ -16,7 +16,7 @@ export const emptyProjectV2: projectV2 = {
       sectionTitle: "Section",
       sectionText: `This is a section, and inside of it you can place
 choices.
-
+\n\n
 On both Sections and Choices, Requirements can be placed, which will block a
 Section from being shown or make the player unable to select a choice,
 respectively.`,
@@ -39,7 +39,7 @@ respectively.`,
       sections: [],
     },
   ],
-}
+};
 
 export const sampleProjectV2: projectV2 = {
   // Project Version
@@ -113,7 +113,7 @@ export const sampleProjectV2: projectV2 = {
       ],
     }
   ],
-}
+};
 
 /** The default section */
 export const defaultSection: Section = {
@@ -128,7 +128,14 @@ export const defaultSection: Section = {
   text: "",
   editModeEnabled: false,
   choices: [],
-}
+};
+
+/** The default page */
+export const defaultPage: Page = {
+  id: "",
+  pageName: "",
+  sections: [],
+};
 
 /**
  * The default project file for a Project V1 file
@@ -318,4 +325,4 @@ export const defaultProjectV1 = {
     "rowImgBorderWidth": 2,
     "backPackWidth": 1200
   }
-}
+};

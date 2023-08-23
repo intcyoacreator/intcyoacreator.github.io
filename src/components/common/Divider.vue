@@ -12,6 +12,9 @@
 
     <v-btn icon>
       <v-icon>mdi-delete</v-icon>
+      <v-tooltip activator="parent" location="top">
+        Delete Divider
+      </v-tooltip>
     </v-btn>
   </v-toolbar>
 
@@ -23,9 +26,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from '@/store/app';
-  import { Divider } from '@/types';
-  import { storeToRefs } from 'pinia';
+  import { useAppStore } from "@/store/app";
+  import { Divider } from "@/types";
+  import { storeToRefs } from "pinia";
 
   const appStore = useAppStore();
   const { creatorMode } = storeToRefs(appStore);
