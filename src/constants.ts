@@ -1,4 +1,4 @@
-import { projectV2 } from "@/types";
+import { Section, projectV2 } from "@/types";
 
 /**
  * The default project file for a Project V2 file
@@ -16,6 +16,7 @@ export const emptyProjectV2: projectV2 = {
     currentPage: 1,
     // All activated choices
     activatedChoices: [],
+    allIds: new Set(),
   },
   styling: {
     scope: "global",
@@ -42,6 +43,7 @@ export const sampleProjectV2: projectV2 = {
     currentPage: 1,
     // All activated choices
     activatedChoices: [],
+    allIds: new Set(),
   },
   styling: {
     scope: "global",
@@ -62,6 +64,8 @@ export const sampleProjectV2: projectV2 = {
         },
         {
           type: "divider",
+          id: "9f7s",
+          editModeEnabled: false,
         },
         {
           type: "section",
@@ -91,6 +95,21 @@ export const sampleProjectV2: projectV2 = {
       ],
     }
   ],
+}
+
+/** The default section */
+export const defaultSection: Section = {
+  type: "section",
+  /** To be changed after the fact */
+  id: "",
+  /**
+   * To be changed after the fact, and according to the defaults set by the
+   * user
+   * */
+  title: "",
+  text: "",
+  editModeEnabled: false,
+  choices: [],
 }
 
 /**

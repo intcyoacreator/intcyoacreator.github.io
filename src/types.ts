@@ -51,6 +51,7 @@ export type projectV2 = {
   state: {
     currentPage: number,
     activatedChoices: Array<Id>,
+    allIds: Set<Id>,
   },
 
   styling: Styling,
@@ -98,6 +99,8 @@ export type PageItem =
 /** A divider */
 export type Divider = {
   type: "divider",
+  id: Id,
+  editModeEnabled: boolean,
 };
 
 /** A section in the CYOA. Equivalent to a Row in the first Creator. */

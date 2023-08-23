@@ -1,6 +1,11 @@
 <template>
   <!-- The settings toolbar at the top -->
   <v-toolbar v-if="creatorMode === 'create'" border>
+    <!-- That little icon that shows before the title -->
+    <template v-slot:prepend>
+      <v-icon>mdi-table</v-icon>
+    </template>
+
     <v-toolbar-title>{{ sectionData.title }}</v-toolbar-title>
 
     <v-spacer></v-spacer>

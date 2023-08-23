@@ -391,6 +391,9 @@ A successor to MeanDelay's Interactive CYOA Creator.
       presumably–with the length, and if the array is over that number, then
       increment the `idLength` by one)
 - [ ] Change **Changelog** from loading from JSON5 to rendering markdown.
+- [ ] Add an edit section for dividers to be able to change their IDs
+- [ ] Allow adding Sections / Dividers / other stuff to the START of the page
+  using `unshift()`.
 
 
 ## Possible TODOs

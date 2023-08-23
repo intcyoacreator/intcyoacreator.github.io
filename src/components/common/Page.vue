@@ -25,17 +25,28 @@
 </template>
 
 <script setup lang="ts">
-  import { Page, Section as SectionType } from "@/types";
+  import {
+    Page,
+    Divider as DividerType,
+    Section as SectionType
+  } from "@/types";
   import Section from "./Section.vue";
   import Divider from "./Divider.vue";
   import PointsBar from "./PointsBar.vue";
 
   function toggleSectionEditMode(section: SectionType) {
-    if (section.editModeEnabled === undefined) {
-      section.editModeEnabled = false;
-    } else {
-      section.editModeEnabled = !section.editModeEnabled;
-    }
+    // if (section.editModeEnabled === undefined) {
+    //   section.editModeEnabled = false;
+    // } else {
+    //   section.editModeEnabled = !section.editModeEnabled;
+    // }
+    section.editModeEnabled === undefined
+      ? section.editModeEnabled = false
+      : section.editModeEnabled = !section.editModeEnabled;
+  }
+
+  function deleteDivider(item: DividerType) {
+
   }
 
   defineProps<{
