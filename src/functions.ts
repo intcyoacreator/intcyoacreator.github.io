@@ -135,6 +135,42 @@ export function deletePageItem(pageItem: PageItem) {
   }
 }
 
+/**
+ * Duplicates any page item; that is:
+ *
+ * * Sections
+ * * Dividers
+ * @param pageItem The Page Item
+ * @param deepCopy Whether or not the copy will be shared via reference or
+ * copied completely.
+ */
+export function duplicatePageItem(
+  pageItem: PageItem,
+  deepCopy: boolean = true,
+) {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  const currentPage = projectV2.value.state.currentPage - 1;
+  const sections = projectV2.value.pages[currentPage].sections;
+  const index = sections.findIndex((i) => {
+    return i.id === pageItem.id;
+  }) + 2; // This +2 ensures that the duplication happens after
+
+  // Duplicate it
+  try {
+    deepCopy
+      ? sections.splice(index, 0, {...pageItem})
+      : sections.splice(index, 0, pageItem);
+  } catch (e) {
+    console.log(`Error while duplicating PageItem: ${e}`);
+  }
+}
+
+/**
+ * Function to quickly change which page is being viewed
+ * @param pageNumber The page number you want to change to. Starts at 1.
+ */
 export function changePageTo(pageNumber: number) {
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);

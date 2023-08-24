@@ -6,7 +6,8 @@
         <Section
           :section-data="item"
           @toggle-edit-mode="toggleSectionEditMode(item)"
-          @delete-row="deletePageItem(item)"
+          @delete-section="deletePageItem(item)"
+          @duplicate-section="duplicatePageItem(item)"
         />
       </v-row>
 
@@ -30,7 +31,7 @@ import {
 } from "@/types";
 import Section from "./Section.vue";
 import Divider from "./Divider.vue";
-import { deletePageItem } from "@/functions";
+import { deletePageItem, duplicatePageItem } from "@/functions";
 
 function toggleSectionEditMode(section: SectionType) {
   section.editModeEnabled === undefined

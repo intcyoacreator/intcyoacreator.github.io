@@ -24,12 +24,12 @@
       <v-tooltip activator="parent" location="top">Edit Section</v-tooltip>
     </v-btn>
 
-    <v-btn icon @click="$emit('deleteRow')">
+    <v-btn icon @click="$emit('deleteSection')">
       <v-icon>mdi-delete</v-icon>
       <v-tooltip activator="parent" location="top">Delete Section</v-tooltip>
     </v-btn>
 
-    <v-btn icon>
+    <v-btn icon @click="$emit('duplicateSection')">
       <v-icon>mdi-content-copy</v-icon>
       <v-tooltip activator="parent" location="top">
         Duplicate Section
@@ -128,8 +128,9 @@
 
 <script setup lang="ts">
   import { useAppStore } from "@/store/app";
-  import type { Section } from "@/types";
+  import type { PageItem, Section } from "@/types";
   import { storeToRefs } from "pinia";
+  import { duplicatePageItem } from "@/functions";
 
   const appStore = useAppStore();
   const { creatorMode } = storeToRefs(appStore);
@@ -163,7 +164,7 @@
     sectionData: Section,
   }>();
 
-  defineEmits(["toggleEditMode", "deleteRow"]);
+  defineEmits(["toggleEditMode", "deleteSection", "duplicateSection"]);
 </script>
 
 <style scoped>

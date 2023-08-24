@@ -367,6 +367,14 @@ A successor to MeanDelay's Interactive CYOA Creator.
   the Viewer.
     - [ ] Allow pages to have requirements that when not met, will hide the
       page from view automatically
+- [ ] Mobile-support
+    - [ ] At least enough support for the view creatorMode, so people can do
+      CYOAs from their phone
+- [ ] Read-only metadata in the view: the name of the CYOA's project,
+  description, author(s), contributors, links, etc
+    * Would display at the top
+    * Opt-in probably
+- [ ] 
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
@@ -406,7 +414,11 @@ A successor to MeanDelay's Interactive CYOA Creator.
   Pages next to their names, and there are buttons to the right that allow you
   to jump to them, so CYOAs with a massive amount of Pages can jump quickly.
   This can be shown in the viewer too.
+    - [ ] Show delete buttons too
+    - [ ] Allow reordering pages in the pages list
 - [ ] Make any and all deletes show a confirmation Dialog first
+- [ ] Change overflow of title text in `App.vue`
+- [ ] Try to put all the pagination stuff inside of a button group
 
 
 ## Possible TODOs
