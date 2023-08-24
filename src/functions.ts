@@ -180,12 +180,26 @@ export function duplicatePageItem(
   const sections = projectV2.value.pages[currentPage].sections;
   const index = sections.findIndex((i) => {
     return i.id === pageItem.id;
-  }) + 2; // This +2 ensures that the duplication happens after
+  }) + 1; // This one ensures that the duplicated objects are made one ahead
+
+  // index += (() => {
+  //   switch (pageItem.type) {
+  //     case "section":
+  //       return 2; // This +2 ensures that the duplication happens after
+  //     case "divider":
+  //       return 1;
+  //     default:
+  //       return 1;
+  //   }
+  // })();
 
   // Duplicate it
   try {
     deepCopy
-      ? sections.splice(index, 0, {...pageItem})
+      ? sections.splice(index, 0, {
+        ...pageItem,
+        id: generateId(projectV2.value) // Overwrite the ID with a new one
+      })
       : sections.splice(index, 0, pageItem);
   } catch (e) {
     console.log(`Error while duplicating PageItem: ${e}`);
