@@ -38,7 +38,7 @@
   </v-toolbar>
 
   <!-- If the "Edit Section" has been pressed; Edit mode -->
-  <div v-if="sectionData.editModeEnabled">
+  <div v-if="sectionData.editModeEnabled" class="d-flex flex-grow-1">
     <v-card class="my-4 mx-2">
       <v-toolbar border density="compact">
         <v-spacer></v-spacer>

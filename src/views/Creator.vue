@@ -7,13 +7,7 @@
         @click="$emit('resetCurrentComponent')"
       />
 
-      <v-divider />
-
-      <!-- <v-list-item
-        title="Create New Page"
-        prepend-icon="mdi-plus"
-        @click="createPage"
-      /> -->
+      <v-divider/>
 
       <v-list-item
         title="Create New Section"
@@ -27,7 +21,7 @@
         @click="createDivider"
       />
 
-      <v-divider />
+      <v-divider/>
 
       <v-list-item
         v-for="(item, index) in navigationItems"
@@ -43,7 +37,7 @@
       <v-list-item
         title="Save/Load Project"
         prepend-icon="mdi-content-save-outline"
-        @click="showSaveLoad = !showSaveLoad"
+        @click="dialog.showSaveLoad = !dialog.showSaveLoad"
       />
     </v-list>
   </v-navigation-drawer>
@@ -87,8 +81,7 @@ import { NavigationItems } from "@/types";
 import { createSection, createDivider } from "@/functions";
 
 const appStore = useAppStore();
-const { dialog, projectV2 } = storeToRefs(appStore);
-const showSaveLoad = dialog.value.showSaveLoad;
+const { dialog } = storeToRefs(appStore);
 
 // import type { Component } from "vue";
 // let currentComponent: Component | null = null;

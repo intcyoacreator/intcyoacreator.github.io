@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="showSaveLoadDialog"
+    v-model="dialog.showSaveLoad"
     max-width="700px"
   >
     <v-card>
@@ -99,7 +99,7 @@
               <v-btn
                 block
                 variant="tonal"
-                @click="showSaveLoadDialog = !showSaveLoadDialog"
+                @click="dialog.showSaveLoad = !dialog.showSaveLoad"
               >
                 Close
               </v-btn>
@@ -124,7 +124,6 @@
     // projectV1,
     projectV2,
   } = storeToRefs(appStore);
-  const showSaveLoadDialog = dialog.value.showSaveLoad;
 
   // const projectVersionOptions =["Project v1", "Project v1.1", "Project v2"];
   // const selectProjectVersion = ref("Project v1");

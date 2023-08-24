@@ -43,7 +43,7 @@
           <v-btn
             v-if="creatorMode === 'create'"
             icon
-            @click="showPageSettingsDialog = !showPageSettingsDialog"
+            @click="dialog.showPageSettings = !dialog.showPageSettings"
           >
             <v-icon>mdi-cog</v-icon>
             <v-tooltip activator="parent" location="bottom">
@@ -100,7 +100,7 @@
     </v-row>
   </v-container>
 
-  <v-dialog v-model="showPageSettingsDialog" width="auto">
+  <v-dialog v-model="dialog.showPageSettings" width="auto">
     <v-card max-width="450">
       <v-card-item>
         <v-card-title>
@@ -126,7 +126,7 @@
         <v-btn
           block
           variant="outlined"
-          @click="showPageSettingsDialog = !showPageSettingsDialog"
+          @click="dialog.showPageSettings = !dialog.showPageSettings"
         >
           Close
         </v-btn>
@@ -149,7 +149,6 @@
     creatorMode,
     dialog
   } = storeToRefs(appStore);
-  const showPageSettingsDialog = dialog.value.showPageSettings;
 
   const getCurrentPage = computed(() => {
     let currentPageIndex = projectV2.value.state.currentPage - 1;
