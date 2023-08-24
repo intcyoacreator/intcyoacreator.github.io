@@ -134,3 +134,10 @@ export function deletePageItem(pageItem: PageItem) {
     console.log(`Error deleting Page Item: ${e}`);
   }
 }
+
+export function changePageTo(pageNumber: number) {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  projectV2.value.state.currentPage = pageNumber;
+}

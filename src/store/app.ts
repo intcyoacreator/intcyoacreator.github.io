@@ -15,8 +15,11 @@ export const useAppStore = defineStore("app", {
     return {
       appVersion: "0.1.0",
       loadedProjectVersion: 2,
-      showSaveLoadDialog: false,
-      showPageSettingsDialog: false,
+      dialog: {
+        showSaveLoad: false,
+        showPageSettings: false,
+        showPagesList: false,
+      },
       creatorMode: "none",
       projectV2: sampleProjectV2
     };

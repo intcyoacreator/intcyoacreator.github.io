@@ -8,6 +8,15 @@
     <v-row v-if="projectV2.settings.pagesOn">
       <v-spacer/>
 
+      <v-col cols="1" align-self="center">
+        <v-btn icon>
+          <v-icon>mdi-format-list-bulleted</v-icon>
+          <v-tooltip activator="parent" location="bottom">
+            List Pages
+          </v-tooltip>
+        </v-btn>
+      </v-col>
+
       <!-- Page settings button -->
       <v-col
         v-if="creatorMode === 'create'"
@@ -27,7 +36,7 @@
         <v-pagination
           :length="projectV2.pages.length"
           :model-value="projectV2.state.currentPage"
-          @update:model-value="(page) => updateCurrentPage(page)"
+          @update:model-value="(page) => changePageTo(page)"
         >
         </v-pagination>
       </v-col>
@@ -41,6 +50,19 @@
           <v-icon>mdi-plus</v-icon>
           <v-tooltip activator="parent" location="bottom">
             Create New Page
+          </v-tooltip>
+        </v-btn>
+      </v-col>
+
+      <v-col
+        v-if="creatorMode === 'create'"
+        cols="1"
+        align-self="center"
+      >
+        <v-btn icon @click="deletePage(getCurrentPage)">
+          <v-icon>mdi-delete</v-icon>
+          <v-tooltip activator="parent" location="bottom">
+            Delete Page
           </v-tooltip>
         </v-btn>
       </v-col>
@@ -97,18 +119,15 @@
   import { onMounted } from "vue";
   import Page from "@/components/common/Page.vue";
   import { computed } from "vue";
-  import { createPage } from "@/functions";
+  import { createPage, deletePage, changePageTo } from "@/functions";
 
   const appStore = useAppStore();
   const {
     projectV2,
     creatorMode,
-    showPageSettingsDialog
+    dialog
   } = storeToRefs(appStore);
-
-  function updateCurrentPage(pageNumber: number) {
-    projectV2.value.state.currentPage = pageNumber;
-  }
+  const showPageSettingsDialog = dialog.value.showPageSettings;
 
   const getCurrentPage = computed(() => {
     let currentPageIndex = projectV2.value.state.currentPage - 1;

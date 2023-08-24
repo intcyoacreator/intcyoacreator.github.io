@@ -43,7 +43,7 @@
       <v-list-item
         title="Save/Load Project"
         prepend-icon="mdi-content-save-outline"
-        @click="showSaveLoadDialog = !showSaveLoadDialog"
+        @click="showSaveLoad = !showSaveLoad"
       />
     </v-list>
   </v-navigation-drawer>
@@ -57,7 +57,7 @@
 
   <v-main>
     <!-- <Viewer align="start"/> -->
-    <Viewer align="start"/>
+    <Viewer/>
 
     <v-spacer />
 
@@ -83,7 +83,8 @@ import { NavigationItems } from "@/types";
 import { createSection, createDivider } from "@/functions";
 
 const appStore = useAppStore();
-const { showSaveLoadDialog } = storeToRefs(appStore);
+const { dialog } = storeToRefs(appStore);
+const showSaveLoad = dialog.value.showSaveLoad;
 
 // import type { Component } from "vue";
 // let currentComponent: Component | null = null;

@@ -12,6 +12,8 @@
   "dependencies": {
     "@mdi/font": "7.0.96",
     "@tauri-apps/api": "^1.4.0",
+    "@toast-ui/editor": "^3.2.2",
+    "@toast-ui/vue-editor": "^3.2.3",
     "core-js": "^3.29.0",
     "file-saver": "^2.0.5",
     "json5": "^2.2.3",

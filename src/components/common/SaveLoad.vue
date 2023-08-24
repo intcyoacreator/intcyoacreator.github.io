@@ -120,12 +120,13 @@
   const appStore = useAppStore();
   const {
     // loadedProjectVersion,
-    showSaveLoadDialog,
+    dialog,
     // projectV1,
     projectV2,
   } = storeToRefs(appStore);
+  const showSaveLoadDialog = dialog.value.showSaveLoad;
 
-  // const projectVersionOptions = ["Project v1", "Project v1.1", "Project v2"];
+  // const projectVersionOptions =["Project v1", "Project v1.1", "Project v2"];
   // const selectProjectVersion = ref("Project v1");
   const projectFile: Ref<Array<File> | undefined> = ref();
 

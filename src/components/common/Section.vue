@@ -74,6 +74,14 @@
               @update:model-value="(text) =>
                 changeSectionText(sectionData, text)"
             ></v-textarea>
+            <!-- <MdEditor
+              :initialValue="sectionData.text"
+              initialEditType="wysiwyg"
+              previewStyle="vertical"
+              :options="mdEditorOptions"
+            >
+
+            </MdEditor> -->
           </v-col>
 
           <!-- Section ID -->
@@ -126,6 +134,19 @@
   const appStore = useAppStore();
   const { creatorMode } = storeToRefs(appStore);
 
+  // import "@toast-ui/editor/dist/toastui-editor.css";
+  // import { Editor as MdEditor } from "@toast-ui/vue-editor";
+  // const mdEditorOptions = {
+  //   usageStatistics: false,
+  // };
+
+  /**
+   * These functions *have* to be here, since apparently directly mutating
+   * props is considered an anti-pattern.
+   *
+   * This is, in essence, a hacky workaround. I should be doing this via an
+   * emit.
+   */
   function changeSectionTitle(section: Section, newTitle: string) {
     section.title = newTitle;
   }
@@ -140,7 +161,6 @@
 
   defineProps<{
     sectionData: Section,
-    // toggleSectionEditMode: Function,
   }>();
 
   defineEmits(["toggleEditMode", "deleteRow"]);

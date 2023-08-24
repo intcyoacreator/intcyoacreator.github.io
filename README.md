@@ -402,6 +402,12 @@ A successor to MeanDelay's Interactive CYOA Creator.
   using `unshift()`.
 - [ ] Swap objects such as Sections and Dividers
 - [ ] Duplicate Sections and Dividers
+- [ ] A button to the left of the Page Options button that shows a list of all
+  Pages next to their names, and there are buttons to the right that allow you
+  to jump to them, so CYOAs with a massive amount of Pages can jump quickly.
+  This can be shown in the viewer too.
+- [ ] Make any and all deletes show a confirmation Dialog first
+
 
 ## Possible TODOs
 Will have to reconsider these later.

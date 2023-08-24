@@ -109,12 +109,8 @@
     currentComponent.value = buttonId;
   }
 
-
   onMounted(() => {
-    const script = document.createElement("script", {
-      "is": "data-goatcounter"
-    });
-    // script["data-goatcounter"] = "https://icc2.goatcounter.com/count";
+    const script = document.createElement("script");
     script.setAttribute(
       "data-goatcounter",
       "https://icc2.goatcounter.com/count"
@@ -123,8 +119,4 @@
     script.src = "//gc.zgo.at/count.js";
     document.head.appendChild(script);
   });
-
-  // onMounted(() => {
-  //   document.querySelector
-  // });
 </script>
