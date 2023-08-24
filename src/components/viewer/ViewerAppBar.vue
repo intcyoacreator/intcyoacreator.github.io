@@ -26,7 +26,7 @@
             <v-btn
               prepend-icon="mdi-content-save-outline"
               variant="tonal"
-              @click="showSaveLoadDialog = !showSaveLoadDialog"
+              @click="dialog.showSaveLoad = !dialog.showSaveLoad"
             >
               Save/Load
             </v-btn>
@@ -42,7 +42,7 @@
   import { storeToRefs } from "pinia";
 
   const appStore = useAppStore();
-  const { showSaveLoadDialog } = storeToRefs(appStore);
+  const { dialog } = storeToRefs(appStore);
 
   // const emit = defineEmits(["resetCurrentComponent"]);
   defineEmits(["resetCurrentComponent"]);
