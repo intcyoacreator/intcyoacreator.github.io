@@ -1,8 +1,8 @@
-import type { PageItem, projectV2 } from "@/types";
+import type { Page, PageItem, projectV2 } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
-import { defaultPage, defaultSection } from "./constants";
+import { defaultDivider, defaultPage, defaultSection } from "./constants";
 
 function genRanHex(size: number): string {
   return [...Array(size)]
@@ -33,35 +33,6 @@ export function generateId(
   }
 
   return randomId;
-}
-
-/**
- * Deletes any page item; that is:
- *
- * * Sections
- * * Dividers
- * @param pageItem The item that should be deleted.
- */
-export function deletePageItem(pageItem: PageItem) {
-  const appStore = useAppStore();
-  const { projectV2 } = storeToRefs(appStore);
-
-  // Attempt deleting it first
-  const currentPage = projectV2.value.state.currentPage - 1;
-  const sections = projectV2.value.pages[currentPage].sections;
-  const index = sections.findIndex((i) => {
-    return i.id === pageItem.id;
-  });
-
-  // Remove it
-  try {
-    sections.splice(index, 1);
-
-    // Remove ID from allIds set
-    projectV2.value.state.allIds.delete(pageItem.id);
-  } catch (e) {
-    console.log(`Error deleting Page Item: ${e}`);
-  }
 }
 
 /** Creates an empty page. */
@@ -95,4 +66,71 @@ export function createSection() {
   newSection.id = generateId(projectV2.value);
 
   projectV2.value.pages[currentPage].sections.push(newSection);
+}
+
+/** Creates a divider. */
+export function createDivider() {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  // For readability
+  const currentPage = projectV2.value.state.currentPage - 1;
+
+  const newDivider = { ...defaultDivider };
+  newDivider.id = generateId(projectV2.value);
+
+  projectV2.value.pages[currentPage].sections.push(newDivider);
+}
+
+/**
+ * Delete a given page.
+ * @param page The page that should be deleted.
+ */
+export function deletePage(page: Page) {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  const pages = projectV2.value.pages;
+  const index = pages.findIndex((i) => {
+    return i.id === page.id;
+  });
+
+  // Delete it
+  try {
+    pages.splice(index, 1);
+
+    // Remove ID from allIds set
+    projectV2.value.state.allIds.delete(page.id);
+  } catch (e) {
+    console.log(`Error trying to delete page: ${e}`);
+  }
+}
+
+/**
+ * Deletes any page item; that is:
+ *
+ * * Sections
+ * * Dividers
+ * @param pageItem The item that should be deleted.
+ */
+export function deletePageItem(pageItem: PageItem) {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  // Attempt deleting it first
+  const currentPage = projectV2.value.state.currentPage - 1;
+  const sections = projectV2.value.pages[currentPage].sections;
+  const index = sections.findIndex((i) => {
+    return i.id === pageItem.id;
+  });
+
+  // Remove it
+  try {
+    sections.splice(index, 1);
+
+    // Remove ID from allIds set
+    projectV2.value.state.allIds.delete(pageItem.id);
+  } catch (e) {
+    console.log(`Error deleting Page Item: ${e}`);
+  }
 }

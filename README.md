@@ -363,6 +363,10 @@ A successor to MeanDelay's Interactive CYOA Creator.
   that, when pressed, will open up a popup displaying the other Point Types
 - [ ] Choice Function to immediately change the page
   - [ ] Maybe even one to GOTO a Choice… somehow
+- [ ] A `visible` flag on pages (or something) that allows pages to hide from
+  the Viewer.
+    - [ ] Allow pages to have requirements that when not met, will hide the
+      page from view automatically
 
 
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue

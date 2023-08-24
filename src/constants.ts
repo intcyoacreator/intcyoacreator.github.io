@@ -1,4 +1,4 @@
-import { Page, Section, projectV2 } from "@/types";
+import { Divider, Page, Section, projectV2 } from "@/types";
 
 /**
  * The default project file for a Project V2 file
@@ -137,6 +137,13 @@ export const defaultPage: Page = {
   id: "",
   pageName: "",
   sections: [],
+};
+
+/** The default divider */
+export const defaultDivider: Divider = {
+  type: "divider",
+  id: "",
+  editModeEnabled: false,
 };
 
 /**

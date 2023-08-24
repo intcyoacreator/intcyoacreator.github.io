@@ -9,16 +9,22 @@
 
       <v-divider />
 
-      <v-list-item
+      <!-- <v-list-item
         title="Create New Page"
         prepend-icon="mdi-plus"
         @click="createPage"
-      />
+      /> -->
 
       <v-list-item
         title="Create New Section"
         prepend-icon="mdi-plus"
         @click="createSection"
+      />
+
+      <v-list-item
+        title="Create Divider"
+        prepend-icon="mdi-plus"
+        @click="createDivider"
       />
 
       <v-divider />
@@ -74,15 +80,13 @@ import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
 
 import { NavigationItems } from "@/types";
-import { createSection, createPage } from "@/functions";
+import { createSection, createDivider } from "@/functions";
 
 const appStore = useAppStore();
 const { showSaveLoadDialog } = storeToRefs(appStore);
 
 // import type { Component } from "vue";
 // let currentComponent: Component | null = null;
-
-
 
 const navigationItems: NavigationItems = [
   // {
