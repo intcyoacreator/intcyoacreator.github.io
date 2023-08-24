@@ -1941,7 +1941,6 @@ __metadata:
     vite: ^4.2.0
     vite-plugin-vuetify: ^1.0.0
     vue: ^3.2.0
-    vue-head: ^2.2.0
     vue-router: ^4.0.0
     vue-showdown: ^4.1.1
     vue-tsc: ^1.2.0
@@ -3134,13 +3133,6 @@ __metadata:
   peerDependencies:
     eslint: ">=6.0.0"
   checksum: 6d1476b45fcc5b456a1e5c0f33ec695cf1d392ca6113250d5e3441e6cf3b2a0ec28a9455699363641dfb7c48358f215db07856c98385a31ace9bc58196f4156e
-  languageName: node
-  linkType: hard
-
-"vue-head@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "vue-head@npm:2.2.0"
-  checksum: 93fec6310696bb939f41551cd4fef2fa411f95983a3ec126772c9855d2ab0f628e321ed7f7ca515d6a6e3815fba576c5eb132c71ee2d0ec855cb64634814e450
   languageName: node
   linkType: hard
 
