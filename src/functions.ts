@@ -106,6 +106,8 @@ export function deletePage(page: Page) {
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
 
+  const currentPage = projectV2.value.state.currentPage;
+
   const pages = projectV2.value.pages;
   const index = pages.findIndex((i) => {
     return i.id === page.id;
@@ -117,6 +119,12 @@ export function deletePage(page: Page) {
 
     // Remove ID from allIds set
     projectV2.value.state.allIds.delete(page.id);
+
+    // This will move the user back a page, just in case they deleted the last
+    // page
+    if (currentPage > 1) {
+      changePageTo(index);
+    }
   } catch (e) {
     console.log(`Error trying to delete page: ${e}`);
   }

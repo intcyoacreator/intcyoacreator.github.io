@@ -435,7 +435,11 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Try to put all the pagination stuff inside of a button group
 - [ ] Put the **Section Text** and **Preview** in some sort of scrollable
   container. Or otherwise have a maximum height.
-
+- [ ] When deleting:
+    * If it's not the first Page, go to the page before the page you just
+      deleted
+    * If it's the first Page, you shouldn't need to change considering any
+      later pages will replace it
 
 ## Issues / Errors
 
