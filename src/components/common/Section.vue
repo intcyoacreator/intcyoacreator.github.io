@@ -65,7 +65,7 @@
       <v-container>
         <v-row>
           <!-- Section Title -->
-          <v-col>
+          <v-col cols="3">
             <v-text-field
               label="Section Title"
               auto-grow
@@ -76,6 +76,17 @@
               @update:model-value="(title) =>
                 changeSectionTitle(sectionData, title)"
             ></v-text-field>
+
+            <!-- Section ID -->
+            <v-text-field
+              label="Section ID"
+              auto-grow
+              variant="outlined"
+              rows="1"
+              :model-value="sectionData.id"
+              @update:model-value="(id) =>
+                changeSectionId(sectionData, id)"
+            />
           </v-col>
 
           <!-- Section Text -->
@@ -90,28 +101,17 @@
               @update:model-value="(text) =>
                 changeSectionText(sectionData, text)"
             ></v-textarea>
-            <!-- <MdEditor
-              :initialValue="sectionData.text"
-              initialEditType="wysiwyg"
-              previewStyle="vertical"
-              :options="mdEditorOptions"
-            >
-
-            </MdEditor> -->
           </v-col>
 
-          <!-- Section ID -->
+          <!-- Markdown preview -->
           <v-col>
-            <v-text-field
-              label="Section ID"
-              auto-grow
-              variant="outlined"
-              rows="1"
-              clearable
-              :model-value="sectionData.id"
-              @update:model-value="(id) =>
-                changeSectionId(sectionData, id)"
-            />
+            <h2 class="mb-2">Preview</h2>
+
+            <v-card>
+              <v-card-text>
+                <div v-html="markdownPreview" class="md-preview"></div>
+              </v-card-text>
+            </v-card>
           </v-col>
         </v-row>
       </v-container>
@@ -129,14 +129,11 @@
           {{ sectionData.title }}
         </h2>
 
-        <p
+        <div
           v-if="sectionData.text != ''"
-          class="text-body-1"
-        >
-          <VueShowdown
-            :markdown="sectionData.text"
-          />
-        </p>
+          v-html="markdownPreview"
+          class="md-preview"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -146,15 +143,17 @@
 import { useAppStore } from "@/store/app";
 import type { Section } from "@/types";
 import { storeToRefs } from "pinia";
+import { parse as mdParse } from "marked";
+import { computed } from "vue";
 
 const appStore = useAppStore();
 const { creatorMode } = storeToRefs(appStore);
 
-// import "@toast-ui/editor/dist/toastui-editor.css";
-// import { Editor as MdEditor } from "@toast-ui/vue-editor";
-// const mdEditorOptions = {
-//   usageStatistics: false,
-// };
+const props = defineProps<{
+  sectionData: Section,
+}>();
+
+const markdownPreview = computed(() => mdParse(props.sectionData.text));
 
 /**
  * These functions *have* to be here, since apparently directly mutating
@@ -175,10 +174,6 @@ function changeSectionId(section: Section, newId: string) {
   section.id = newId;
 }
 
-defineProps<{
-  sectionData: Section,
-}>();
-
 defineEmits([
   "toggleEditMode",
   "deleteSection",
@@ -188,6 +183,9 @@ defineEmits([
 ]);
 </script>
 
-<style scoped>
-
+<style scoped lang="css">
+div.md-preview > p {
+  margin-bottom: 32px !important;
+  color: aqua !important;
+}
 </style>

@@ -59,13 +59,19 @@ export function createSection() {
 
   // For readability
   const currentPage = projectV2.value.state.currentPage - 1;
+  const page = projectV2.value.pages[currentPage];
+
+  // Happens when you try to create a Section while having no Pages
+  if (page === undefined) {
+    return;
+  }
 
   const newSection = { ...defaultSection };
   newSection.title = defaults.sectionTitle;
   newSection.text = defaults.sectionText;
   newSection.id = generateId(projectV2.value);
 
-  projectV2.value.pages[currentPage].pageItems.push(newSection);
+  page.pageItems.push(newSection);
 }
 
 /** Creates a divider. */
@@ -74,12 +80,17 @@ export function createDivider() {
   const { projectV2 } = storeToRefs(appStore);
 
   // For readability
-  const currentPage = projectV2.value.state.currentPage - 1;
+  const currentPageIndex = projectV2.value.state.currentPage - 1;
+  const page = projectV2.value.pages[currentPageIndex];
+
+  if (page === undefined) {
+    return;
+  }
 
   const newDivider = { ...defaultDivider };
   newDivider.id = generateId(projectV2.value);
 
-  projectV2.value.pages[currentPage].pageItems.push(newDivider);
+  page.pageItems.push(newDivider);
 }
 
 /**
@@ -87,6 +98,11 @@ export function createDivider() {
  * @param page The page that should be deleted.
  */
 export function deletePage(page: Page) {
+  // Happens when you have no more pages to delete
+  if (page === undefined) {
+    return;
+  }
+
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
 
