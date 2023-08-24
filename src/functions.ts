@@ -107,6 +107,31 @@ export function deletePage(page: Page) {
 }
 
 /**
+ * Duplicates a given page.
+ * @param page The Page that is being duplicated.
+ * @param deepCopy True by default. If true it will make a complete copy.
+ * If false it will make a reference to it.
+ */
+export function duplicatePage(page: Page, deepCopy: boolean = true) {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  const pages = projectV2.value.pages;
+  const index = pages.findIndex((i) => {
+    return i.id === page.id;
+  }) + 1; // Plus one ensures that it's inserted after
+
+  // Duplicate it
+  try {
+    deepCopy
+      ? pages.splice(index, 0, {...page})
+      : pages.splice(index, 0, page);
+  } catch (e) {
+    console.log(`Error while duplicating PageItem: ${e}`);
+  }
+}
+
+/**
  * Deletes any page item; that is:
  *
  * * Sections

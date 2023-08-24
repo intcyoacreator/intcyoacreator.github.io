@@ -128,9 +128,8 @@
 
 <script setup lang="ts">
   import { useAppStore } from "@/store/app";
-  import type { PageItem, Section } from "@/types";
+  import type { Section } from "@/types";
   import { storeToRefs } from "pinia";
-  import { duplicatePageItem } from "@/functions";
 
   const appStore = useAppStore();
   const { creatorMode } = storeToRefs(appStore);
