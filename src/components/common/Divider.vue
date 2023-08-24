@@ -12,10 +12,19 @@
       <v-spacer/>
 
       <v-btn icon @click="$emit('editDivider')">
-        <v-icon>mdi-wrench</v-icon>
-        <v-tooltip activator="parent" location="top">
-          Edit Divider
-        </v-tooltip>
+        <div v-if="dividerData.editModeEnabled">
+          <v-icon>mdi-arrow-left</v-icon>
+          <v-tooltip activator="parent" location="top">
+            Back to Preview
+          </v-tooltip>
+        </div>
+
+        <div v-if="!dividerData.editModeEnabled">
+          <v-icon>mdi-wrench</v-icon>
+          <v-tooltip activator="parent" location="top">
+            Edit Divider
+          </v-tooltip>
+        </div>
       </v-btn>
 
       <v-btn icon @click="$emit('deleteDivider')">
@@ -49,8 +58,12 @@
       </v-btn>
     </v-toolbar>
 
-    <div v-if="dividerData.editModeEnabled">
-      Divider being edited…
+    <div v-if="dividerData.editModeEnabled" class="d-flex flex-grow-1">
+      <v-card class="my-4 mx-2">
+        <v-text-field>
+
+        </v-text-field>
+      </v-card>
     </div>
   </div>
 
@@ -58,22 +71,22 @@
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from "@/store/app";
-  import { Divider } from "@/types";
-  import { storeToRefs } from "pinia";
+import { useAppStore } from "@/store/app";
+import { Divider } from "@/types";
+import { storeToRefs } from "pinia";
 
-  const appStore = useAppStore();
-  const { creatorMode } = storeToRefs(appStore);
+const appStore = useAppStore();
+const { creatorMode } = storeToRefs(appStore);
 
-  defineProps<{
-    dividerData: Divider
-  }>();
+defineProps<{
+  dividerData: Divider
+}>();
 
-  defineEmits([
-    "editDivider",
-    "deleteDivider",
-    "duplicateDivider",
-    "moveDividerUp",
-    "moveDividerDown",
-  ]);
+defineEmits([
+  "editDivider",
+  "deleteDivider",
+  "duplicateDivider",
+  "moveDividerUp",
+  "moveDividerDown",
+]);
 </script>

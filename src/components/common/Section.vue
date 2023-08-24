@@ -143,49 +143,49 @@
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from "@/store/app";
-  import type { Section } from "@/types";
-  import { storeToRefs } from "pinia";
+import { useAppStore } from "@/store/app";
+import type { Section } from "@/types";
+import { storeToRefs } from "pinia";
 
-  const appStore = useAppStore();
-  const { creatorMode } = storeToRefs(appStore);
+const appStore = useAppStore();
+const { creatorMode } = storeToRefs(appStore);
 
-  // import "@toast-ui/editor/dist/toastui-editor.css";
-  // import { Editor as MdEditor } from "@toast-ui/vue-editor";
-  // const mdEditorOptions = {
-  //   usageStatistics: false,
-  // };
+// import "@toast-ui/editor/dist/toastui-editor.css";
+// import { Editor as MdEditor } from "@toast-ui/vue-editor";
+// const mdEditorOptions = {
+//   usageStatistics: false,
+// };
 
-  /**
-   * These functions *have* to be here, since apparently directly mutating
-   * props is considered an anti-pattern.
-   *
-   * This is, in essence, a hacky workaround. I should be doing this via an
-   * emit.
-   */
-  function changeSectionTitle(section: Section, newTitle: string) {
-    section.title = newTitle;
-  }
+/**
+ * These functions *have* to be here, since apparently directly mutating
+ * props is considered an anti-pattern.
+ *
+ * This is, in essence, a hacky workaround. I should be doing this via an
+ * emit.
+ */
+function changeSectionTitle(section: Section, newTitle: string) {
+  section.title = newTitle;
+}
 
-  function changeSectionText(section: Section, newText: string) {
-    section.text = newText;
-  }
+function changeSectionText(section: Section, newText: string) {
+  section.text = newText;
+}
 
-  function changeSectionId(section: Section, newId: string) {
-    section.id = newId;
-  }
+function changeSectionId(section: Section, newId: string) {
+  section.id = newId;
+}
 
-  defineProps<{
-    sectionData: Section,
-  }>();
+defineProps<{
+  sectionData: Section,
+}>();
 
-  defineEmits([
-    "toggleEditMode",
-    "deleteSection",
-    "duplicateSection",
-    "moveSectionUp",
-    "moveSectionDown",
-  ]);
+defineEmits([
+  "toggleEditMode",
+  "deleteSection",
+  "duplicateSection",
+  "moveSectionUp",
+  "moveSectionDown",
+]);
 </script>
 
 <style scoped>
