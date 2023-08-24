@@ -368,7 +368,6 @@ A successor to MeanDelay's Interactive CYOA Creator.
     - [ ] Allow pages to have requirements that when not met, will hide the
       page from view automatically
 
-
 [fluent-vue]: https://github.com/fluent-vue/fluent-vue
 [vue-i18n]: https://kazupon.github.io/vue-i18n/
 
@@ -401,6 +400,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Add an edit section for dividers to be able to change their IDs
 - [ ] Allow adding Sections / Dividers / other stuff to the START of the page
   using `unshift()`.
+- [ ] Swap objects such as Sections and Dividers
+- [ ] Duplicate Sections and Dividers
 
 ## Possible TODOs
 Will have to reconsider these later.
