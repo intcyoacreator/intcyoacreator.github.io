@@ -239,6 +239,14 @@ export function movePageItem(page: Page, id: Id, offset: number) {
   });
   const newIndex = index + offset;
 
+  // If it's at the top already, do nothing
+  if (newIndex < 0) {
+    return;
+  // If it's at the bottom already, do nothing
+  } else if (newIndex > page.pageItems.length) {
+    return;
+  }
+
   // Duplicate the new item
   const item = page.pageItems[index];
   // Delete the old item
