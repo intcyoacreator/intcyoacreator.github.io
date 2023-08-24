@@ -60,6 +60,7 @@
 <script setup lang="ts">
   import { ref } from "vue";
   import { useAppStore } from "./store/app";
+  import { onMounted } from "vue";
 
   import Creator from "./views/Creator.vue";
   import Viewer from "./views/Viewer.vue";
@@ -107,4 +108,23 @@
     creatorMode.value = menuButtons[buttonId - 1].creatorMode;
     currentComponent.value = buttonId;
   }
+
+
+  onMounted(() => {
+    const script = document.createElement("script", {
+      "is": "data-goatcounter"
+    });
+    // script["data-goatcounter"] = "https://icc2.goatcounter.com/count";
+    script.setAttribute(
+      "data-goatcounter",
+      "https://icc2.goatcounter.com/count"
+    );
+    script.setAttribute("async", "true");
+    script.src = "//gc.zgo.at/count.js";
+    document.head.appendChild(script);
+  });
+
+  // onMounted(() => {
+  //   document.querySelector
+  // });
 </script>

@@ -19,6 +19,7 @@
     "roboto-fontface": "*",
     "showdown": "^2.1.0",
     "vue": "^3.2.0",
+    "vue-head": "^2.2.0",
     "vue-router": "^4.0.0",
     "vue-showdown": "^4.1.1",
     "vuetify": "^3.0.0",

@@ -13,6 +13,7 @@ import { VueShowdownPlugin } from "vue-showdown";
 
 // Types
 import type { App } from "vue";
+import VueHead from "vue-head";
 
 export function registerPlugins (app: App) {
   loadFonts();
@@ -20,6 +21,7 @@ export function registerPlugins (app: App) {
     .use(vuetify)
     .use(router)
     .use(pinia)
+    .use(VueHead)
     .use(VueShowdownPlugin, {
       // Set default flavour of showdown
       flavor: "github",
