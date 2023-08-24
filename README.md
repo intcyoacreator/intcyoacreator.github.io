@@ -381,10 +381,17 @@ A successor to MeanDelay's Interactive CYOA Creator.
   description, author(s), contributors, links, etc
     * Would display at the top
     * Opt-in probably
-- [ ] 
+- [ ] Styling Rows and Choices and stuff, have a Preview mode off to the right
+  hand side
+    - [ ] It will show how it appears through Global, Page, Section, and
+      Private (Choice) styling.
+    - [ ] You can eventually just see how the Global one looks, then just the
+      Page one, then both together (possibly using a dropdown menu that
+      supports multi-selection, then just chaining the results of those styles,
+      giving precedence to lower level ones. if there exists no private
+      styling, just add an empty list).
 
-[fluent-vue]: https://github.com/fluent-vue/fluent-vue
-[vue-i18n]: https://kazupon.github.io/vue-i18n/
+
 
 ## Immediate TODO
 
@@ -426,7 +433,23 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Make any and all deletes show a confirmation Dialog first
 - [ ] Change overflow of title text in `App.vue`
 - [ ] Try to put all the pagination stuff inside of a button group
+- [ ] Put the **Section Text** and **Preview** in some sort of scrollable
+  container. Or otherwise have a maximum height.
 
+
+## Issues / Errors
+
+- [ ] About/Information Page on Linux AND Mobile trails off the edge with large
+  URLs
+- [ ] Fix About page not working with lists properly – overflow?
+<!-- - [ ] Fix Project Version selector not updating the store -->
+- [x] Fix Viewer centring instead of beginning from the top
+- [ ] Viewer looks bad on devices with less than 500px width. See if I can make
+  it `permanent` when above 500px, but collapsible when not.
+- [ ] Points Bar position is bugged, until the Page is changed. Changing Pages
+  also makes a massive error fest, which means something's happening there
+- [ ] Preview doesn't have padding below each paragraph. Figure out how to do
+  that
 
 ## Possible TODOs
 Will have to reconsider these later.
@@ -450,19 +473,6 @@ Will have to reconsider these later.
   styling, and it lists all occurrences of bad contrast
 - [ ] The Points Bar is glitching in the Creator, as the main content doesn't
   realize that it's there
-
-
-## Issues / Errors
-
-- [ ] About/Information Page on Linux AND Mobile trails off the edge with large
-  URLs
-- [ ] Fix About page not working with lists properly – overflow?
-<!-- - [ ] Fix Project Version selector not updating the store -->
-- [x] Fix Viewer centring instead of beginning from the top
-- [ ] Viewer looks bad on devices with less than 500px width. See if I can make
-  it `permanent` when above 500px, but collapsible when not.
-- [ ] Points Bar position is bugged, until the Page is changed. Changing Pages
-  also makes a massive error fest, which means something's happening there
 
 
 # Ideas
@@ -597,3 +607,7 @@ miracle on its own lol.
 
 If I've made some code that could be done more elegantly and efficiently,
 please make a PR and I'll get right on that.
+
+<!-- URLs -->
+[fluent-vue]: https://github.com/fluent-vue/fluent-vue
+[vue-i18n]: https://kazupon.github.io/vue-i18n/

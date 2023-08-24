@@ -88,9 +88,29 @@ type Settings = {
 }
 
 /** The styling. */
-type Styling = {
+export type Styling = {
   /** The styling scope. */
-  scope: Scope,
+  scope?: Scope,
+  /** Choices */
+  choices?: {
+    /** The basic options */
+    backgroundColour?: string,
+    textColour?: string,
+
+    /** The colour of a choice changing on select. */
+
+    changeBackgroundColourOnSelect?: boolean,
+    backgroundColourOnSelect?: string,
+    changeTextColourOnSelect?: boolean,
+    textColourOnSelect?: string,
+
+    /** The colour of a choice changing on hover. */
+
+    changeBackgroundColourOnHover?: boolean,
+    backgroundColourOnHover?: string,
+    changeTextColourOnHover?: boolean,
+    textColourOnHover?: string,
+  }
 }
 
 /** The unique identifier of an object. */

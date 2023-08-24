@@ -54,8 +54,11 @@
   </v-toolbar>
 
   <!-- If the "Edit Section" has been pressed; Edit mode -->
-  <div v-if="sectionData.editModeEnabled" class="d-flex flex-grow-1">
-    <v-card class="my-4 mx-2 flex-grow-1">
+  <div
+    v-if="sectionData.editModeEnabled"
+    class="d-flex flex-grow-1 flex-column"
+  >
+    <v-card class="my-4 mx-2 flex-grow-1 d-block">
       <v-toolbar border density="compact">
         <v-spacer></v-spacer>
 
@@ -115,6 +118,17 @@
           </v-col>
         </v-row>
       </v-container>
+    </v-card>
+
+    <v-card
+      v-for="(item, index) in sectionData.choices"
+      :key="index"
+      class="my-4 mx-2 flex-row"
+    >
+      <v-card-title>{{ item.title }}</v-card-title>
+      <v-card-text>
+        {{ item.text }}
+      </v-card-text>
     </v-card>
   </div>
 

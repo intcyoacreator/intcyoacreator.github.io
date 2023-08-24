@@ -1,4 +1,18 @@
-import { Divider, Page, Section, projectV2 } from "@/types";
+import { Divider, Page, Section, Styling, projectV2 } from "@/types";
+
+export const defaultStyling: Styling = {
+  scope: "global",
+  choices: {
+    changeBackgroundColourOnSelect: true,
+    backgroundColourOnSelect: "#CFFAA7", // tea green
+
+    /** Features turned off by default */
+
+    changeTextColourOnSelect: false,
+    changeBackgroundColourOnHover: false,
+    changeTextColourOnHover: false,
+  },
+};
 
 /**
  * The default project file for a Project V2 file
@@ -29,9 +43,7 @@ respectively.`,
     activatedChoices: [],
     allIds: new Set(),
   },
-  styling: {
-    scope: "global",
-  },
+  styling: defaultStyling,
   pages: [
     // The default first page
     {
@@ -65,9 +77,7 @@ export const sampleProjectV2: projectV2 = {
     activatedChoices: [],
     allIds: new Set(),
   },
-  styling: {
-    scope: "global",
-  },
+  styling: defaultStyling,
   pages: [
     // The default first page
     {
@@ -90,11 +100,28 @@ export const sampleProjectV2: projectV2 = {
         {
           type: "section",
           id: "row3",
-          title: "Third section",
-          text: "This is my third section, for testing purposes lmao.",
+          title: "Perks",
+          text: "Pick any Perks you would like.",
           editModeEnabled: false,
           choices: [
-
+            {
+              id: "sk92",
+              title: "Forever Memory",
+              text: `You now have perfect memory. You will never forget a
+memory. This works retroactively too.`,
+            },
+            {
+              id: "k9f2",
+              title: "Body of Atlas",
+              text: `You have unlimited stamina. You can lift up to 50 million
+times more than a regular human.`
+            },
+            {
+              id: "09r2",
+              title: "Avalon",
+              text: `Your body's healing is greater than anyone before you.
+You regenerate nigh-instantly.`
+            }
           ],
         },
       ],
