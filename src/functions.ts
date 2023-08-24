@@ -202,3 +202,13 @@ export function changePageTo(pageNumber: number) {
 
   projectV2.value.state.currentPage = pageNumber;
 }
+
+/** This function changes a page item in Preview mode into Edit mode, and vice
+ * versa.
+ * @param pageItem The Page Item to be toggled.
+ */
+export function togglePageItemEditMode(pageItem: PageItem) {
+  pageItem.editModeEnabled === undefined
+    ? pageItem.editModeEnabled = false
+    : pageItem.editModeEnabled = !pageItem.editModeEnabled;
+}

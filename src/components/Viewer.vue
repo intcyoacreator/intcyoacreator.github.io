@@ -1,14 +1,11 @@
-<!--
-  The actual file of the Viewer
--->
-
 <template>
+  <!-- The actual Viewer -->
   <v-container>
     <!-- Pagination buttons -->
     <v-row v-if="projectV2.settings.pagesOn">
       <v-spacer/>
 
-      <v-col cols="1" align-self="center">
+      <!-- <v-col cols="1" align-self="center">
         <v-btn icon>
           <v-icon>mdi-format-list-bulleted</v-icon>
           <v-tooltip activator="parent" location="bottom">
@@ -17,7 +14,7 @@
         </v-btn>
       </v-col>
 
-      <!-- Page settings button -->
+      Page settings button
       <v-col
         v-if="creatorMode === 'create'"
         cols="1"
@@ -29,6 +26,31 @@
             Page Settings
           </v-tooltip>
         </v-btn>
+      </v-col> -->
+
+      <v-col cols="2" align-self="center">
+        <v-btn-toggle
+          dark
+          multiple
+        >
+          <v-btn icon>
+            <v-icon>mdi-format-list-bulleted</v-icon>
+            <v-tooltip activator="parent" location="bottom">
+              List Pages
+            </v-tooltip>
+          </v-btn>
+
+          <v-btn
+            v-if="creatorMode === 'create'"
+            icon
+            @click="showPageSettingsDialog = !showPageSettingsDialog"
+          >
+            <v-icon>mdi-cog</v-icon>
+            <v-tooltip activator="parent" location="bottom">
+              Page Settings
+            </v-tooltip>
+          </v-btn>
+        </v-btn-toggle>
       </v-col>
 
       <!-- Pagination component -->

@@ -77,6 +77,19 @@ A successor to MeanDelay's Interactive CYOA Creator.
     * Like Choices within Choices
     * Perhaps limit this to prevent arbitrary nesting
 - [ ] Custom Pop-ups / Alerts
+    - [ ] Two types of alerts:
+        - [ ] Alerts, these fully replace the screen. They use `v-alert`.
+        - [ ] Notifications, these are tiny little messages that pop up
+          temporarily. They use `v-snackbar` with the `timeout` property.
+    - [ ] Alert the user (briefly and non-obtrusively) whenever a selected
+      option no longer has the requirements. This will not be a dialog but a
+      `v-snackbar`
+    - [ ] Allow certain alerts to be triggered
+        - [ ] Can either be a one-off alert triggered when an event happens
+          (such as when a Row has its requirements or when a choice is pressed)
+          or Choices could have a function where it triggers a preset alert, or
+          it could trigger an alert that is changeable
+    - [ ] Allow variables to be used inside of alerts
 - [x] Inline Markdown formatting
     - [ ] Option in Settings to turn use Markdown or HTML
         * Markdown on by default (with a rich text editor)
@@ -178,14 +191,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
         - [ ] [IntScript](./IntScript.md) is one I'm working on
             - [ ] Have something like `or(choice1, and(choice2, choice3))` for
               conditionals
-- [ ] Alerts
-    - [ ] Allow certain alerts to be triggered
-        - [ ] Can either be a one-off alert triggered when an event happens
-          (such as when a Row has its requirements or when a choice is pressed)
-          or Choices could have a function where it triggers a preset alert, or
-          it could trigger an alert that is changeable
-    - [ ] Allow variables to be used inside of alerts
-- [ ] Add Dividers
+- [x] Add Dividers
 - [ ] Point Bar
     - [ ] It automatically switches on when you create your first Point Type,
       but it can be manually turned off
@@ -212,7 +218,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Eventually have some convoluted export without JS button.
     - [ ] This will use HTML for "only select 1 item" stuff and CSS for
       variables (however it can do so) and it will be EXTREMELY hacky
-- [ ] Pages
+- [x] Pages
     - [ ] Option to toggle whether the pagination buttons show on the top or
       bottom or both
     - [ ] It'll do numbers for pages by default, but you can customize it to
@@ -220,8 +226,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
       names (different from the page names)
         * The distinction is useful if the Page name is too long for the
           Pagination thing
-    - [ ] Option in settings to add a pagination section down the bottom (in
-      the case of large CYOAs)
+    <!-- - [ ] Option in settings to add a pagination section down the bottom (in
+      the case of large CYOAs) -->
     - [ ] Transitions
 - [ ] App Themes
     - [ ] Dark mode
@@ -236,11 +242,12 @@ A successor to MeanDelay's Interactive CYOA Creator.
     - [ ] Essentially a "Block" or "Row" type that is just a
       block/div/container of text
 - [ ] Make multiple choice selection actually good
-- [ ] Global/local difficulty multiplier
-    - [ ] Can change things so that:
+- [ ] Global/local custom difficulty multiplier
+    - [ ] Can change things so that, for example, you can make this:
         - [ ] Easy Difficulty = Multiply all Gain Points in sections X, Y, Z by
           150%
         - [ ] Cheap Items = Multiply all Cost Points in section X by 50%
+    - [ ] But it's really just arbitrary
     - [ ] Can do it globally, for a list of sections, and locally (for just one
       list)
 - [ ] Optimized images, lazy loading and / or resized versions of images to be
@@ -300,7 +307,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
     * With a nice looking loading thing too
 - [ ] Buttons, with a whole lot more features, including the functions that
   were present in the original Creator
-* Points Bar in the footer
+- [ ] Points Bar in the footer
     - [ ] Button to show/hide points in the footer
     - [ ] Sub-menu in the footer that shows more Point Types (for smaller
       screens)

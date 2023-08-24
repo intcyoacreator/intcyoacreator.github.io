@@ -48,6 +48,10 @@
     </v-list>
   </v-navigation-drawer>
 
+  <v-app-bar order="1">
+    <v-app-bar-title>{{ 2 }}</v-app-bar-title>
+  </v-app-bar>
+
   <!-- <points-bar></points-bar> -->
 
   <!-- <component :is="currentPage" keep-alive /> -->
@@ -83,7 +87,7 @@ import { NavigationItems } from "@/types";
 import { createSection, createDivider } from "@/functions";
 
 const appStore = useAppStore();
-const { dialog } = storeToRefs(appStore);
+const { dialog, projectV2 } = storeToRefs(appStore);
 const showSaveLoad = dialog.value.showSaveLoad;
 
 // import type { Component } from "vue";

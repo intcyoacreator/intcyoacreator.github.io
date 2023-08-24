@@ -103,7 +103,7 @@
   </div>
 
   <!-- Preview mode -->
-  <v-container v-else>
+  <v-container v-else class="mb-5">
     <v-row>
       <v-col>
         <h2

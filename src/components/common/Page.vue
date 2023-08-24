@@ -5,7 +5,7 @@
       <v-row v-if="item.type == 'section'">
         <Section
           :section-data="item"
-          @toggle-edit-mode="toggleSectionEditMode(item)"
+          @toggle-edit-mode="togglePageItemEditMode(item)"
           @delete-section="deletePageItem(item)"
           @duplicate-section="duplicatePageItem(item)"
         />
@@ -15,7 +15,9 @@
       <v-row v-if="item.type == 'divider'">
         <Divider
           :divider-data="item"
+          @edit-divider="togglePageItemEditMode(item)"
           @delete-divider="deletePageItem(item)"
+          @duplicate-divider="duplicatePageItem(item)"
         />
       </v-row>
     </v-col>
@@ -25,23 +27,15 @@
 </template>
 
 <script setup lang="ts">
-import {
-  Page,
-  Section as SectionType
-} from "@/types";
+import { Page } from "@/types";
+
 import Section from "./Section.vue";
 import Divider from "./Divider.vue";
-import { deletePageItem, duplicatePageItem } from "@/functions";
-
-function toggleSectionEditMode(section: SectionType) {
-  section.editModeEnabled === undefined
-    ? section.editModeEnabled = false
-    : section.editModeEnabled = !section.editModeEnabled;
-}
-
-// function deleteDivider(item: DividerType) {
-
-// }
+import {
+  togglePageItemEditMode,
+  deletePageItem,
+  duplicatePageItem
+} from "@/functions";
 
 defineProps<{
   pageData: Page,
