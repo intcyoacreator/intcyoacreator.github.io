@@ -1,4 +1,4 @@
-import type { Page, PageItem, projectV2 } from "@/types";
+import type { Page, PageItem, projectV2, Id } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
@@ -46,7 +46,7 @@ export function createPage() {
   newPage.id = generateId(projectV2.value);
   // The new page seem to be pre-populated with the
   // sections of the previously created page.
-  newPage.sections = [];
+  newPage.pageItems = [];
 
   projectV2.value.pages.push(newPage);
 }
@@ -65,7 +65,7 @@ export function createSection() {
   newSection.text = defaults.sectionText;
   newSection.id = generateId(projectV2.value);
 
-  projectV2.value.pages[currentPage].sections.push(newSection);
+  projectV2.value.pages[currentPage].pageItems.push(newSection);
 }
 
 /** Creates a divider. */
@@ -79,7 +79,7 @@ export function createDivider() {
   const newDivider = { ...defaultDivider };
   newDivider.id = generateId(projectV2.value);
 
-  projectV2.value.pages[currentPage].sections.push(newDivider);
+  projectV2.value.pages[currentPage].pageItems.push(newDivider);
 }
 
 /**
@@ -144,7 +144,7 @@ export function deletePageItem(pageItem: PageItem) {
 
   // Attempt deleting it first
   const currentPage = projectV2.value.state.currentPage - 1;
-  const sections = projectV2.value.pages[currentPage].sections;
+  const sections = projectV2.value.pages[currentPage].pageItems;
   const index = sections.findIndex((i) => {
     return i.id === pageItem.id;
   });
@@ -177,7 +177,7 @@ export function duplicatePageItem(
   const { projectV2 } = storeToRefs(appStore);
 
   const currentPage = projectV2.value.state.currentPage - 1;
-  const sections = projectV2.value.pages[currentPage].sections;
+  const sections = projectV2.value.pages[currentPage].pageItems;
   const index = sections.findIndex((i) => {
     return i.id === pageItem.id;
   }) + 1; // This one ensures that the duplicated objects are made one ahead
@@ -225,4 +225,24 @@ export function togglePageItemEditMode(pageItem: PageItem) {
   pageItem.editModeEnabled === undefined
     ? pageItem.editModeEnabled = false
     : pageItem.editModeEnabled = !pageItem.editModeEnabled;
+}
+
+/**
+ * Moves a Page Item by an offset.
+ * @param page The Page. Since it doesn't get the current page, this can be
+ * called when not on the same page.
+ * @param offset The offset.
+ */
+export function movePageItem(page: Page, id: Id, offset: number) {
+  const index = page.pageItems.findIndex((i) => {
+    return i.id === id;
+  });
+  const newIndex = index + offset;
+
+  // Duplicate the new item
+  const item = page.pageItems[index];
+  // Delete the old item
+  page.pageItems.splice(index, 1);
+  // Insert it into the new position
+  page.pageItems.splice(newIndex, 0, item);
 }

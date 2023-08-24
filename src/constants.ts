@@ -37,7 +37,7 @@ respectively.`,
     {
       id: "main",
       pageName: "CYOA",
-      sections: [],
+      pageItems: [],
     },
   ],
 };
@@ -73,7 +73,7 @@ export const sampleProjectV2: projectV2 = {
     {
       id: "main",
       pageName: "CYOA",
-      sections: [
+      pageItems: [
         {
           type: "section",
           id: "row1",
@@ -103,7 +103,7 @@ export const sampleProjectV2: projectV2 = {
     {
       id: "second",
       pageName: "Second page",
-      sections: [
+      pageItems: [
         {
           type: "section",
           id: "row2",
@@ -136,7 +136,7 @@ export const defaultSection: Section = {
 export const defaultPage: Page = {
   id: "",
   pageName: "",
-  sections: [],
+  pageItems: [],
 };
 
 /** The default divider */

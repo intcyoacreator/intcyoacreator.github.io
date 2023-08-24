@@ -94,7 +94,7 @@ type Styling = {
 }
 
 /** The unique identifier of an object. */
-type Id = string;
+export type Id = string;
 
 /** The different scopes for styles, settings, etc. */
 type Scope = "global" | "page" | "local";
@@ -106,7 +106,7 @@ export type Page = {
   /** The name of the page, used in pagination. */
   pageName: string,
   /** The sections. */
-  sections: Array<PageItem>,
+  pageItems: Array<PageItem>,
 }
 
 /** An item/row that is made of all types of objects */

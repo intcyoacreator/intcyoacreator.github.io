@@ -35,6 +35,22 @@
         Duplicate Section
       </v-tooltip>
     </v-btn>
+
+    <v-divider vertical class="mx-2"></v-divider>
+
+    <v-btn icon @click="$emit('moveSectionUp')">
+      <v-icon>mdi-arrow-up</v-icon>
+      <v-tooltip activator="parent" location="top">
+        Move Section Up
+      </v-tooltip>
+    </v-btn>
+
+    <v-btn icon @click="$emit('moveSectionDown')">
+      <v-icon>mdi-arrow-down</v-icon>
+      <v-tooltip activator="parent" location="top">
+        Move Section Down
+      </v-tooltip>
+    </v-btn>
   </v-toolbar>
 
   <!-- If the "Edit Section" has been pressed; Edit mode -->
@@ -163,7 +179,13 @@
     sectionData: Section,
   }>();
 
-  defineEmits(["toggleEditMode", "deleteSection", "duplicateSection"]);
+  defineEmits([
+    "toggleEditMode",
+    "deleteSection",
+    "duplicateSection",
+    "moveSectionUp",
+    "moveSectionDown",
+  ]);
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-col v-for="(item, index) in pageData.sections" :key="index">
+    <v-col v-for="(item, index) in pageData.pageItems" :key="index">
       <!-- Section -->
       <v-row v-if="item.type == 'section'">
         <Section
@@ -8,6 +8,8 @@
           @toggle-edit-mode="togglePageItemEditMode(item)"
           @delete-section="deletePageItem(item)"
           @duplicate-section="duplicatePageItem(item)"
+          @move-section-up="movePageItem(pageData, item.id, -1)"
+          @move-section-down="movePageItem(pageData, item.id, 1)"
         />
       </v-row>
 
@@ -34,7 +36,8 @@ import Divider from "./Divider.vue";
 import {
   togglePageItemEditMode,
   deletePageItem,
-  duplicatePageItem
+  duplicatePageItem,
+  movePageItem,
 } from "@/functions";
 
 defineProps<{
