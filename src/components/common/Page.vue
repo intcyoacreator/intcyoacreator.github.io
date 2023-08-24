@@ -20,6 +20,8 @@
           @edit-divider="togglePageItemEditMode(item)"
           @delete-divider="deletePageItem(item)"
           @duplicate-divider="duplicatePageItem(item)"
+          @move-divider-up="movePageItem(pageData, item.id, -1)"
+          @move-divider-down="movePageItem(pageData, item.id, 1)"
         />
       </v-row>
     </v-col>

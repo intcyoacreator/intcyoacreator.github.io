@@ -31,6 +31,22 @@
           Duplicate Divider
         </v-tooltip>
       </v-btn>
+
+      <v-divider vertical class="mx-2"></v-divider>
+
+      <v-btn icon @click="$emit('moveDividerUp')">
+        <v-icon>mdi-arrow-up</v-icon>
+        <v-tooltip activator="parent" location="top">
+          Move Divider Up
+        </v-tooltip>
+      </v-btn>
+
+      <v-btn icon @click="$emit('moveDividerDown')">
+        <v-icon>mdi-arrow-down</v-icon>
+        <v-tooltip activator="parent" location="top">
+          Move Divider Down
+        </v-tooltip>
+      </v-btn>
     </v-toolbar>
 
     <div v-if="dividerData.editModeEnabled">
@@ -53,5 +69,11 @@
     dividerData: Divider
   }>();
 
-  defineEmits(["editDivider", "deleteDivider", "duplicateDivider"]);
+  defineEmits([
+    "editDivider",
+    "deleteDivider",
+    "duplicateDivider",
+    "moveDividerUp",
+    "moveDividerDown",
+  ]);
 </script>
