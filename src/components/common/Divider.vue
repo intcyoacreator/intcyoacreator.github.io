@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-grow-1 mb-5">
+  <div class="d-flex flex-column flex-grow-1 mb-5">
     <v-toolbar
       v-if="creatorMode === 'create'"
       elevation="2"
@@ -58,25 +58,37 @@
       </v-btn>
     </v-toolbar>
 
-    <div v-if="dividerData.editModeEnabled" class="d-flex flex-grow-1">
-      <v-card class="my-4 mx-2">
-        <v-text-field>
-
-        </v-text-field>
+    <div v-if="dividerData.editModeEnabled" class="flex-grow-1">
+      <v-card class="mt-4">
+        <v-card-text>
+          <v-text-field
+            label="Divider ID"
+            variant="outlined"
+            class="mt-4"
+            :model-value="dividerData.id"
+            @update:model-value="(id) => changeDividerId(dividerData, id)"
+          />
+        </v-card-text>
       </v-card>
     </div>
   </div>
 
-  <v-divider v-if="!dividerData.editModeEnabled"></v-divider>
+  <v-divider v-if="!dividerData.editModeEnabled">
+    No edit mode :(
+  </v-divider>
 </template>
 
 <script setup lang="ts">
 import { useAppStore } from "@/store/app";
-import { Divider } from "@/types";
+import { Divider, Id } from "@/types";
 import { storeToRefs } from "pinia";
 
 const appStore = useAppStore();
 const { creatorMode } = storeToRefs(appStore);
+
+function changeDividerId(divider: Divider, id: Id) {
+  divider.id = id;
+}
 
 defineProps<{
   dividerData: Divider
