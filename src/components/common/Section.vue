@@ -117,7 +117,9 @@
       </v-container>
     </v-card>
 
-    <v-card
+    <ChoiceList :section-data="sectionData"/>
+
+    <!-- <v-card
       v-for="(item, index) in sectionData.choices"
       :key="index"
       class="my-4 mx-2 flex-row"
@@ -126,7 +128,7 @@
       <v-card-text>
         {{ item.text }}
       </v-card-text>
-    </v-card>
+    </v-card> -->
   </div>
 
   <!-- Preview mode -->
@@ -156,6 +158,8 @@ import type { Section } from "@/types";
 import { storeToRefs } from "pinia";
 import { parse as mdParse } from "marked";
 import { computed } from "vue";
+
+import ChoiceList from "@/components/common/ChoiceList.vue";
 
 const appStore = useAppStore();
 const { creatorMode } = storeToRefs(appStore);

@@ -43,7 +43,9 @@
   </v-navigation-drawer>
 
   <v-app-bar order="1">
-    <v-app-bar-title>{{ 2 }}</v-app-bar-title>
+    <v-app-bar-title>
+      {{ currentPageName }}
+    </v-app-bar-title>
   </v-app-bar>
 
   <!-- <points-bar></points-bar> -->
@@ -79,12 +81,17 @@ import { storeToRefs } from "pinia";
 
 import { NavigationItems } from "@/types";
 import { createSection, createDivider } from "@/functions";
+import { computed } from "vue";
 
 const appStore = useAppStore();
-const { dialog } = storeToRefs(appStore);
+const { dialog, projectV2 } = storeToRefs(appStore);
 
 // import type { Component } from "vue";
 // let currentComponent: Component | null = null;
+
+const currentPageName = computed(() => {
+  return projectV2.value.pages[projectV2.value.state.currentPage - 1].pageName;
+});
 
 const navigationItems: NavigationItems = [
   // {

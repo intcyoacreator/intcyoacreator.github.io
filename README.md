@@ -454,6 +454,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
       used for a plugin system
 - [ ] Consider moving the "changeSection*" functions in `Section.vue` to the
   `Page.vue` file and turning them into emits
+- [ ] Maybe add a bar up the top of the Viewer to display the Page name
 
 
 ## Issues / Errors / Bugs
@@ -473,7 +474,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
   to the Viewer, it will still be in Edit Mode
     * Fixed fairly easily
     - [ ] Same thing happens with dividers
-
+- [ ] When typing a Page Name from Page settings, it expands until finally
+  reaching the maximum width. It should be static at all times.
 
 ## Possible TODOs
 Will have to reconsider these later.

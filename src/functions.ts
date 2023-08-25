@@ -1,4 +1,4 @@
-import { Page, PageItem, Id, projectV2, Choice, ObjectType, Settings } from "@/types";
+import { Page, PageItem, Id, projectV2, Choice, Settings } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
