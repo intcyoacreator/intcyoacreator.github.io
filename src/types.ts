@@ -100,9 +100,13 @@ export type ProjectSettings = {
 }
 
 export type SectionSettings = {
-  /** Whether only one choice can be selected, or none of them */
-  isMultipleChoice?: boolean,
-}
+  /** The amount of choices allowed. `0` means there is no limit. If you want
+   * to make players unable to select any choices, you can turn on the
+   * `unselectableChoices` option. */
+  allowedChoices?: number,
+  /** If true, none of the choices will be selectable. */
+  unselectableChoices?: boolean,
+};
 
 /** The styling. */
 export type Styling = {

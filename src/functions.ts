@@ -164,21 +164,23 @@ allPaths: [${allPaths}]`);
   }
 
   // Give it the correct scope
-  const fullObject = getObjectViaPath(project, allPaths[allPaths.length - 1]);
 
-  switch (fullObject.type) {
-    case "page":
-      combinedSettings.scope = "page";
-      break;
-    case "section":
-      combinedSettings.scope = "section";
-      break;
-    case "divider":
-      combinedSettings.scope = "pageItem";
-      break;
-    case "choice":
-      combinedSettings.scope = "choice";
-  }
+  // const fullObject = getObjectViaPath(project,
+  // allPaths[allPaths.length - 1]);
+
+  // switch (fullObject.type) {
+  //   case "page":
+  //     combinedSettings.scope = "page";
+  //     break;
+  //   case "section":
+  //     combinedSettings.scope = "section";
+  //     break;
+  //   case "divider":
+  //     combinedSettings.scope = "pageItem";
+  //     break;
+  //   case "choice":
+  //     combinedSettings.scope = "choice";
+  // }
 
   return combinedSettings;
 }

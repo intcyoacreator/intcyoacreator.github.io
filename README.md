@@ -455,6 +455,10 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Consider moving the "changeSection*" functions in `Section.vue` to the
   `Page.vue` file and turning them into emits
 - [ ] Maybe add a bar up the top of the Viewer to display the Page name
+- [ ] Add a section option where it computes the maximum height of the choices,
+  and if (as it is by default, by applying it to the project-level default
+  section setting) the setting `normalizeChoiceHeight` is set to `true`, then
+  every row will have their `min-height` bound to the largest height.
 
 
 ## Issues / Errors / Bugs
@@ -476,6 +480,9 @@ A successor to MeanDelay's Interactive CYOA Creator.
     - [ ] Same thing happens with dividers
 - [ ] When typing a Page Name from Page settings, it expands until finally
   reaching the maximum width. It should be static at all times.
+- [ ] Choices clash together when the screen is small but not small enough that
+  it moves to a single column
+
 
 ## Possible TODOs
 Will have to reconsider these later.

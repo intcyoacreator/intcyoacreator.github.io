@@ -46,7 +46,9 @@ export const defaultSettings: Settings = {
     }
   },
 
-  sectionSettings: {},
+  sectionSettings: {
+
+  },
 };
 
 /**

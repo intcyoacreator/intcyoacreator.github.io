@@ -5,9 +5,8 @@
   -->
   <v-item-group
     :multiple="isMultipleChoice"
-    class="ma-4"
   >
-    <div>
+    <div class="ma-10">
       <v-row>
         <v-col
           v-for="(item, index) in sectionData.choices"
@@ -18,21 +17,22 @@
           <v-item v-slot="{ isSelected, toggle }">
             <v-card
               :color="isSelected ? 'primary' : ''"
-              class="d-flex align-center"
+              class="d-flex flex-column align-center"
               dark
-              height="200"
+              min-height="200"
               @click="toggle"
             >
               <v-card-title>
                 {{ item.title }}
               </v-card-title>
-              <v-scroll-y-transition>
-                <div
-                  class="text-h3 flex-grow-1 text-center"
-                >
-                  {{ isSelected ? "Selected" : "Click me!" }}
-                </div>
-              </v-scroll-y-transition>
+
+              <v-card-text>
+                <v-scroll-y-transition>
+                  <div>
+                    {{ item.text }}
+                  </div>
+                </v-scroll-y-transition>
+              </v-card-text>
             </v-card>
           </v-item>
         </v-col>
@@ -60,9 +60,9 @@ const sectionSettings = computed(() => {
   return getSettingsOfObject(projectV2.value, props.sectionData.id);
 });
 
-// This will change according to the choices
 const isMultipleChoice = computed(() => {
-  return sectionSettings.value.sectionSettings?.isMultipleChoice;
+  let allowedChoices = sectionSettings.value.sectionSettings?.allowedChoices;
+  allowedChoices = allowedChoices ?? 0;
+  return allowedChoices === 0 ? true : false;
 });
-
 </script>
