@@ -1,4 +1,4 @@
-import { Page, PageItem, Id, projectV2, Choice, ObjectType } from "@/types";
+import { Page, PageItem, Id, projectV2, Choice, ObjectType, Settings } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
@@ -90,7 +90,7 @@ function getObjectViaPath(
 export function getObjectViaId(
   project: projectV2,
   id: Id
-): Page | PageItem | Choice[] {
+): Page | PageItem | Choice {
   const objectPath = findObjectPathViaId(project, id);
   return getObjectViaPath(project, objectPath);
 }
@@ -125,7 +125,7 @@ function getReverseArrays(originalArray: Array<number>): Array<Array<number>> {
 // type StringObjectType = "page" | "pageItem" | "choice";
 
 function determineObjectType(
-  object: Page | PageItem | Choice[]
+  object: Page | PageItem | Choice
 ): ObjectType {
   // If the page has an ID
   if ((object as Page).type === "page") {
@@ -136,22 +136,41 @@ function determineObjectType(
     return "divider";
   } else if ((object as Choice).type === "choice") {
     return "choice";
+  } else {
+    throw "Error: could not determine object type!";
   }
 }
 
+/**
+ * Gets the entire settings applied to an object, with respect to global and
+ * local overwrites.
+ * @param project The Project file.
+ * @param id The ID of the object.
+ * @returns The settings.
+ */
 export function getSettingsOfObject(project: projectV2, id: Id) {
   const objectPath = findObjectPathViaId(project, id);
-  const object = getObjectViaPath(project, objectPath);
+  // const object = getObjectViaPath(project, objectPath);
   const allPaths = getReverseArrays(objectPath);
 
-  // console.log("Paths =");
-  // console.log(paths);
-  console.log("Object:");
-  console.log(object);
-  console.log(`Type: ${typeof object}`);
+  let combinedSettings: Settings = {};
 
+  for (const path of allPaths) {
+    const object = getObjectViaPath(project, path);
 
-  // switch (object.type)
+    switch (object.type) {
+      case "page":
+      case "section":
+      case "divider":
+      case "choice":
+        combinedSettings = { ...combinedSettings, ...object.settings};
+        break;
+      default:
+        throw `Error: could not get settings of object: ${object}`;
+    }
+  }
+
+  return combinedSettings;
 }
 
 /**

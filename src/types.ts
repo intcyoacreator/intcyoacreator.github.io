@@ -170,6 +170,7 @@ export type Divider = {
   type: "divider",
   id: Id,
   editModeEnabled: boolean,
+  settings: Settings,
 };
 
 /** A section in the CYOA. Equivalent to a Row in the first Creator. */
@@ -199,6 +200,8 @@ export type Choice = {
   title: string,
   /** The text of a choice. */
   text: string,
+  /** The settings of a choice. */
+  settings: Settings,
 }
 
 /** A navigation item in the sidebar */

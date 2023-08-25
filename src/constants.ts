@@ -103,6 +103,7 @@ export const sampleProjectV2: projectV2 = {
           type: "divider",
           id: "9f7s",
           editModeEnabled: false,
+          settings: {},
         },
         {
           type: "section",
@@ -118,20 +119,23 @@ export const sampleProjectV2: projectV2 = {
               title: "Forever Memory",
               text: `You now have perfect memory. You will never forget a
 memory. This works retroactively too.`,
+              settings: {},
             },
             {
               id: "k9f2",
               type: "choice",
               title: "Body of Atlas",
               text: `You have unlimited stamina. You can lift up to 50 million
-times more than a regular human.`
+times more than a regular human.`,
+              settings: {},
             },
             {
               id: "09r2",
               type: "choice",
               title: "Avalon",
               text: `Your body's healing is greater than anyone before you.
-You regenerate nigh-instantly.`
+You regenerate nigh-instantly.`,
+              settings: {},
             }
           ],
         },
@@ -188,6 +192,7 @@ export const defaultDivider: Divider = {
   type: "divider",
   id: "",
   editModeEnabled: false,
+  settings: {},
 };
 
 /**
