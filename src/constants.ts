@@ -39,8 +39,9 @@ export const emptyProjectV2: projectV2 = {
       respectively.`,
         idLength: 5,
       }
-    }
+    },
 
+    sectionSettings: {},
   },
   state: {
     currentPage: 1,
@@ -57,6 +58,8 @@ export const emptyProjectV2: projectV2 = {
       pageName: "CYOA",
       settings: {
         "scope": "page",
+        projectSettings: {},
+        sectionSettings: {},
       },
       pageItems: [],
     },
@@ -82,8 +85,8 @@ choices\
       respectively.",
         idLength: 5,
       },
-    }
-
+    },
+    sectionSettings: {},
   },
   state: {
     currentPage: 1,
@@ -100,6 +103,8 @@ choices\
       pageName: "CYOA",
       settings: {
         "scope": "page",
+        projectSettings: {},
+        sectionSettings: {},
       },
       pageItems: [
         {
@@ -110,7 +115,9 @@ choices\
           editModeEnabled: false,
           choices: [],
           settings: {
-          "scope": "section",
+            "scope": "section",
+            projectSettings: {},
+            sectionSettings: {},
           },
         },
         {
@@ -119,6 +126,8 @@ choices\
           editModeEnabled: false,
           settings: {
             "scope": "pageItem",
+            projectSettings: {},
+            sectionSettings: {},
           },
         },
         {
@@ -129,6 +138,8 @@ choices\
           editModeEnabled: false,
           settings: {
             "scope": "section",
+            projectSettings: {},
+            sectionSettings: {},
           },
           choices: [
             {
@@ -139,6 +150,8 @@ choices\
 memory. This works retroactively too.`,
               settings: {
                 "scope": "choice",
+                projectSettings: {},
+                sectionSettings: {},
               },
             },
             {
@@ -149,6 +162,8 @@ memory. This works retroactively too.`,
 times more than a regular human.`,
               settings: {
                 "scope": "choice",
+                projectSettings: {},
+                sectionSettings: {},
               },
             },
             {
@@ -159,6 +174,8 @@ times more than a regular human.`,
 You regenerate nigh-instantly.`,
               settings: {
                 "scope": "choice",
+                projectSettings: {},
+                sectionSettings: {},
               },
             }
           ],
@@ -172,6 +189,8 @@ You regenerate nigh-instantly.`,
       pageName: "Second page",
       settings: {
         "scope": "page",
+        projectSettings: {},
+        sectionSettings: {},
       },
       pageItems: [
         {
@@ -183,6 +202,8 @@ You regenerate nigh-instantly.`,
           choices: [],
           settings: {
             "scope": "section",
+            projectSettings: {},
+            sectionSettings: {},
           },
         }
       ],
@@ -205,6 +226,8 @@ export const defaultSection: Section = {
   choices: [],
   settings: {
     "scope": "section",
+    projectSettings: {},
+    sectionSettings: {},
   },
 };
 
@@ -215,6 +238,8 @@ export const defaultChoice: Choice = {
   text: "",
   settings: {
     "scope": "choice",
+    projectSettings: {},
+    sectionSettings: {},
   }
 };
 
@@ -226,6 +251,8 @@ export const defaultPage: Page = {
   pageItems: [],
   settings: {
     "scope": "page",
+    projectSettings: {},
+    sectionSettings: {},
   },
 };
 
@@ -236,6 +263,8 @@ export const defaultDivider: Divider = {
   editModeEnabled: false,
   settings: {
     "scope": "pageItem",
+    projectSettings: {},
+    sectionSettings: {},
   },
 };
 

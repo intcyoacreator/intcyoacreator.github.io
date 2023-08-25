@@ -76,10 +76,10 @@ export type Settings = {
   /** The settings scope. */
   scope: Scope,
 
-  projectSettings?: ProjectSettings,
+  projectSettings: ProjectSettings,
 
   /** Settings unique to Sections. */
-  sectionSettings?: SectionSettings,
+  sectionSettings: SectionSettings,
 }
 
 export type ProjectSettings = {

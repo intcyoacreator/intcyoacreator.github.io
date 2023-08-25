@@ -2,7 +2,7 @@
   <!-- The actual Viewer -->
   <v-container>
     <!-- Pagination buttons -->
-    <v-row v-if="projectV2.settings.pagesOn">
+    <v-row v-if="projectV2.settings.projectSettings.pagesOn">
       <v-spacer/>
 
       <!-- <v-col cols="1" align-self="center">
@@ -160,6 +160,6 @@
 
   onMounted(() => {
     // Maybe turn this on automatically if the length of pages is more than 1?
-    projectV2.value.settings.pagesOn = true;
+    projectV2.value.settings.projectSettings.pagesOn = true;
   });
 </script>

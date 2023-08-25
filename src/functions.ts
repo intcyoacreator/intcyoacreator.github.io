@@ -91,7 +91,7 @@ export function getObjectViaId(
   project: projectV2,
   id: Id
 ): Page | PageItem | Choice {
-  const objectPath = findObjectPathViaId(project, id);
+  const objectPath = getObjectPath(project, id);
   return getObjectViaPath(project, objectPath);
 }
 
@@ -130,12 +130,14 @@ function getReverseArrays(originalArray: Array<number>): Array<Array<number>> {
  * @returns The settings.
  */
 export function getSettingsOfObject(project: projectV2, id: Id) {
-  const objectPath = findObjectPathViaId(project, id);
+  const objectPath = getObjectPath(project, id);
   // const object = getObjectViaPath(project, objectPath);
   const allPaths = getReverseArrays(objectPath);
 
   let combinedSettings: Settings = {
     scope: "global", // will be changed
+    projectSettings: {},
+    sectionSettings: {},
   };
 
   outer: for (const [i, path] of allPaths.entries()) {
@@ -144,8 +146,8 @@ export function getSettingsOfObject(project: projectV2, id: Id) {
     if (!object) {
       console.error(`Error: object is null or undefined. More info:
 Iteration: ${i}
-Path: ${path}
-allPaths: ${allPaths}`);
+Path: [${path}]
+allPaths: [${allPaths}]`);
       continue;
     }
 
@@ -187,7 +189,7 @@ allPaths: ${allPaths}`);
  * @param id
  * @returns An array of numbers representing the indexes of the Project object.
  */
-function findObjectPathViaId(
+function getObjectPath(
   project: projectV2,
   id: Id
 ): Array<number> {
@@ -252,11 +254,14 @@ function findObjectPathViaId(
   }
 
   if (!foundObject) {
-    throw "Did not find object!";
+    throw "Error: did not, in fact, find object!";
   }
 
-  // Add path to Object path
-  // currentPageIndex stupidly starts at 1, so we have to offset that here
+  // Add path to Object path currentPageIndex stupidly starts at 1, so we have
+  // to offset that here.
+  // ---
+  // We have to do "!== undefined" instead of just "if (index)", because an
+  // index of 0 reads as falsy
   if (currentPageIndex !== undefined) {
     finalObjectPath.push(currentPageIndex);
   }
