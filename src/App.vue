@@ -68,10 +68,9 @@
   import About from "./views/about/About.vue";
 
   import { CreatorMode } from "./types";
-  import { getSettingsOfObject } from "./functions";
 
   const appStore = useAppStore();
-  const { appVersion, creatorMode, projectV2 } = storeToRefs(appStore);
+  const { appVersion, creatorMode } = storeToRefs(appStore);
 
   const components = [
     "Home", // Placeholder value
@@ -120,9 +119,5 @@
     script.setAttribute("async", "true");
     script.src = "//gc.zgo.at/count.js";
     document.head.appendChild(script);
-
-    getSettingsOfObject(projectV2.value, "row1");
-    getSettingsOfObject(projectV2.value, "main");
-    getSettingsOfObject(projectV2.value, "sk92");
   });
 </script>

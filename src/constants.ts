@@ -1,4 +1,4 @@
-import { Divider, Page, Section, Styling, projectV2 } from "@/types";
+import { Choice, Divider, Page, Section, Styling, projectV2 } from "@/types";
 
 export const defaultStyling: Styling = {
   scope: "global",
@@ -23,20 +23,24 @@ export const emptyProjectV2: projectV2 = {
   settings: {
     scope: "global",
 
-    // Whether pagination is turned on
-    pagesOn: false,
+    projectSettings: {
+      // Whether pagination is turned on
+      pagesOn: false,
 
-    defaults: {
-      pageName: "Page",
-      sectionTitle: "Section",
-      sectionText: `This is a section, and inside of it you can place
-choices.
-\n\n
-On both Sections and Choices, Requirements can be placed, which will block a
-Section from being shown or make the player unable to select a choice,
-respectively.`,
-      idLength: 5,
+      defaults: {
+        pageName: "Page",
+        sectionTitle: "Section",
+        sectionText: `This is a section, and inside of it you can place
+      choices.
+      \n\n
+      On both Sections and Choices, Requirements can be placed, which will
+      block a
+      Section from being shown or make the player unable to select a choice,
+      respectively.`,
+        idLength: 5,
+      }
     }
+
   },
   state: {
     currentPage: 1,
@@ -51,7 +55,9 @@ respectively.`,
       id: "main",
       type: "page",
       pageName: "CYOA",
-      settings: {},
+      settings: {
+        "scope": "page",
+      },
       pageItems: [],
     },
   ],
@@ -62,18 +68,22 @@ export const sampleProjectV2: projectV2 = {
   version: 2,
   settings: {
     scope: "global",
-    // Whether pagination is turned on
-    pagesOn: false,
-    defaults: {
-      pageName: "Page",
-      sectionTitle: "Section",
-      sectionText: "This is a section, and inside of it you can place choices.\
-  \
-  On both Sections and Choices, Requirements can be placed, which will block a\
-  Section from being shown or make the player unable to select a choice,\
-  respectively.",
-      idLength: 5,
-    },
+    projectSettings: {
+      // Whether pagination is turned on
+      pagesOn: false,
+      defaults: {
+        pageName: "Page",
+        sectionTitle: "Section",
+        sectionText: "This is a section, and inside of it you can place\
+choices\
+      On both Sections and Choices, Requirements can be placed, which will\
+      block a\
+      Section from being shown or make the player unable to select a choice,\
+      respectively.",
+        idLength: 5,
+      },
+    }
+
   },
   state: {
     currentPage: 1,
@@ -88,7 +98,9 @@ export const sampleProjectV2: projectV2 = {
       id: "main",
       type: "page",
       pageName: "CYOA",
-      settings: {},
+      settings: {
+        "scope": "page",
+      },
       pageItems: [
         {
           type: "section",
@@ -97,13 +109,17 @@ export const sampleProjectV2: projectV2 = {
           text: "This is my first Row",
           editModeEnabled: false,
           choices: [],
-          settings: {},
+          settings: {
+          "scope": "section",
+          },
         },
         {
           type: "divider",
           id: "9f7s",
           editModeEnabled: false,
-          settings: {},
+          settings: {
+            "scope": "pageItem",
+          },
         },
         {
           type: "section",
@@ -111,7 +127,9 @@ export const sampleProjectV2: projectV2 = {
           title: "Perks",
           text: "Pick any Perks you would like.",
           editModeEnabled: false,
-          settings: {},
+          settings: {
+            "scope": "section",
+          },
           choices: [
             {
               id: "sk92",
@@ -119,7 +137,9 @@ export const sampleProjectV2: projectV2 = {
               title: "Forever Memory",
               text: `You now have perfect memory. You will never forget a
 memory. This works retroactively too.`,
-              settings: {},
+              settings: {
+                "scope": "choice",
+              },
             },
             {
               id: "k9f2",
@@ -127,7 +147,9 @@ memory. This works retroactively too.`,
               title: "Body of Atlas",
               text: `You have unlimited stamina. You can lift up to 50 million
 times more than a regular human.`,
-              settings: {},
+              settings: {
+                "scope": "choice",
+              },
             },
             {
               id: "09r2",
@@ -135,7 +157,9 @@ times more than a regular human.`,
               title: "Avalon",
               text: `Your body's healing is greater than anyone before you.
 You regenerate nigh-instantly.`,
-              settings: {},
+              settings: {
+                "scope": "choice",
+              },
             }
           ],
         },
@@ -146,7 +170,9 @@ You regenerate nigh-instantly.`,
       id: "second",
       type: "page",
       pageName: "Second page",
-      settings: {},
+      settings: {
+        "scope": "page",
+      },
       pageItems: [
         {
           type: "section",
@@ -155,7 +181,9 @@ You regenerate nigh-instantly.`,
           text: "This is my second row. Teehee!",
           editModeEnabled: false,
           choices: [],
-          settings: {},
+          settings: {
+            "scope": "section",
+          },
         }
       ],
     }
@@ -175,7 +203,19 @@ export const defaultSection: Section = {
   text: "",
   editModeEnabled: false,
   choices: [],
-  settings: {},
+  settings: {
+    "scope": "section",
+  },
+};
+
+export const defaultChoice: Choice = {
+  type: "choice",
+  id: "",
+  title: "",
+  text: "",
+  settings: {
+    "scope": "choice",
+  }
 };
 
 /** The default page */
@@ -184,7 +224,9 @@ export const defaultPage: Page = {
   id: "",
   pageName: "",
   pageItems: [],
-  settings: {},
+  settings: {
+    "scope": "page",
+  },
 };
 
 /** The default divider */
@@ -192,7 +234,9 @@ export const defaultDivider: Divider = {
   type: "divider",
   id: "",
   editModeEnabled: false,
-  settings: {},
+  settings: {
+    "scope": "pageItem",
+  },
 };
 
 /**

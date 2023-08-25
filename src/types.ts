@@ -74,8 +74,15 @@ export type projectV2 = {
 /** A generic settings type. */
 export type Settings = {
   /** The settings scope. */
-  scope?: Scope,
+  scope: Scope,
 
+  projectSettings?: ProjectSettings,
+
+  /** Settings unique to Sections. */
+  sectionSettings?: SectionSettings,
+}
+
+export type ProjectSettings = {
   /** Whether pagination is turned on or not. */
   pagesOn?: boolean,
 
@@ -89,10 +96,7 @@ export type Settings = {
     sectionText?: string,
     /** The default length of newly generated IDs. */
     idLength?: number,
-  }
-
-  /** Settings unique to Sections. */
-  sectionSettings?: SectionSettings,
+  },
 }
 
 export type SectionSettings = {

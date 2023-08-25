@@ -54,7 +54,7 @@ function getObjectViaPath(
   project: projectV2,
   objectPath: Array<number>
 ): Page | PageItem | Choice {
-  let parent;
+  let parent: Page | PageItem | Choice;
 
   switch (objectPath.length) {
     // Page-level
@@ -62,7 +62,12 @@ function getObjectViaPath(
       return project.pages[objectPath[0]];
     // Page Item-level
     case 2:
-      return project.pages[objectPath[0]].pageItems[objectPath[1]];
+      // eslint-disable-next-line no-case-declarations
+      const test = project.pages[objectPath[0]].pageItems[objectPath[1]];
+      console.log("===\ntest =");
+      console.log(test);
+      console.log("===");
+      return test;
     // Choice level
     case 3:
       parent = project.pages[objectPath[0]].pageItems[objectPath[1]];
@@ -134,22 +139,61 @@ export function getSettingsOfObject(project: projectV2, id: Id) {
   // const object = getObjectViaPath(project, objectPath);
   const allPaths = getReverseArrays(objectPath);
 
-  let combinedSettings: Settings = {};
+  console.log(objectPath);
+  console.log(allPaths);
 
-  for (const path of allPaths) {
+  let combinedSettings: Settings = {
+    scope: "global", // will be changed
+  };
+
+  outer: for (const [i, path] of allPaths.entries()) {
+    console.log(`path is [${path}]`);
     const object = getObjectViaPath(project, path);
+    console.log("combinedSettings is:");
+    console.log(combinedSettings);
+    console.log(`object = ${object}`);
+
+    // const isFinalIteration = (i + 1) === allPaths.length;
+
+    if (!object) {
+      console.error(`Error: object is null or undefined. More info:
+Iteration: ${i}
+Path: ${path}
+allPaths: ${allPaths}`);
+      continue;
+    }
 
     switch (object.type) {
       case "page":
       case "section":
       case "divider":
       case "choice":
-        combinedSettings = { ...combinedSettings, ...object.settings};
-        break;
+        combinedSettings = { ...combinedSettings, ...object.settings };
+        continue outer;
       default:
         throw `Error: could not get settings of object: ${object}`;
     }
   }
+
+  // Give it the correct scope
+  const fullObject = getObjectViaPath(project, allPaths[allPaths.length - 1]);
+
+  switch (fullObject.type) {
+    case "page":
+      combinedSettings.scope = "page";
+      break;
+    case "section":
+      combinedSettings.scope = "section";
+      break;
+    case "divider":
+      combinedSettings.scope = "pageItem";
+      break;
+    case "choice":
+      combinedSettings.scope = "choice";
+  }
+
+  console.log("Final settings:");
+  console.log(combinedSettings);
 
   return combinedSettings;
 }
@@ -192,6 +236,9 @@ function findObjectPathViaId(
 
     if (page.id === id) {
       foundObject = true;
+      // Reset lower level searches
+      currentPageItemIndex = undefined;
+      currentChoiceIndex = undefined;
       break outer;
     }
 
@@ -201,12 +248,14 @@ function findObjectPathViaId(
 
       if (pageItem.id === id) {
         foundObject = true;
+        // Reset lower level searches
+        currentChoiceIndex = undefined;
         break outer;
       }
 
       // If the item is of type Section, iterate through the Choices
       // Checks if the Section has choices first, though
-      if (pageItem.type === "section" && pageItem.choices) {
+      if (pageItem.type === "section" && pageItem.choices.length >= 1) {
         for (const [i, choice] of pageItem.choices.entries()) {
           currentChoiceIndex = i;
 
@@ -278,8 +327,8 @@ export function createPage() {
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
   const idList = projectV2.value.state.allIds;
-  const idLength = projectV2.value.settings.defaults?.idLength ?? 5;
-  const defaults = projectV2.value.settings.defaults;
+  const defaults = projectV2.value.settings.projectSettings?.defaults ?? {};
+  const idLength = defaults?.idLength ?? 5;
 
   const newPage = { ...defaultPage };
   newPage.pageName = defaults?.pageName ?? "page";
@@ -297,10 +346,10 @@ export function createSection() {
   const { projectV2 } = storeToRefs(appStore);
 
   // For readability
-  const defaults = projectV2.value.settings.defaults;
+  const defaults = projectV2.value.settings.projectSettings?.defaults;
   const currentPage = projectV2.value.state.currentPage - 1;
   const idList = projectV2.value.state.allIds;
-  const idLength = projectV2.value.settings.defaults?.idLength ?? 5;
+  const idLength = defaults?.idLength ?? 5;
   const page = projectV2.value.pages[currentPage];
 
   // Happens when you try to create a Section while having no Pages
@@ -322,8 +371,9 @@ export function createDivider() {
   const { projectV2 } = storeToRefs(appStore);
 
   // For readability
+  const defaults = projectV2.value.settings.projectSettings?.defaults;
   const idList = projectV2.value.state.allIds;
-  const idLength = projectV2.value.settings.defaults?.idLength ?? 5;
+  const idLength = defaults?.idLength ?? 5;
   const currentPageIndex = projectV2.value.state.currentPage - 1;
   const page = projectV2.value.pages[currentPageIndex];
 
@@ -447,7 +497,8 @@ export function duplicatePageItem(
   const currentPage = projectV2.value.state.currentPage - 1;
   const sections = projectV2.value.pages[currentPage].pageItems;
   const idList = projectV2.value.state.allIds;
-  const idLength = projectV2.value.settings.defaults?.idLength ?? 5;
+  const defaults = projectV2.value.settings.projectSettings?.defaults;
+  const idLength = defaults?.idLength ?? 5;
   const index = sections.findIndex((i) => {
     return i.id === pageItem.id;
   }) + 1; // This one ensures that the duplicated objects are made one ahead
