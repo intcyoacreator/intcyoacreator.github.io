@@ -122,25 +122,6 @@ function getReverseArrays(originalArray: Array<number>): Array<Array<number>> {
   return paths;
 }
 
-// type StringObjectType = "page" | "pageItem" | "choice";
-
-function determineObjectType(
-  object: Page | PageItem | Choice
-): ObjectType {
-  // If the page has an ID
-  if ((object as Page).type === "page") {
-    return "page";
-  } else if ((object as PageItem).type === "section") {
-    return "section";
-  } else if ((object as PageItem).type === "divider") {
-    return "divider";
-  } else if ((object as Choice).type === "choice") {
-    return "choice";
-  } else {
-    throw "Error: could not determine object type!";
-  }
-}
-
 /**
  * Gets the entire settings applied to an object, with respect to global and
  * local overwrites.
