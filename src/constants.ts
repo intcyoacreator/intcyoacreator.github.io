@@ -50,6 +50,7 @@ respectively.`,
     {
       id: "main",
       pageName: "CYOA",
+      settings: {},
       pageItems: [],
     },
   ],
@@ -85,6 +86,7 @@ export const sampleProjectV2: projectV2 = {
     {
       id: "main",
       pageName: "CYOA",
+      settings: {},
       pageItems: [
         {
           type: "section",
@@ -93,6 +95,7 @@ export const sampleProjectV2: projectV2 = {
           text: "This is my first Row",
           editModeEnabled: false,
           choices: [],
+          settings: {},
         },
         {
           type: "divider",
@@ -105,6 +108,7 @@ export const sampleProjectV2: projectV2 = {
           title: "Perks",
           text: "Pick any Perks you would like.",
           editModeEnabled: false,
+          settings: {},
           choices: [
             {
               id: "sk92",
@@ -132,6 +136,7 @@ You regenerate nigh-instantly.`
     {
       id: "second",
       pageName: "Second page",
+      settings: {},
       pageItems: [
         {
           type: "section",
@@ -140,6 +145,7 @@ You regenerate nigh-instantly.`
           text: "This is my second row. Teehee!",
           editModeEnabled: false,
           choices: [],
+          settings: {},
         }
       ],
     }
@@ -159,6 +165,7 @@ export const defaultSection: Section = {
   text: "",
   editModeEnabled: false,
   choices: [],
+  settings: {},
 };
 
 /** The default page */
@@ -166,6 +173,7 @@ export const defaultPage: Page = {
   id: "",
   pageName: "",
   pageItems: [],
+  settings: {},
 };
 
 /** The default divider */

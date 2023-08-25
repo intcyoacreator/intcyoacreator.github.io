@@ -1,8 +1,185 @@
-import type { Page, PageItem, Id } from "@/types";
+import { Page, PageItem, Id, projectV2, Choice } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
 import { defaultDivider, defaultPage, defaultSection } from "./constants";
+
+// /**
+//  * Highly dangerous arbitrary object accessor, given an array of strings.
+//  *
+//  *
+//  * For example, this:
+//  *
+//  * ```js
+//  * let ob = { first: { second: { third: 'secret!' } } };
+//  * let result = accessObject(ob, ["first", "second", "third"]);
+//  * console.log(result);
+//  * ```
+//  *
+//  * returns:
+//  * `secret!`
+//  *
+//  * @param obj The object to search in.
+//  * @param access An array of strings representing the keys of an object.
+//  * @returns The given value.
+//  */
+// function accessObject(obj: projectV2, access: Array<any>): Object {
+//   let result = { ...obj }; // Copy the object
+//   let latestObjectType = typeof result;
+
+//   if (!result) throw `Error: the given object is falsy!
+// obj = ${obj}`;
+
+//   for (const [i, depth] of access.entries()) {
+//     console.log(`i = ${i}
+// depth = ${depth}
+// typeof obj = ${typeof obj}`);
+
+//     latestObjectType = typeof result[depth as keyof latestObjectType];
+
+//     result = result[depth as keyof typeof obj];
+//   }
+
+//   return result;
+// }
+
+/**
+ * Return the given Object with a path.
+ * @param project The Project.
+ * @param objectPath The Object path. Can be retrieved using
+ * `findObjectPathViaId()`.
+ * @returns The Object.
+ */
+export function getObjectViaPath(
+  project: projectV2,
+  objectPath: Array<number>
+): Page | PageItem | Choice[] {
+  let parent;
+
+  switch (objectPath.length) {
+    // Page-level
+    case 1:
+      return project.pages[objectPath[0]];
+    // Page Item-level
+    case 2:
+      return project.pages[objectPath[0]].pageItems[objectPath[1]];
+    // Choice level
+    case 3:
+      parent = project.pages[objectPath[0]].pageItems[objectPath[1]];
+
+      if (parent.type === "section") {
+        return parent.choices;
+      } else if (parent.type === "divider") {
+        return parent;
+      } else {
+        return parent;
+      }
+    case 0:
+      throw "Error: given objectPath is empty!";
+    default:
+      throw "Error: Could not find object via path";
+  }
+}
+
+export function getSettingsOfObject(project: projectV2, id: Id) {
+  const objectPath = findObjectPathViaId(project, id);
+  console.log(objectPath);
+  const object = getObjectViaPath(project, objectPath);
+  console.log(object);
+}
+
+/**
+ * Finds an object path via ID
+ * @param project
+ * @param id
+ * @returns An array of numbers representing the indexes of the Project object.
+ */
+export function findObjectPathViaId(
+  project: projectV2,
+  id: Id
+): Array<number> {
+  // Find if the ID is a page
+  // const pageSearch = project.pages.findIndex((i) => {
+  //   if (i.id === id) return true;
+  // });
+
+  // // If the ID is a page
+  // if (pageSearch != -1) {
+  //   console.log("ID is a page!");
+  //   return;
+  // }
+
+  const finalObjectPath = [];
+
+  let foundObject = false;
+  let currentPageIndex = undefined;
+  let currentPageItemIndex = undefined;
+  // let currentSectionIndex;
+  let currentChoiceIndex = undefined;
+
+  // Iterate through each page
+  outer: for (const [i, page] of project.pages.entries()) {
+    currentPageIndex = i;
+
+    if (page.id === id) {
+      console.log(`ID is a page! Page name: ${page.pageName}`);
+      foundObject = true;
+      break outer;
+    }
+
+    // Iterate through each page item
+    for (const [i, pageItem] of page.pageItems.entries()) {
+      currentPageItemIndex = i;
+
+      if (pageItem.id === id) {
+        console.log(`ID is a page item!
+        Item name: ${pageItem.id}
+        Item type: ${pageItem.type}`);
+        foundObject = true;
+        break outer;
+      }
+
+      // If the item is of type Section, iterate through the Choices
+      // Checks if the Section has choices first, though
+      if (pageItem.type === "section" && pageItem.choices) {
+        for (const [i, choice] of pageItem.choices.entries()) {
+          currentChoiceIndex = i;
+
+          if (choice.id === id) {
+            console.log(`ID is a choice!
+            Choice name: ${choice.title}
+            Choice text: ${choice.text}`);
+            foundObject = true;
+            break outer;
+          }
+        }
+      }
+    }
+  }
+
+  console.log(`foundObject = ${foundObject}`);
+  console.log(`currentPageIndex = ${currentPageIndex}
+  currentPageItemIndex = ${currentPageItemIndex}
+  currentChoiceIndex = ${currentChoiceIndex}`);
+
+  if (!foundObject) {
+    throw "Did not find object!";
+  }
+
+  // Add path to Object path
+  // currentPageIndex stupidly starts at 1, so we have to offset that here
+  if (currentPageIndex !== undefined) {
+    finalObjectPath.push(currentPageIndex);
+  }
+  if (currentPageItemIndex !== undefined) {
+    finalObjectPath.push(currentPageItemIndex);
+  }
+  if (currentChoiceIndex !== undefined) {
+    finalObjectPath.push(currentChoiceIndex);
+  }
+
+  return finalObjectPath;
+}
 
 function genRanHex(size: number): string {
   return [...Array(size)]

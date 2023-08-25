@@ -59,17 +59,19 @@
 
 <script setup lang="ts">
   import { ref } from "vue";
-  import { useAppStore } from "./store/app";
   import { onMounted } from "vue";
+  import { useAppStore } from "./store/app";
+  import { storeToRefs } from "pinia";
 
   import Creator from "./views/Creator.vue";
   import Viewer from "./views/Viewer.vue";
   import About from "./views/about/About.vue";
-  import { storeToRefs } from "pinia";
+
   import { CreatorMode } from "./types";
+  import { getSettingsOfObject } from "./functions";
 
   const appStore = useAppStore();
-  const { appVersion, creatorMode } = storeToRefs(appStore);
+  const { appVersion, creatorMode, projectV2 } = storeToRefs(appStore);
 
   const components = [
     "Home", // Placeholder value
@@ -118,5 +120,9 @@
     script.setAttribute("async", "true");
     script.src = "//gc.zgo.at/count.js";
     document.head.appendChild(script);
+
+    getSettingsOfObject(projectV2.value, "row1");
+    getSettingsOfObject(projectV2.value, "main");
+    getSettingsOfObject(projectV2.value, "sk92");
   });
 </script>

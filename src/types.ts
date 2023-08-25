@@ -72,7 +72,7 @@ export type projectV2 = {
 }
 
 /** A generic settings type. */
-type Settings = {
+export type Settings = {
   /** The settings scope. */
   scope?: Scope,
 
@@ -90,6 +90,14 @@ type Settings = {
     /** The default length of newly generated IDs. */
     idLength?: number,
   }
+
+  /** Settings unique to Sections. */
+  sectionSettings?: SectionSettings,
+}
+
+export type SectionSettings = {
+  /** Whether only one choice can be selected, or none of them */
+  isMultipleChoice?: boolean,
 }
 
 /** The styling. */
@@ -121,8 +129,20 @@ export type Styling = {
 /** The unique identifier of an object. */
 export type Id = string;
 
-/** The different scopes for styles, settings, etc. */
-type Scope = "global" | "page" | "local";
+/**
+ * The different scopes for styles, settings, etc.
+ *
+ * `global` = Across the entire project.
+ *
+ * `page` – Restricted to the current page.
+ *
+ * `pageItem` – Restricted to the current page item (sections, dividers, etc).
+ *
+ * `section` – Restricted to the Section only.
+ *
+ * `choice` – Restricted to a specific Choice only.
+ */
+type Scope = "global" | "page" | "pageItem" | "section" | "choice";
 
 /** A page in the CYOA. */
 export type Page = {
@@ -132,6 +152,8 @@ export type Page = {
   pageName: string,
   /** The sections. */
   pageItems: Array<PageItem>,
+  /** The settings local to the page. */
+  settings?: Settings,
 }
 
 /** An item/row that is made of all types of objects */
@@ -157,6 +179,8 @@ export type Section = {
   text: string,
   /** Whether it shows the edit menu or not */
   editModeEnabled: boolean,
+  /** The settings that can be changed by the user. */
+  settings: Settings,
   /** The choices within a section. */
   choices: Array<Choice>,
 }
