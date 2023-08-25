@@ -62,12 +62,7 @@ function getObjectViaPath(
       return project.pages[objectPath[0]];
     // Page Item-level
     case 2:
-      // eslint-disable-next-line no-case-declarations
-      const test = project.pages[objectPath[0]].pageItems[objectPath[1]];
-      console.log("===\ntest =");
-      console.log(test);
-      console.log("===");
-      return test;
+      return project.pages[objectPath[0]].pageItems[objectPath[1]];
     // Choice level
     case 3:
       parent = project.pages[objectPath[0]].pageItems[objectPath[1]];
@@ -139,21 +134,12 @@ export function getSettingsOfObject(project: projectV2, id: Id) {
   // const object = getObjectViaPath(project, objectPath);
   const allPaths = getReverseArrays(objectPath);
 
-  console.log(objectPath);
-  console.log(allPaths);
-
   let combinedSettings: Settings = {
     scope: "global", // will be changed
   };
 
   outer: for (const [i, path] of allPaths.entries()) {
-    console.log(`path is [${path}]`);
     const object = getObjectViaPath(project, path);
-    console.log("combinedSettings is:");
-    console.log(combinedSettings);
-    console.log(`object = ${object}`);
-
-    // const isFinalIteration = (i + 1) === allPaths.length;
 
     if (!object) {
       console.error(`Error: object is null or undefined. More info:
@@ -191,9 +177,6 @@ allPaths: ${allPaths}`);
     case "choice":
       combinedSettings.scope = "choice";
   }
-
-  console.log("Final settings:");
-  console.log(combinedSettings);
 
   return combinedSettings;
 }
@@ -420,7 +403,7 @@ export function deletePage(page: Page) {
       changePageTo(index);
     }
   } catch (e) {
-    console.log(`Error trying to delete page: ${e}`);
+    console.error(`Error trying to delete page: ${e}`);
   }
 }
 
@@ -445,7 +428,7 @@ export function duplicatePage(page: Page, deepCopy: boolean = true) {
       ? pages.splice(index, 0, {...page})
       : pages.splice(index, 0, page);
   } catch (e) {
-    console.log(`Error while duplicating PageItem: ${e}`);
+    console.error(`Error while duplicating PageItem: ${e}`);
   }
 }
 
@@ -474,7 +457,7 @@ export function deletePageItem(pageItem: PageItem) {
     // Remove ID from allIds set
     projectV2.value.state.allIds.delete(pageItem.id);
   } catch (e) {
-    console.log(`Error deleting Page Item: ${e}`);
+    console.error(`Error deleting Page Item: ${e}`);
   }
 }
 
@@ -523,7 +506,7 @@ export function duplicatePageItem(
       })
       : sections.splice(index, 0, pageItem);
   } catch (e) {
-    console.log(`Error while duplicating PageItem: ${e}`);
+    console.error(`Error while duplicating PageItem: ${e}`);
   }
 }
 
