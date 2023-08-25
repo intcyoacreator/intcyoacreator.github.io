@@ -1,4 +1,4 @@
-import { Page, PageItem, Id, projectV2, Choice } from "@/types";
+import { Page, PageItem, Id, projectV2, Choice, ObjectType } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
@@ -50,10 +50,10 @@ import { defaultDivider, defaultPage, defaultSection } from "./constants";
  * `findObjectPathViaId()`.
  * @returns The Object.
  */
-export function getObjectViaPath(
+function getObjectViaPath(
   project: projectV2,
   objectPath: Array<number>
-): Page | PageItem | Choice[] {
+): Page | PageItem | Choice {
   let parent;
 
   switch (objectPath.length) {
@@ -68,7 +68,7 @@ export function getObjectViaPath(
       parent = project.pages[objectPath[0]].pageItems[objectPath[1]];
 
       if (parent.type === "section") {
-        return parent.choices;
+        return parent.choices[objectPath[2]];
       } else if (parent.type === "divider") {
         return parent;
       } else {
@@ -81,11 +81,77 @@ export function getObjectViaPath(
   }
 }
 
+/**
+ * Gets an Object using its ID. It only gets the newest Object.
+ * @param project The Project object.
+ * @param id The ID of the object.
+ * @returns The Object itself.
+ */
+export function getObjectViaId(
+  project: projectV2,
+  id: Id
+): Page | PageItem | Choice[] {
+  const objectPath = findObjectPathViaId(project, id);
+  return getObjectViaPath(project, objectPath);
+}
+
+/**
+ * Returns a list of arrays from an array, where each subsequent array is the
+ * previous one with one element removed from the end.
+ *
+ * For example, this:
+ *
+ * ```js
+ * getReverseArrays([3, 2, 1]);
+ * ```
+ *
+ * Returns: [3,2,1], [3,2], [3]
+ * @param originalArray The original array.
+ * @returns The array of reversed arrays.
+ */
+function getReverseArrays(originalArray: Array<number>): Array<Array<number>> {
+  const paths = [];
+
+  for (let i = 0; i < originalArray.length; i++) {
+    const newPath = [...originalArray];
+    newPath.splice(originalArray.length - i, originalArray.length);
+    // paths.push(newPath);
+    paths.unshift(newPath);
+  }
+
+  return paths;
+}
+
+// type StringObjectType = "page" | "pageItem" | "choice";
+
+function determineObjectType(
+  object: Page | PageItem | Choice[]
+): ObjectType {
+  // If the page has an ID
+  if ((object as Page).type === "page") {
+    return "page";
+  } else if ((object as PageItem).type === "section") {
+    return "section";
+  } else if ((object as PageItem).type === "divider") {
+    return "divider";
+  } else if ((object as Choice).type === "choice") {
+    return "choice";
+  }
+}
+
 export function getSettingsOfObject(project: projectV2, id: Id) {
   const objectPath = findObjectPathViaId(project, id);
-  console.log(objectPath);
   const object = getObjectViaPath(project, objectPath);
+  const allPaths = getReverseArrays(objectPath);
+
+  // console.log("Paths =");
+  // console.log(paths);
+  console.log("Object:");
   console.log(object);
+  console.log(`Type: ${typeof object}`);
+
+
+  // switch (object.type)
 }
 
 /**
@@ -94,10 +160,13 @@ export function getSettingsOfObject(project: projectV2, id: Id) {
  * @param id
  * @returns An array of numbers representing the indexes of the Project object.
  */
-export function findObjectPathViaId(
+function findObjectPathViaId(
   project: projectV2,
   id: Id
 ): Array<number> {
+
+  // Optimizations below:
+
   // Find if the ID is a page
   // const pageSearch = project.pages.findIndex((i) => {
   //   if (i.id === id) return true;
@@ -122,7 +191,6 @@ export function findObjectPathViaId(
     currentPageIndex = i;
 
     if (page.id === id) {
-      console.log(`ID is a page! Page name: ${page.pageName}`);
       foundObject = true;
       break outer;
     }
@@ -132,9 +200,6 @@ export function findObjectPathViaId(
       currentPageItemIndex = i;
 
       if (pageItem.id === id) {
-        console.log(`ID is a page item!
-        Item name: ${pageItem.id}
-        Item type: ${pageItem.type}`);
         foundObject = true;
         break outer;
       }
@@ -146,9 +211,6 @@ export function findObjectPathViaId(
           currentChoiceIndex = i;
 
           if (choice.id === id) {
-            console.log(`ID is a choice!
-            Choice name: ${choice.title}
-            Choice text: ${choice.text}`);
             foundObject = true;
             break outer;
           }
@@ -156,11 +218,6 @@ export function findObjectPathViaId(
       }
     }
   }
-
-  console.log(`foundObject = ${foundObject}`);
-  console.log(`currentPageIndex = ${currentPageIndex}
-  currentPageItemIndex = ${currentPageItemIndex}
-  currentChoiceIndex = ${currentChoiceIndex}`);
 
   if (!foundObject) {
     throw "Did not find object!";

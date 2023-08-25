@@ -49,6 +49,7 @@ respectively.`,
     // The default first page
     {
       id: "main",
+      type: "page",
       pageName: "CYOA",
       settings: {},
       pageItems: [],
@@ -85,6 +86,7 @@ export const sampleProjectV2: projectV2 = {
     // The default first page
     {
       id: "main",
+      type: "page",
       pageName: "CYOA",
       settings: {},
       pageItems: [
@@ -112,18 +114,21 @@ export const sampleProjectV2: projectV2 = {
           choices: [
             {
               id: "sk92",
+              type: "choice",
               title: "Forever Memory",
               text: `You now have perfect memory. You will never forget a
 memory. This works retroactively too.`,
             },
             {
               id: "k9f2",
+              type: "choice",
               title: "Body of Atlas",
               text: `You have unlimited stamina. You can lift up to 50 million
 times more than a regular human.`
             },
             {
               id: "09r2",
+              type: "choice",
               title: "Avalon",
               text: `Your body's healing is greater than anyone before you.
 You regenerate nigh-instantly.`
@@ -135,6 +140,7 @@ You regenerate nigh-instantly.`
     // Second page:
     {
       id: "second",
+      type: "page",
       pageName: "Second page",
       settings: {},
       pageItems: [
@@ -170,6 +176,7 @@ export const defaultSection: Section = {
 
 /** The default page */
 export const defaultPage: Page = {
+  type: "page",
   id: "",
   pageName: "",
   pageItems: [],

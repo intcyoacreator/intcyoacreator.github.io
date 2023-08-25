@@ -144,10 +144,14 @@ export type Id = string;
  */
 type Scope = "global" | "page" | "pageItem" | "section" | "choice";
 
+export type ObjectType = "page" | "section" | "divider" | "choice";
+
 /** A page in the CYOA. */
 export type Page = {
   /** The ID of a page. */
   id: Id,
+  /** The type of the page. Used for internal purposes only. */
+  type: "page",
   /** The name of the page, used in pagination. */
   pageName: string,
   /** The sections. */
@@ -170,6 +174,7 @@ export type Divider = {
 
 /** A section in the CYOA. Equivalent to a Row in the first Creator. */
 export type Section = {
+  /** The type of object. */
   type: "section",
   /** The ID of a section. */
   id: Id,
@@ -186,6 +191,8 @@ export type Section = {
 }
 
 export type Choice = {
+  /** The type of object. */
+  type: "choice",
   /** The ID of a choice. */
   id: Id,
   /** The title of a choice. */
