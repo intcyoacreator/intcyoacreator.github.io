@@ -55,7 +55,7 @@
 
   <!-- If the "Edit Section" has been pressed; Edit mode -->
   <div
-    v-if="sectionData.editModeEnabled"
+    v-if="sectionData.editModeEnabled && creatorMode === 'create'"
     class="d-flex flex-grow-1 flex-column"
   >
     <v-card class="my-4 mx-2 flex-grow-1 d-block">
@@ -71,7 +71,6 @@
           <v-col cols="3">
             <v-text-field
               label="Section Title"
-              auto-grow
               variant="outlined"
               rows="1"
               clearable
@@ -83,7 +82,6 @@
             <!-- Section ID -->
             <v-text-field
               label="Section ID"
-              auto-grow
               variant="outlined"
               rows="1"
               :model-value="sectionData.id"
@@ -96,9 +94,8 @@
           <v-col>
             <v-textarea
               label="Section Text"
-              auto-grow
               variant="outlined"
-              rows="4"
+              rows="6"
               clearable
               :model-value="sectionData.text"
               @update:model-value="(text) =>

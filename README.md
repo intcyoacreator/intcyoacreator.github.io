@@ -452,7 +452,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
   `Page.vue` file and turning them into emits
 
 
-## Issues / Errors
+## Issues / Errors / Bugs
 
 - [ ] About/Information Page on Linux AND Mobile trails off the edge with large
   URLs
@@ -465,6 +465,10 @@ A successor to MeanDelay's Interactive CYOA Creator.
   also makes a massive error fest, which means something's happening there
 - [ ] Preview doesn't have padding below each paragraph. Figure out how to do
   that
+- [x] If you've chosen "Edit Section" (and presumably Edit Divider) and switch
+  to the Viewer, it will still be in Edit Mode
+    * Fixed fairly easily
+
 
 ## Possible TODOs
 Will have to reconsider these later.
