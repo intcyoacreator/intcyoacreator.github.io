@@ -1,4 +1,12 @@
-import { Choice, Divider, Page, Section, Styling, projectV2 } from "@/types";
+import {
+  Choice,
+  Divider,
+  Page,
+  Section,
+  Settings,
+  Styling,
+  projectV2
+} from "@/types";
 
 export const defaultStyling: Styling = {
   scope: "global",
@@ -15,34 +23,39 @@ export const defaultStyling: Styling = {
 };
 
 /**
+ * The default settings
+ */
+export const defaultSettings: Settings = {
+  scope: "global",
+
+  projectSettings: {
+    // Whether pagination is turned on
+    pagesOn: false,
+
+    defaults: {
+      pageName: "Page",
+      sectionTitle: "Section",
+      sectionText: `This is a section, and inside of it you can place
+    choices.
+    \n\n
+    On both Sections and Choices, Requirements can be placed, which will
+    block a
+    Section from being shown or make the player unable to select a choice,
+    respectively.`,
+      idLength: 5,
+    }
+  },
+
+  sectionSettings: {},
+};
+
+/**
  * The default project file for a Project V2 file
  */
 export const emptyProjectV2: projectV2 = {
   // Project Version
   version: 2,
-  settings: {
-    scope: "global",
-
-    projectSettings: {
-      // Whether pagination is turned on
-      pagesOn: false,
-
-      defaults: {
-        pageName: "Page",
-        sectionTitle: "Section",
-        sectionText: `This is a section, and inside of it you can place
-      choices.
-      \n\n
-      On both Sections and Choices, Requirements can be placed, which will
-      block a
-      Section from being shown or make the player unable to select a choice,
-      respectively.`,
-        idLength: 5,
-      }
-    },
-
-    sectionSettings: {},
-  },
+  settings: defaultSettings,
   state: {
     currentPage: 1,
     // All activated choices
@@ -70,23 +83,8 @@ export const sampleProjectV2: projectV2 = {
   // Project Version
   version: 2,
   settings: {
-    scope: "global",
-    projectSettings: {
-      // Whether pagination is turned on
-      pagesOn: false,
-      defaults: {
-        pageName: "Page",
-        sectionTitle: "Section",
-        sectionText: "This is a section, and inside of it you can place\
-choices\
-      On both Sections and Choices, Requirements can be placed, which will\
-      block a\
-      Section from being shown or make the player unable to select a choice,\
-      respectively.",
-        idLength: 5,
-      },
-    },
-    sectionSettings: {},
+      ...defaultSettings,
+      // Overwrite any settings here
   },
   state: {
     currentPage: 1,

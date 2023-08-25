@@ -147,6 +147,8 @@
           v-html="markdownPreview"
           class="md-preview"
         />
+
+        <ChoiceList :section-data="sectionData"/>
       </v-col>
     </v-row>
   </v-container>

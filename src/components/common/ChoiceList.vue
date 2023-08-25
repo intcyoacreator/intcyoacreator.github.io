@@ -5,8 +5,9 @@
   -->
   <v-item-group
     :multiple="isMultipleChoice"
+    class="ma-4"
   >
-    <v-container>
+    <div>
       <v-row>
         <v-col
           v-for="(item, index) in sectionData.choices"
@@ -36,7 +37,7 @@
           </v-item>
         </v-col>
       </v-row>
-    </v-container>
+    </div>
   </v-item-group>
 </template>
 
@@ -49,7 +50,7 @@ import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
 
 const appStore = useAppStore();
-const { projectV2, creatorMode } = storeToRefs(appStore);
+const { projectV2 } = storeToRefs(appStore);
 
 const props = defineProps<{
   sectionData: Section,
