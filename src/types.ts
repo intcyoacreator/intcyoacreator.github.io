@@ -74,16 +74,21 @@ export type projectV2 = {
 /** A generic settings type. */
 type Settings = {
   /** The settings scope. */
-  scope: Scope,
+  scope?: Scope,
 
   /** Whether pagination is turned on or not. */
-  pagesOn: boolean,
+  pagesOn?: boolean,
 
-  /** The defaults of the program */
-  defaults: {
-    pageName: string,
-    sectionTitle: string,
-    sectionText: string,
+  /** The defaults of the program. */
+  defaults?: {
+    /** The default page name. */
+    pageName?: string,
+    /** The default section title. */
+    sectionTitle?: string,
+    /** The default section text. */
+    sectionText?: string,
+    /** The default length of newly generated IDs. */
+    idLength?: number,
   }
 }
 

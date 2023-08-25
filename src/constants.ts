@@ -35,6 +35,7 @@ choices.
 On both Sections and Choices, Requirements can be placed, which will block a
 Section from being shown or make the player unable to select a choice,
 respectively.`,
+      idLength: 5,
     }
   },
   state: {
@@ -69,6 +70,7 @@ export const sampleProjectV2: projectV2 = {
   On both Sections and Choices, Requirements can be placed, which will block a\
   Section from being shown or make the player unable to select a choice,\
   respectively.",
+      idLength: 5,
     },
   },
   state: {

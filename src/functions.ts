@@ -1,4 +1,4 @@
-import type { Page, PageItem, projectV2, Id } from "@/types";
+import type { Page, PageItem, Id } from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
@@ -13,23 +13,27 @@ function genRanHex(size: number): string {
 
 /**
  * A function that generates an ID for you automatically
- * @param addToSet an optional parameter that controls whether the ID will
- * automatically be added to the allIds Set
- * @returns the random ID
+ * @param length The length of the ID
+ * @param idSet The set that contains all the current IDs. Make this empty if
+ * you just want to generate an ID.
+ * @param addToSet A parameter that controls whether the ID will automatically
+ * be added to the set provided. Defaults to true.
+ * @returns The randomly generated ID.
  */
 export function generateId(
-  project: projectV2,
-  addToSet: boolean = true
+  length: number,
+  idSet: Set<Id>,
+  addToSet: boolean = true,
 ): string {
   let randomId: string;
   // Continues generating random IDs if they exist
   do {
-    randomId = genRanHex(4);
-  } while (project.state.allIds.has(randomId));
+    randomId = genRanHex(length);
+  } while (idSet.has(randomId));
 
   // Adds it to set automatically
   if (addToSet) {
-    project.state.allIds.add(randomId);
+    idSet.add(randomId);
   }
 
   return randomId;
@@ -39,11 +43,13 @@ export function generateId(
 export function createPage() {
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
+  const idList = projectV2.value.state.allIds;
+  const idLength = projectV2.value.settings.defaults?.idLength ?? 5;
   const defaults = projectV2.value.settings.defaults;
 
   const newPage = { ...defaultPage };
-  newPage.pageName = defaults.pageName;
-  newPage.id = generateId(projectV2.value);
+  newPage.pageName = defaults?.pageName ?? "page";
+  newPage.id = generateId(idLength, idList);
   // The new page seem to be pre-populated with the
   // sections of the previously created page.
   newPage.pageItems = [];
@@ -55,10 +61,12 @@ export function createPage() {
 export function createSection() {
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
-  const defaults = projectV2.value.settings.defaults;
 
   // For readability
+  const defaults = projectV2.value.settings.defaults;
   const currentPage = projectV2.value.state.currentPage - 1;
+  const idList = projectV2.value.state.allIds;
+  const idLength = projectV2.value.settings.defaults?.idLength ?? 5;
   const page = projectV2.value.pages[currentPage];
 
   // Happens when you try to create a Section while having no Pages
@@ -67,9 +75,9 @@ export function createSection() {
   }
 
   const newSection = { ...defaultSection };
-  newSection.title = defaults.sectionTitle;
-  newSection.text = defaults.sectionText;
-  newSection.id = generateId(projectV2.value);
+  newSection.title = defaults?.sectionTitle ?? "section title";
+  newSection.text = defaults?.sectionText ?? "section text";
+  newSection.id = generateId(idLength, idList);
 
   page.pageItems.push(newSection);
 }
@@ -80,6 +88,8 @@ export function createDivider() {
   const { projectV2 } = storeToRefs(appStore);
 
   // For readability
+  const idList = projectV2.value.state.allIds;
+  const idLength = projectV2.value.settings.defaults?.idLength ?? 5;
   const currentPageIndex = projectV2.value.state.currentPage - 1;
   const page = projectV2.value.pages[currentPageIndex];
 
@@ -88,7 +98,7 @@ export function createDivider() {
   }
 
   const newDivider = { ...defaultDivider };
-  newDivider.id = generateId(projectV2.value);
+  newDivider.id = generateId(idLength, idList);
 
   page.pageItems.push(newDivider);
 }
@@ -202,6 +212,8 @@ export function duplicatePageItem(
 
   const currentPage = projectV2.value.state.currentPage - 1;
   const sections = projectV2.value.pages[currentPage].pageItems;
+  const idList = projectV2.value.state.allIds;
+  const idLength = projectV2.value.settings.defaults?.idLength ?? 5;
   const index = sections.findIndex((i) => {
     return i.id === pageItem.id;
   }) + 1; // This one ensures that the duplicated objects are made one ahead
@@ -222,7 +234,7 @@ export function duplicatePageItem(
     deepCopy
       ? sections.splice(index, 0, {
         ...pageItem,
-        id: generateId(projectV2.value) // Overwrite the ID with a new one
+        id: generateId(idLength, idList) // Overwrite the ID with a new one
       })
       : sections.splice(index, 0, pageItem);
   } catch (e) {

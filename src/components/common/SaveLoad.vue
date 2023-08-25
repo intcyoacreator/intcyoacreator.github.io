@@ -112,75 +112,75 @@
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from "@/store/app";
-  import { storeToRefs } from "pinia";
-  import { Ref, ref } from "vue";
-  import { saveAs } from "file-saver";
+import { useAppStore } from "@/store/app";
+import { storeToRefs } from "pinia";
+import { Ref, ref } from "vue";
+import { saveAs } from "file-saver";
 
-  const appStore = useAppStore();
-  const {
-    // loadedProjectVersion,
-    dialog,
-    // projectV1,
-    projectV2,
-  } = storeToRefs(appStore);
+const appStore = useAppStore();
+const {
+  // loadedProjectVersion,
+  dialog,
+  // projectV1,
+  projectV2,
+} = storeToRefs(appStore);
 
-  // const projectVersionOptions =["Project v1", "Project v1.1", "Project v2"];
-  // const selectProjectVersion = ref("Project v1");
-  const projectFile: Ref<Array<File> | undefined> = ref();
+// const projectVersionOptions =["Project v1", "Project v1.1", "Project v2"];
+// const selectProjectVersion = ref("Project v1");
+const projectFile: Ref<Array<File> | undefined> = ref();
 
-  function saveProject() {
-    let project = JSON.stringify(projectV2.value);
-    let projectFile = new File(
-      [project],
-      "project.json",
-      { type: "application/json;charset=utf-8" }
-    );
-    saveAs(projectFile);
+function saveProject() {
+  let project = JSON.stringify(projectV2.value);
+  let projectFile = new File(
+    [project],
+    "project.json",
+    { type: "application/json;charset=utf-8" }
+  );
+  saveAs(projectFile);
+}
+
+function parseFile(files: Array<File>) {
+  // console.log(`parseFile called!\nfile: ${files}`);
+
+  if (files === undefined) {
+    console.log("Error receiving file: undefined");
+    return;
+  } else if (files.length <= 0) {
+    console.log("Error receiving file: files.length <= 0");
+    return;
   }
 
-  function parseFile(files: Array<File>) {
-    // console.log(`parseFile called!\nfile: ${files}`);
+  try {
+    const reader = new FileReader();
 
-    if (files === undefined) {
-      console.log("Error receiving file: undefined");
-      return;
-    } else if (files.length <= 0) {
-      console.log("Error receiving file: files.length <= 0");
-      return;
-    }
+    for (const file of files) {
+      // console.log("Parsing file…");
 
-    try {
-      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = () => {
+        switch (typeof reader.result) {
+          case "string": {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          let parsedProject = JSON.parse(reader.result);
+            // console.log(`parsedProject:`);
+            // console.log(parsedProject);
 
-      for (const file of files) {
-        // console.log("Parsing file…");
-
-        reader.readAsText(file);
-        reader.onload = () => {
-          switch (typeof reader.result) {
-            case "string": {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            let parsedProject = JSON.parse(reader.result);
-              // console.log(`parsedProject:`);
-              // console.log(parsedProject);
-
-              // Uncomment the below when necessary
-              // projectV1.value = parsedProject;
-              projectV2.value = parsedProject;
-              break;
-            }
-            default:
-              console.log("File is of type null, ArrayBuffer, or other");
+            // Uncomment the below when necessary
+            // projectV1.value = parsedProject;
+            projectV2.value = parsedProject;
+            break;
           }
-        };
-      }
-    } catch(e) {
-      console.log(`JSON Parse error: ${e}`);
+          default:
+            console.log("Error: File is of type null, ArrayBuffer, or other");
+        }
+      };
     }
+  } catch(e) {
+    console.log(`JSON Parse error: ${e}`);
   }
+}
 
-  // function updateProjectVersion() {
-  //   loadedProjectVersion.value = selectProjectVersion;
-  // }
+// function updateProjectVersion() {
+//   loadedProjectVersion.value = selectProjectVersion;
+// }
 </script>

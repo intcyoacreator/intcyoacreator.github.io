@@ -390,7 +390,11 @@ A successor to MeanDelay's Interactive CYOA Creator.
       supports multi-selection, then just chaining the results of those styles,
       giving precedence to lower level ones. if there exists no private
       styling, just add an empty list).
-
+- [ ] In the allIds field in the store, also store which page it is apart of
+  (if it's not already a page), either through number or Id or both
+    * This way, any future attempt to get an object can skip straight to the
+      page, get the index, and get the object, rather than having to iterate
+      through all pages
 
 
 ## Immediate TODO
@@ -435,11 +439,18 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Try to put all the pagination stuff inside of a button group
 - [ ] Put the **Section Text** and **Preview** in some sort of scrollable
   container. Or otherwise have a maximum height.
-- [ ] When deleting:
+- [x] When deleting:
     * If it's not the first Page, go to the page before the page you just
       deleted
     * If it's the first Page, you shouldn't need to change considering any
       later pages will replace it
+- [ ] Choice needs a `isSelected` boolean, and a helper function that loops for
+  all requirements and calls other private functions
+    * Maybe public? Since I do also want a public API of sorts that could be
+      used for a plugin system
+- [ ] Consider moving the "changeSection*" functions in `Section.vue` to the
+  `Page.vue` file and turning them into emits
+
 
 ## Issues / Errors
 
@@ -450,7 +461,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [x] Fix Viewer centring instead of beginning from the top
 - [ ] Viewer looks bad on devices with less than 500px width. See if I can make
   it `permanent` when above 500px, but collapsible when not.
-- [ ] Points Bar position is bugged, until the Page is changed. Changing Pages
+- [x] Points Bar position is bugged, until the Page is changed. Changing Pages
   also makes a massive error fest, which means something's happening there
 - [ ] Preview doesn't have padding below each paragraph. Figure out how to do
   that
