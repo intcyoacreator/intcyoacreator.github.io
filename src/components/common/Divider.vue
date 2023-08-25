@@ -58,7 +58,10 @@
       </v-btn>
     </v-toolbar>
 
-    <div v-if="dividerData.editModeEnabled" class="flex-grow-1">
+    <div
+      v-if="dividerData.editModeEnabled && creatorMode === 'create'"
+      class="flex-grow-1"
+    >
       <v-card class="mt-4">
         <v-card-text>
           <v-text-field
@@ -73,9 +76,11 @@
     </div>
   </div>
 
-  <v-divider v-if="!dividerData.editModeEnabled">
-    No edit mode :(
-  </v-divider>
+  <v-divider
+  v-if="!dividerData.editModeEnabled
+    || creatorMode === 'preview'
+    || creatorMode === 'view'"
+  />
 </template>
 
 <script setup lang="ts">

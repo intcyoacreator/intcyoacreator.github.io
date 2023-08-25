@@ -395,6 +395,10 @@ A successor to MeanDelay's Interactive CYOA Creator.
     * This way, any future attempt to get an object can skip straight to the
       page, get the index, and get the object, rather than having to iterate
       through all pages
+- [ ] A button/function that users can input that allows jumping to and from
+  sections, like a `GOTO` command or something
+    * First, it checks which page it is on, and then switches to that page (if
+      the user is currently on a different page), and then it scrolls down
 
 
 ## Immediate TODO
@@ -468,6 +472,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [x] If you've chosen "Edit Section" (and presumably Edit Divider) and switch
   to the Viewer, it will still be in Edit Mode
     * Fixed fairly easily
+    - [ ] Same thing happens with dividers
 
 
 ## Possible TODOs
