@@ -1,4 +1,4 @@
-import { Page, PageItem, Id, projectV2, Choice, Settings } from "@/types";
+import * as types from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
@@ -51,10 +51,10 @@ import { defaultDivider, defaultPage, defaultSection } from "./constants";
  * @returns The Object.
  */
 function getObjectViaPath(
-  project: projectV2,
+  project: types.projectV2,
   objectPath: Array<number>
-): Page | PageItem | Choice {
-  let parent: Page | PageItem | Choice;
+): types.Page | types.PageItem | types.Choice {
+  let parent: types.Page | types.PageItem | types.Choice;
 
   switch (objectPath.length) {
     // Page-level
@@ -88,9 +88,9 @@ function getObjectViaPath(
  * @returns The Object itself.
  */
 export function getObjectViaId(
-  project: projectV2,
-  id: Id
-): Page | PageItem | Choice {
+  project: types.projectV2,
+  id: types.Id
+): types.Page | types.PageItem | types.Choice {
   const objectPath = getObjectPath(project, id);
   return getObjectViaPath(project, objectPath);
 }
@@ -129,12 +129,12 @@ function getReverseArrays(originalArray: Array<number>): Array<Array<number>> {
  * @param id The ID of the object.
  * @returns The settings.
  */
-export function getSettingsOfObject(project: projectV2, id: Id) {
+export function getSettingsOfObject(project: types.projectV2, id: types.Id) {
   const objectPath = getObjectPath(project, id);
   // const object = getObjectViaPath(project, objectPath);
   const allPaths = getReverseArrays(objectPath);
 
-  let combinedSettings: Settings = {
+  let combinedSettings: types.Settings = {
     scope: "global", // will be changed
     projectSettings: {},
     sectionSettings: {},
@@ -192,8 +192,8 @@ allPaths: [${allPaths}]`);
  * @returns An array of numbers representing the indexes of the Project object.
  */
 function getObjectPath(
-  project: projectV2,
-  id: Id
+  project: types.projectV2,
+  id: types.Id
 ): Array<number> {
 
   // Optimizations below:
@@ -295,7 +295,7 @@ function genRanHex(size: number): string {
  */
 export function generateId(
   length: number,
-  idSet: Set<Id>,
+  idSet: Set<types.Id>,
   addToSet: boolean = true,
 ): string {
   let randomId: string;
@@ -381,7 +381,7 @@ export function createDivider() {
  * Delete a given page.
  * @param page The page that should be deleted.
  */
-export function deletePage(page: Page) {
+export function deletePage(page: types.Page) {
   // Happens when you have no more pages to delete
   if (page === undefined) {
     return;
@@ -420,7 +420,7 @@ export function deletePage(page: Page) {
  * @param deepCopy True by default. If true it will make a complete copy.
  * If false it will make a reference to it.
  */
-export function duplicatePage(page: Page, deepCopy: boolean = true) {
+export function duplicatePage(page: types.Page, deepCopy: boolean = true) {
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
 
@@ -446,25 +446,47 @@ export function duplicatePage(page: Page, deepCopy: boolean = true) {
  * * Dividers
  * @param pageItem The item that should be deleted.
  */
-export function deletePageItem(pageItem: PageItem) {
+export function deletePageItem(pageItem: types.PageItem) {
   const appStore = useAppStore();
   const { projectV2 } = storeToRefs(appStore);
 
   // Attempt deleting it first
   const currentPage = projectV2.value.state.currentPage - 1;
-  const sections = projectV2.value.pages[currentPage].pageItems;
-  const index = sections.findIndex((i) => {
+  const pageItems = projectV2.value.pages[currentPage].pageItems;
+  const index = pageItems.findIndex((i) => {
     return i.id === pageItem.id;
   });
 
   // Remove it
   try {
-    sections.splice(index, 1);
+    pageItems.splice(index, 1);
 
     // Remove ID from allIds set
     projectV2.value.state.allIds.delete(pageItem.id);
   } catch (e) {
     console.error(`Error deleting Page Item: ${e}`);
+  }
+}
+
+/**
+ * Deletes a choice.
+ * @param section The section that choice belongs to.
+ * @param choice The choice itself.
+ */
+export function deleteChoice(section: types.Section, choice: types.Choice) {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  const index = section.choices.findIndex((i) => {
+    return i.id === choice.id;
+  });
+
+  try {
+    section.choices.splice(index, 1);
+
+    projectV2.value.state.allIds.delete(choice.id);
+  } catch (e) {
+    console.error(`Error deleting choice: ${e}`);
   }
 }
 
@@ -478,7 +500,7 @@ export function deletePageItem(pageItem: PageItem) {
  * copied completely.
  */
 export function duplicatePageItem(
-  pageItem: PageItem,
+  pageItem: types.PageItem,
   deepCopy: boolean = true,
 ) {
   const appStore = useAppStore();
@@ -491,20 +513,8 @@ export function duplicatePageItem(
   const idLength = defaults?.idLength ?? 5;
   const index = sections.findIndex((i) => {
     return i.id === pageItem.id;
-  }) + 1; // This one ensures that the duplicated objects are made one ahead
+  }) + 1;
 
-  // index += (() => {
-  //   switch (pageItem.type) {
-  //     case "section":
-  //       return 2; // This +2 ensures that the duplication happens after
-  //     case "divider":
-  //       return 1;
-  //     default:
-  //       return 1;
-  //   }
-  // })();
-
-  // Duplicate it
   try {
     deepCopy
       ? sections.splice(index, 0, {
@@ -514,6 +524,33 @@ export function duplicatePageItem(
       : sections.splice(index, 0, pageItem);
   } catch (e) {
     console.error(`Error while duplicating PageItem: ${e}`);
+  }
+}
+
+/**
+ * Duplicates a choice.
+ * @param section The section the choice belongs to.
+ * @param choice The choice itself.
+ */
+export function duplicateChoice(section: types.Section, choice: types.Choice) {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  const idList = projectV2.value.state.allIds;
+  const defaults = projectV2.value.settings.projectSettings.defaults;
+  const idLength = defaults?.idLength ?? 5;
+
+  const index = section.choices.findIndex((i) => {
+    return i.id === choice.id;
+  });
+
+  try {
+    section.choices.splice(index, 0, {
+      ...choice,
+      id: generateId(idLength, idList)
+    });
+  } catch (e) {
+    console.error(`Error while duplicating choice: ${e}`);
   }
 }
 
@@ -532,7 +569,7 @@ export function changePageTo(pageNumber: number) {
  * versa.
  * @param pageItem The Page Item to be toggled.
  */
-export function togglePageItemEditMode(pageItem: PageItem) {
+export function togglePageItemEditMode(pageItem: types.PageItem) {
   pageItem.editModeEnabled === undefined
     ? pageItem.editModeEnabled = false
     : pageItem.editModeEnabled = !pageItem.editModeEnabled;
@@ -544,7 +581,7 @@ export function togglePageItemEditMode(pageItem: PageItem) {
  * called when not on the same page.
  * @param offset The offset.
  */
-export function movePageItem(page: Page, id: Id, offset: number) {
+export function movePageItem(page: types.Page, id: types.Id, offset: number) {
   const index = page.pageItems.findIndex((i) => {
     return i.id === id;
   });
@@ -564,4 +601,30 @@ export function movePageItem(page: Page, id: Id, offset: number) {
   page.pageItems.splice(index, 1);
   // Insert it into the new position
   page.pageItems.splice(newIndex, 0, item);
+}
+
+export function moveChoice(
+  section: types.Section,
+  id: types.Id,
+  offset: number
+) {
+  const index = section.choices.findIndex((i) => {
+    return i.id === id;
+  });
+  const newIndex = index + offset;
+
+  // If it's at the top already, do nothing
+  if (newIndex < 0) {
+    return;
+  // If it's at the bottom already, do nothing
+  } else if (newIndex > section.choices.length) {
+    return;
+  }
+
+  // Duplicate choice
+  const item = section.choices[index];
+  // Delete the old choice
+  section.choices.splice(index, 1);
+  // Insert it into the new position
+  section.choices.splice(newIndex, 0, item);
 }

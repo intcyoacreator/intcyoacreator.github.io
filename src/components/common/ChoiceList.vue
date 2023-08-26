@@ -37,11 +37,14 @@
             <div v-else>
               <v-card>
                 <v-toolbar>
-                  <v-item-group class="d-flex stretch justify-space-evenly">
+                  <v-item-group class="d-flex flex-grow-1">
                     <v-spacer></v-spacer>
 
                     <v-item>
-                      <v-btn icon>
+                      <v-btn
+                        icon
+                        @click="moveChoice(sectionData, item.id, -1)"
+                      >
                         <v-icon>mdi-arrow-left</v-icon>
                         <v-tooltip
                           activator="parent"
@@ -55,7 +58,7 @@
                     <v-spacer></v-spacer>
 
                     <v-item>
-                      <v-btn icon>
+                      <v-btn icon @click="deleteChoice(sectionData, item)">
                         <v-icon>mdi-delete</v-icon>
                         <v-tooltip
                           activator="parent"
@@ -70,6 +73,20 @@
 
                     <v-item>
                       <v-btn icon>
+                        <v-icon>mdi-cog</v-icon>
+                        <v-tooltip
+                          activator="parent"
+                          location="top"
+                        >
+                          Choice Settings
+                        </v-tooltip>
+                      </v-btn>
+                    </v-item>
+
+                    <v-spacer></v-spacer>
+
+                    <v-item>
+                      <v-btn icon @click="duplicateChoice(sectionData, item)">
                         <v-icon>mdi-content-copy</v-icon>
                         <v-tooltip
                           activator="parent"
@@ -83,7 +100,7 @@
                     <v-spacer></v-spacer>
 
                     <v-item>
-                      <v-btn icon>
+                      <v-btn icon @click="moveChoice(sectionData, item.id, 1)">
                         <v-icon>mdi-arrow-right</v-icon>
                         <v-tooltip
                           activator="parent"
@@ -103,13 +120,42 @@
                     (Change Image Placeholder)
                   </p>
 
-                  <v-textarea
-                    label="Choice Text"
-                    variant="outlined"
-                    rows="6"
-                    :model-value="item.text"
-                    @update:model-value="(text) => updateChoiceText(item, text)"
-                  />
+                  <v-container class="pa-0">
+                    <v-row dense>
+                      <v-col>
+                        <v-textarea
+                          label="Choice Text"
+                          variant="outlined"
+                          rows="6"
+                          :model-value="item.text"
+                          @update:model-value="(text) =>
+                            updateChoiceText(item, text)"
+                        />
+                      </v-col>
+                    </v-row>
+
+                    <v-row dense>
+                      <v-col>
+                        <v-text-field
+                          label="Choice Title"
+                          variant="outlined"
+                          :model-value="item.title"
+                          @update:model-value="(title) =>
+                            updateChoiceTitle(item, title)"
+                        />
+                      </v-col>
+
+                      <v-col>
+                        <v-text-field
+                          label="Choice ID"
+                          variant="outlined"
+                          :model-value="item.id"
+                          @update:model-value="(id) =>
+                            updateChoiceId(item, id)"
+                        />
+                      </v-col>
+                    </v-row>
+                  </v-container>
                 </v-card-text>
               </v-card>
             </div>
@@ -127,7 +173,12 @@
 import { computed } from "vue";
 
 import { Choice, Section } from "@/types";
-import { getSettingsOfObject } from "@/functions";
+import {
+  getSettingsOfObject,
+  deleteChoice,
+  duplicateChoice,
+  moveChoice
+} from "@/functions";
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
 
@@ -151,5 +202,13 @@ const isMultipleChoice = computed(() => {
 // Miscellaneous functions
 function updateChoiceText(item: Choice, text: string) {
   item.text = text;
+}
+
+function updateChoiceTitle(item: Choice, title: string) {
+  item.title = title;
+}
+
+function updateChoiceId(item: Choice, id: string) {
+  item.id = id;
 }
 </script>
