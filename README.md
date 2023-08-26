@@ -459,6 +459,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
   and if (as it is by default, by applying it to the project-level default
   section setting) the setting `normalizeChoiceHeight` is set to `true`, then
   every row will have their `min-height` bound to the largest height.
+- [ ] Get rid of a lot of the `v-container` uses, as they apply uncontrollable
+  margin and padding, and instead use `<div>`s.
 
 
 ## Issues / Errors / Bugs
