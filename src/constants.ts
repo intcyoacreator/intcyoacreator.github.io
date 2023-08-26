@@ -36,12 +36,12 @@ export const defaultSettings: Settings = {
       pageName: "Page",
       sectionTitle: "Section",
       sectionText: `This is a section, and inside of it you can place
-    choices.
-    \n\n
-    On both Sections and Choices, Requirements can be placed, which will
-    block a
-    Section from being shown or make the player unable to select a choice,
-    respectively.`,
+choices.
+
+On both Sections and Choices, Requirements can be placed, which will
+block a
+Section from being shown or make the player unable to select a choice,
+respectively.`,
       idLength: 5,
     }
   },
@@ -100,7 +100,7 @@ export const sampleProjectV2: projectV2 = {
     {
       id: "main",
       type: "page",
-      pageName: "CYOA",
+      pageName: "Page 1",
       settings: {
         "scope": "page",
         projectSettings: {},

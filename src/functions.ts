@@ -8,6 +8,7 @@ import {
   defaultPage,
   defaultSection
 } from "./constants";
+import { toRaw } from "vue";
 
 // /**
 //  * Highly dangerous arbitrary object accessor, given an array of strings.
@@ -454,7 +455,8 @@ export function duplicatePage(page: types.Page, deepCopy: boolean = true) {
   // Duplicate it
   try {
     deepCopy
-      ? pages.splice(index, 0, {...page})
+      // ? pages.splice(index, 0, {...page})
+      ? pages.splice(index, 0, structuredClone(toRaw(page)))
       : pages.splice(index, 0, page);
   } catch (e) {
     console.error(`Error while duplicating PageItem: ${e}`);
@@ -539,9 +541,13 @@ export function duplicatePageItem(
 
   try {
     deepCopy
+      // ? sections.splice(index, 0, {
+      //   ...pageItem,
+      //   id: generateId(idLength, idList) // Overwrite the ID with a new one
+      // })
       ? sections.splice(index, 0, {
-        ...pageItem,
-        id: generateId(idLength, idList) // Overwrite the ID with a new one
+        ...structuredClone(toRaw(pageItem)),
+        id: generateId(idLength, idList)
       })
       : sections.splice(index, 0, pageItem);
   } catch (e) {
@@ -567,8 +573,12 @@ export function duplicateChoice(section: types.Section, choice: types.Choice) {
   });
 
   try {
+    // section.choices.splice(index, 0, {
+    //   ...choice,
+    //   id: generateId(idLength, idList)
+    // });
     section.choices.splice(index, 0, {
-      ...choice,
+      ...structuredClone(toRaw(choice)),
       id: generateId(idLength, idList)
     });
   } catch (e) {

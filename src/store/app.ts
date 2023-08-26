@@ -4,7 +4,9 @@ import { defineStore } from "pinia";
 // Imports
 // import { defaultProjectV1 } from "@/constants"
 // import { defaultProjectV2, sampleProjectV2 } from "@/constants"
-import { sampleProjectV2 } from "@/constants";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { emptyProjectV2, sampleProjectV2 } from "@/constants";
 import { ApplicationState } from "@/types";
 
 export const useAppStore = defineStore("app", {
@@ -21,7 +23,8 @@ export const useAppStore = defineStore("app", {
         showPagesList: false,
       },
       creatorMode: "none",
-      projectV2: sampleProjectV2
+      // projectV2: sampleProjectV2,
+      projectV2: emptyProjectV2,
     };
   },
 });

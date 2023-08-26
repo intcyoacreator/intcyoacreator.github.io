@@ -484,6 +484,7 @@ A successor to MeanDelay's Interactive CYOA Creator.
   reaching the maximum width. It should be static at all times.
 - [ ] Choices clash together when the screen is small but not small enough that
   it moves to a single column
+- [ ] Duplicating sections (and thus pages) should scramble all children's IDs
 
 
 ## Possible TODOs
