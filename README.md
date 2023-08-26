@@ -399,6 +399,27 @@ A successor to MeanDelay's Interactive CYOA Creator.
   sections, like a `GOTO` command or something
     * First, it checks which page it is on, and then switches to that page (if
       the user is currently on a different page), and then it scrolls down
+- [ ] Have ability to export a project's project level settings (not overrides,
+  but those can be export from the overridden object's menu, where you can do a
+  shallow copy (only the overwritten settings) or a deep copy (all settings))
+    * All exported settings can be imported elsewhere, but the scope may need
+      to be overwritten when importing
+    * Then again, the scope is mostly useless isn't it?
+- [ ] Viewer may display a menu thing at the start?
+    * Maybe only if an option is pressed
+    * It'll show author(s), contributors, extra credits, licence, name of the
+      CYOA, Summary, whether the project can be verified, if it has requested
+      more permission out of sanitization (such as links, images, or even
+      DANGEROUS scripts!), stuff like that
+    * Also shows (and these need to be new settings too) the version it was
+      created in, as well as the latest version to update it (which code in
+      SaveLoad will need to change)
+    * This means that when loading the creator, if the latest edited version is
+      a major version down, it warns that it may be incompatible
+        * If both start with 0: if it's a minor or patch version difference, it
+          warns that it may be incompatible
+        * It doesn't need to change with major version 1 or up, since we
+          already covered major version changes
 
 
 ## Immediate TODO
@@ -461,6 +482,11 @@ A successor to MeanDelay's Interactive CYOA Creator.
   every row will have their `min-height` bound to the largest height.
 - [ ] Get rid of a lot of the `v-container` uses, as they apply uncontrollable
   margin and padding, and instead use `<div>`s.
+- [ ] Move Choice Title and ID above Choice Text (contrary to the first
+  creator)
+- [ ] Choices don't need access to project level defaults for pages and
+sections (how would they affect them?), but pages have access to section and
+choice defaults And sections have access to choice defaults
 
 
 ## Issues / Errors / Bugs
@@ -485,6 +511,12 @@ A successor to MeanDelay's Interactive CYOA Creator.
 - [ ] Choices clash together when the screen is small but not small enough that
   it moves to a single column
 - [ ] Duplicating sections (and thus pages) should scramble all children's IDs
+- [ ] Save Project to file doesn't work on Tauri Linux
+- [ ] Creating a new section will instantiate it with choices that already
+  exist across the other ones (or the previous one)
+    * Not only that, but the other ones are still linked via reference
+        * The only thing that isn't is the section text
+    * Duplicating pages AND sections needs to make a deep copy
 
 
 ## Possible TODOs
@@ -509,6 +541,16 @@ Will have to reconsider these later.
   styling, and it lists all occurrences of bad contrast
 - [ ] The Points Bar is glitching in the Creator, as the main content doesn't
   realize that it's there
+- [ ] Gpg sign the file using an npm package
+    * Change the "hash" or whatever project string to <SIGNING>, so that it
+      doesn't reference itself, and is reproducible ID
+    * Then, it JSON stringify's the projectV2 object, signs it with a given
+      private key (that isn't saved into the project, maybe LocalStorage),
+      checks that with a given public key (that is saved and displayed by the
+      viewer, just in case it changes suddenly), and then replaces "hash" with
+      the resulting thing
+    * Then the viewer repeats the process, checking it (but only if a specific
+      project setting is turned on), and displaying if it's verified or not
 
 
 # Ideas

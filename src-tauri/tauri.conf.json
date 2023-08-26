@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "intcyoacreator2",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "tauri": {
     "allowlist": {
@@ -17,7 +17,7 @@
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
-      "copyright": "Copyright (c) 2023 Pasadena under the MIT licence",
+      "copyright": "Copyright (c) 2023 Pasadena under the AGPLv3 licence",
       "deb": {
         "depends": []
       },

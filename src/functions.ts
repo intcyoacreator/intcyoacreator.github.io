@@ -326,12 +326,12 @@ export function createPage() {
   const defaults = projectV2.value.settings.projectSettings?.defaults ?? {};
   const idLength = defaults?.idLength ?? 5;
 
-  const newPage = { ...defaultPage };
-  newPage.pageName = defaults?.pageName ?? "page";
-  newPage.id = generateId(idLength, idList);
-  // The new page seem to be pre-populated with the
-  // sections of the previously created page.
-  newPage.pageItems = [];
+  const newPage = {
+    ...structuredClone(toRaw(defaultPage)),
+    pageName: defaults?.pageName ?? "page",
+    id: generateId(idLength, idList),
+    pageItems: [],
+  };
 
   projectV2.value.pages.push(newPage);
 }
@@ -353,10 +353,12 @@ export function createSection() {
     return;
   }
 
-  const newSection = { ...defaultSection };
-  newSection.title = defaults?.sectionTitle ?? "section title";
-  newSection.text = defaults?.sectionText ?? "section text";
-  newSection.id = generateId(idLength, idList);
+  const newSection = {
+    ...structuredClone(toRaw(defaultSection)),
+    title: defaults?.sectionTitle ?? "section title",
+    text: defaults?.sectionText ?? "section text",
+    id: generateId(idLength, idList),
+  };
 
   page.pageItems.push(newSection);
 }
@@ -395,7 +397,10 @@ export function createChoice(section: types.Section) {
   const idList = projectV2.value.state.allIds;
   const idLength = defaults?.idLength ?? 5;
 
-  const newChoice = { ...defaultChoice, id: generateId(idLength, idList) };
+  const newChoice = {
+    ...structuredClone(toRaw(defaultChoice)),
+    id: generateId(idLength, idList)
+  };
 
   section.choices.push(newChoice);
 }
