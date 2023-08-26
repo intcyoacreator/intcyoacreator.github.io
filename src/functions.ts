@@ -2,7 +2,12 @@ import * as types from "@/types";
 
 import { useAppStore } from "@/store/app";
 import { storeToRefs } from "pinia";
-import { defaultDivider, defaultPage, defaultSection } from "./constants";
+import {
+  defaultChoice,
+  defaultDivider,
+  defaultPage,
+  defaultSection
+} from "./constants";
 
 // /**
 //  * Highly dangerous arbitrary object accessor, given an array of strings.
@@ -375,6 +380,23 @@ export function createDivider() {
   newDivider.id = generateId(idLength, idList);
 
   page.pageItems.push(newDivider);
+}
+
+/**
+ * Creates a new choice in a given section.
+ * @param section The section that the new choice will belong in.
+ */
+export function createChoice(section: types.Section) {
+  const appStore = useAppStore();
+  const { projectV2 } = storeToRefs(appStore);
+
+  const defaults = projectV2.value.settings.projectSettings?.defaults;
+  const idList = projectV2.value.state.allIds;
+  const idLength = defaults?.idLength ?? 5;
+
+  const newChoice = { ...defaultChoice, id: generateId(idLength, idList) };
+
+  section.choices.push(newChoice);
 }
 
 /**

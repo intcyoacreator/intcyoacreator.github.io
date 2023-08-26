@@ -59,10 +59,20 @@
     class="d-flex flex-grow-1 flex-column"
   >
     <v-card class="my-4 mx-2 flex-grow-1 d-block">
-      <v-toolbar border density="compact">
+      <v-toolbar
+        border
+        density="compact"
+        :title="'Editing \'' + sectionData.title + '\' Section'"
+      >
         <v-spacer></v-spacer>
 
         <!-- Icons for Section functionality -->
+        <v-btn icon @click="createChoice(sectionData)">
+          <v-icon>mdi-plus-box-multiple</v-icon>
+          <v-tooltip activator="parent" location="top">
+            Create New Choice
+          </v-tooltip>
+        </v-btn>
       </v-toolbar>
 
       <v-container>
@@ -162,6 +172,7 @@ import { parse as mdParse } from "marked";
 import { computed } from "vue";
 
 import ChoiceList from "@/components/common/ChoiceList.vue";
+import { createChoice } from "@/functions";
 
 const appStore = useAppStore();
 const { creatorMode } = storeToRefs(appStore);
