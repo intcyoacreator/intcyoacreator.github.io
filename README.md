@@ -420,6 +420,8 @@ A successor to MeanDelay's Interactive CYOA Creator.
           warns that it may be incompatible
         * It doesn't need to change with major version 1 or up, since we
           already covered major version changes
+    * It will have a little "Made with IntCyoaCreator2", even linking to it.
+      This can optionally be turned off in the settings.
 
 
 ## Immediate TODO
